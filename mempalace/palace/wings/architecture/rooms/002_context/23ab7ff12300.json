@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "23ab7ff12300",
+  "content": "# LCCA — TECH + PROJECT CONTEXT (mis à jour 2026-04-23)",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "002_context",
+  "skill_file": "002-context.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

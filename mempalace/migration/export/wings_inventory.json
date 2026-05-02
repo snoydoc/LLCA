@@ -1,0 +1,54 @@
+{
+  "date": "2026-04-23",
+  "date_updated": "2026-04-23",
+  "mcp_palace_path": "C:\\Users\\snoy\\.mempalace\\palace",
+  "total_drawers": 3116,
+  "wings": {
+    "wing_medibot_specs": {"rooms": {"planning": 3100, "audit-rdv": 4}, "total": 3104},
+    "wing_claude-medibot": {"rooms": {"diary": 1}, "total": 1},
+    "wing_medibot-copilot": {"rooms": {"diary": 1}, "total": 1},
+    "wing_wing_claude-medibot": {"rooms": {"diary": 1}, "total": 1},
+    "wing_claude": {"rooms": {"diary": 2}, "total": 2},
+    "wing_caveman": {"rooms": {"diary": 6}, "total": 6},
+    "wing_lccacodeagent": {"rooms": {"diary": 1}, "total": 1}
+  },
+  "classification": {
+    "medibot_only": ["wing_medibot_specs", "wing_claude-medibot", "wing_medibot-copilot", "wing_wing_claude-medibot", "wing_caveman"],
+    "llca_related": ["wing_lccacodeagent", "wing_claude"],
+    "shared": []
+  },
+  "llca_content_found": {
+    "wing_lccacodeagent": {
+      "drawers": 1,
+      "content_sample": "SESSION:2026-04-16 SP03.bug.fixed+13/13.PASSED BUG:ImportFrom stored auth.authenticate instead of auth FIX:ast_indexer._index_file node.module.only DG.build:resolved auth->auth.py SP03:DONE SP04:NEXT=planner-orchestrator",
+      "classification": "diary entry — session log sprint 03 early LLCA",
+      "export_file": "drawers_llca/lccacodeagent_diary_sp03.json"
+    },
+    "wing_claude": {
+      "drawers": 1,
+      "content_sample": "SESSION:2026-04-18|LCCA.V7.env.validation|ACHIEVED:60/60.check_env.pass→OPERATIONNEL|FIXED:3.bugs|STACK:TransactionManager+SmartPatcher+ASTIndexer+SandboxEngine+McpServer+MemoryEngine+SafePath+Ollama+Docker",
+      "classification": "diary entry — validation env V7 complete, 60 checks, stack operationnelle (2026-04-18)",
+      "export_file": "drawers_llca/claude_diary_lcca_v7_2026-04-18.json",
+      "note": "MANQUANT lors de MIG-05 — ajoute lors de FIX-MCP-CRASH-01 (2026-04-23)"
+    }
+  },
+  "medibot_content": {
+    "note": "3115 drawers MediBot — NON migres dans palace LLCA. Restent dans le MCP palace C:\\Users\\snoy\\.mempalace\\palace",
+    "breakdown": {
+      "wing_medibot_specs/planning": 3100,
+      "wing_medibot_specs/audit-rdv": 4,
+      "wing_claude-medibot/diary": 1,
+      "wing_medibot-copilot/diary": 1,
+      "wing_wing_claude-medibot/diary": 1,
+      "wing_caveman/diary": 6
+    }
+  },
+  "drawers_to_migrate": {
+    "total": 2,
+    "files": [
+      "drawers_llca/lccacodeagent_diary_sp03.json",
+      "drawers_llca/claude_diary_lcca_v7_2026-04-18.json"
+    ]
+  },
+  "verdict": "Le MCP palace est quasi-exclusivement MediBot (3115/3116 drawers = 99.97%). LLCA = 2 drawers diary (sp03 2026-04-16 + V7-env-validation 2026-04-18). Les 2 sont exportes dans drawers_llca/."
+}

@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "295ab125aed1",
+  "content": "### ❌ O-01 — `write_file` sur fichier existant sans lecture préalable\n**Symptôme** : le fichier est tronqué, du contenu disparaît.\n**Règle** : fichier existant → `read_text_file` d'abord, puis `edit_file`.\n`write_file` sur existant = INTERDIT sauf relecture complète dans la même session.",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "003-antipatterns",
+  "skill_file": "003-antipatterns.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

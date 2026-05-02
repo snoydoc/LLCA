@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "patterns": [
+    {
+      "id": "coroutine_never_awaited",
+      "tool": "smartpatcher",
+      "fix_template": "add_await",
+      "allowed_files": ["core/*.py", "workers/*.py"],
+      "description": "Ajoute await devant une coroutine non awaitée (libcst)"
+    },
+    {
+      "id": "missing_import",
+      "tool": "string_template",
+      "fix_template": "add_import",
+      "allowed_files": ["**/*.py"],
+      "description": "Ajoute un import manquant en tête de fichier (template string)"
+    }
+  ]
+}

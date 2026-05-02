@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "f07778b6d54d",
+  "content": "## ÉTAT DES TESTS (2026-04-23 post-session-3) — ✅ VALIDÉ\n- **1252 passed attendus** (1234 + 18 nouveaux)\n- Run session-2 validé : `test_refacto_15.py test_refacto_16.py test_memory_engine.py test_spec_layer.py test_spec_retry.py test_smoke.py` — **143 passed in 2.63s** ✅\n- Run session-3 validé : `test_planner.py test_refacto_11.py test_v9_05.py test_v9_06.py` — **77 passed in 1.30s** ✅\n- test_planner.py : +18 tests (audit coverage B — planner.py)\n- REFACTO-15 : +18 tests (test_refacto_15.py)\n- REFACTO-16 : +18 tests (test_refacto_16.py)\n- V9-09 : +48 tests\n  - REFACTO-13 : +18 tests (test_refacto_13.py)\n  - REFACTO-14 : +18 tests (test_refacto_14.py)\n  - Spec Diff  : +6 tests  (test_spec_diff.py)\n  - Spec Retry : +6 tests  (test_spec_retry.py)\n- REFACTO-12 : +18 tests (test_refacto_12.py)\n- FIX-NETWORK : conftest.py créé + test_educator_agent.py + test_ed_02.py corrigés\n- FIX-REFACTO11 : 13 tests corrigés (test_v9_01_a, test_v9_05, test_v9_06) — mocks déplacés vers `core.ollama_client`\n- Correction V9-08 : `llm_review` ajouté à VALID_CAPABILITIES dans agent_card.py\n- Derniers sprints ajoutant des tests :\n  - REFACTO-09 : +18 tests (test_refacto_09.py)\n  - REFACTO-08 : +28 tests (test_refacto_08.py)\n  - REFACTO-07 : +18 tests (test_refacto_07.py)\n  - REFACTO-06 : +18 tests (test_refacto_06.py)\n  - V9-08 : +12 tests (test_v9_08.py)\n  - V9-07 : +12 tests (test_v9_07.py)",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "tests",
+  "room": "etat_tests",
+  "skill_file": "002-context.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "40d9a38e8388",
+  "content": "## CONVENTIONS PROJET\n1. SmartPatcher retourne `str`, jamais n'écrit disque\n2. max 3 fichiers/TX (`config.MAX_FILES_PER_TX`)\n3. `safe_path()` obligatoire avant toute op disque MCP\n4. Telemetry silencieuse — jamais bloquer le flux\n5. Logs MCP sur stderr, JSON-RPC sur stdout\n6. Spec non validée → jamais de génération de code\n7. CognitivePatterns : classes injectables, jamais fonctions libres",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "conventions",
+  "skill_file": "002-context.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

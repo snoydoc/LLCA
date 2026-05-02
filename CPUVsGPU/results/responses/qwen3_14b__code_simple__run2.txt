@@ -1,0 +1,46 @@
+﻿================================================================================
+MODEL: qwen3:14b | PROMPT: code_simple | RUN: 2 | 2026-04-28 00:57:19
+================================================================================
+
+```python
+import datetime
+
+def days_between(date1, date2):
+    """
+    Calculate the number of days between two dates.
+
+    Args:
+        date1 (str): A date string in 'YYYY-MM-DD' format.
+        date2 (str): Another date string in 'YYYY-MM-DD' format.
+
+    Returns:
+        int: The absolute number of days between the two dates.
+
+    Example:
+        >>> days_between("2023-01-01", "2023-01-05")
+        4
+    """
+    d1 = datetime.datetime.strptime(date1, "%Y-%m-%d")
+    d2 = datetime.datetime.strptime(date2, "%Y-%m-%d")
+    delta = d1 - d2
+    return abs(delta.days)
+```
+
+---
+
+### Usage Example
+
+```python
+# Example usage
+result = days_between("2023-01-01", "2023-01-05")
+print(result)  # Output: 4
+```
+
+---
+
+### Explanation
+
+- The function uses Python's `datetime` module to parse the input date strings into `datetime` objects.
+- It then calculates the difference between the two dates using subtraction, which yields a `timedelta` object.
+- The `days` attribute of the `timedelta` object gives the number of days between the two dates.
+- The `abs()` function ensures that the result is always a non-negative number, regardless of the order of the input dates.

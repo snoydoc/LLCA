@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "9a6f24a17f88",
+  "content": "## RÈGLES INVARIANTES — TESTS\n- `pytest.skip()` dans le corps pour fixtures conditionnelles (Pytest 9+)\n- `ChromaDB` : `skipif(sys.version_info >= (3, 14), ...)`\n- `_make_side_effect()` : rejoue le dernier élément si liste épuisée\n- Tests d'intégration mockant le LLM → `config.ADAPTIVE_SPEC_ENABLED = False`",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "regles_invariantes",
+  "skill_file": "001-master.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

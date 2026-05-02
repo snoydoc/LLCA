@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "22690aa30396",
+  "content": "## SESSION 2026-04-22 — PATTERNS APPRIS\n- Audit cohérence 002-context.md : ~30 fichiers core/ non documentés détectés par list_directory vs skills\n- Workflow audit coverage : lire tests + sources en parallèle (read_multiple_files), analyser les lacunes\n- REFACTO-10 identifié : mcp_tool_handlers.py (28.9 KB) = prochain candidat\n- llm_generator.py (28.3 KB) = autre candidat REFACTO prioritaire\n- orchestrator_medi.py : execute() non testable en CI (D:\\MediBot absent) — couverture acceptée via mocking filesystem\n- Lors d’une session d’audit, ne pas corriger le code — lire, analyser, documenter uniquement",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "session_logs",
+  "skill_file": "001-master.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

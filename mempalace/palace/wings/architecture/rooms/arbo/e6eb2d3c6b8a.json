@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "e6eb2d3c6b8a",
+  "content": "## ARBORESCENCE CORE (D:\\LLMCodeAgent)",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "arbo",
+  "skill_file": "002-context.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

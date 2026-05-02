@@ -1,0 +1,281 @@
+/* =============================================================================
+   LCCA Desktop -- Styles Sprint UI-02
+   Markdown, CodeBlock, TxBadge, SpecBadge, StreamingIndicator, Sidebar++
+   ============================================================================= */
+
+/* --- Markdown body ----------------------------------------------------------- */
+.markdown-body { line-height: var(--line-height-base); }
+.markdown-body p  { margin: 0 0 var(--space-sm); }
+.markdown-body p:last-child { margin-bottom: 0; }
+.markdown-body ul, .markdown-body ol {
+  margin: 0 0 var(--space-sm) var(--space-md);
+  padding: 0;
+}
+.markdown-body li { margin-bottom: 2px; }
+.markdown-body strong { font-weight: 700; color: var(--text-primary); }
+.markdown-body em    { font-style: italic; color: var(--text-secondary); }
+.markdown-body hr    { border: none; border-top: 1px solid var(--border); margin: var(--space-md) 0; }
+.markdown-body a     { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+.markdown-body a:hover { opacity: 0.8; }
+
+/* Cursor pulsant en fin de streaming */
+.is-streaming::after {
+  content: '\258D';
+  color: var(--accent);
+  animation: cursorBlink 800ms step-end infinite;
+  margin-left: 1px;
+}
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* --- highlight.js theme (dark) ---------------------------------------------- */
+.hljs { background: var(--code-bg); color: #c9d1d9; }
+.hljs-comment, .hljs-quote { color: #8b949e; font-style: italic; }
+.hljs-keyword, .hljs-selector-tag, .hljs-addition { color: #ff7b72; }
+.hljs-number, .hljs-string, .hljs-meta .hljs-meta-string,
+.hljs-literal, .hljs-doctag, .hljs-regexp { color: #a5d6ff; }
+.hljs-title, .hljs-section, .hljs-name, .hljs-selector-id,
+.hljs-selector-class { color: #d2a8ff; }
+.hljs-attribute, .hljs-attr, .hljs-variable, .hljs-template-variable,
+.hljs-class .hljs-title, .hljs-type { color: #ffa657; }
+.hljs-symbol, .hljs-bullet, .hljs-subst, .hljs-meta,
+.hljs-meta .hljs-keyword, .hljs-selector-attr,
+.hljs-selector-pseudo, .hljs-link { color: #79c0ff; }
+.hljs-built_in, .hljs-deletion { color: #f0883e; }
+.hljs-formula { background: #161b22; }
+.hljs-emphasis { font-style: italic; }
+.hljs-strong   { font-weight: bold; }
+
+/* --- Sidebar -- session items ----------------------------------------------- */
+.sidebar-divider {
+  width: calc(100% - 16px);
+  border-top: 1px solid var(--border);
+  margin: 4px 8px;
+}
+.sidebar-sessions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 100%;
+}
+.sidebar-session-item {
+  position: relative;
+  width: 40px;
+}
+.sidebar-session-delete {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--error);
+  color: #fff;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  z-index: 1;
+}
+.sidebar-session-item:hover .sidebar-session-delete {
+  display: flex;
+}
+
+/* --- StreamingIndicator V3 -- UI-THINK-01 (orbes style "Claude Desktop") ---- */
+
+/* Orbes -- partagees mode full et mode inline */
+.si-orb {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-secondary);
+  opacity: 0.35;
+  animation: siOrbPulse 1.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+.si-orb-1 { animation-delay: 0s; }
+.si-orb-2 { animation-delay: 0.2s; }
+.si-orb-3 { animation-delay: 0.4s; }
+
+@keyframes siOrbPulse {
+  0%, 60%, 100% { transform: scale(1);   opacity: 0.35; }
+  30%           { transform: scale(1.4); opacity: 0.85; }
+}
+
+/* Mode FULL : bulle complete pre-streaming */
+.si-full {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 9px 14px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  max-width: 320px;
+  position: relative;
+  overflow: hidden;
+  animation: siFadeIn 200ms ease-out;
+}
+
+/* Shimmer sweep subtil */
+.si-full::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 50%,
+    transparent 100%
+  );
+  animation: siShimmer 2.4s ease-in-out infinite;
+  pointer-events: none;
+  border-radius: inherit;
+}
+@keyframes siShimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(220%); }
+}
+@keyframes siFadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.si-orbs {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.si-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.si-label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.si-step {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  animation: siStepSlide 280ms ease-out;
+}
+@keyframes siStepSlide {
+  from { opacity: 0; transform: translateY(3px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.si-timer {
+  font-size: 10.5px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  padding: 1px 7px;
+  min-width: 32px;
+  text-align: right;
+  flex-shrink: 0;
+  letter-spacing: -0.02em;
+}
+
+/* Mode INLINE : pastille compacte pendant streaming de texte */
+.si-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px 3px 8px;
+  margin-top: 8px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.si-inline .si-orb {
+  width: 6px;
+  height: 6px;
+}
+.si-inline-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+.si-inline-sep { opacity: 0.4; }
+.si-inline-timer { opacity: 0.6; letter-spacing: -0.02em; }
+
+/* --- Score pill (SpecBadge UI-DS-03) --------------------------------------- */
+/* Pill inline affichant le score d'une spec — couleur via token sémantique   */
+.score-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 7px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.6;
+  border: 1px solid transparent;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+.score-pill--ok {
+  color: var(--success);
+  background: var(--success-dim);
+  border-color: rgba(52, 211, 153, 0.2);
+}
+.score-pill--warn {
+  color: var(--warning);
+  background: var(--warning-dim);
+  border-color: rgba(251, 191, 36, 0.2);
+}
+.score-pill--err {
+  color: var(--error);
+  background: var(--error-dim);
+  border-color: rgba(248, 113, 113, 0.2);
+}
+/* Variantes light — ajustement contraste */
+[data-theme="light"] .score-pill--ok   { border-color: rgba(4, 120, 87, 0.25); }
+[data-theme="light"] .score-pill--warn { border-color: rgba(180, 83, 9, 0.25); }
+[data-theme="light"] .score-pill--err  { border-color: rgba(185, 28, 28, 0.25); }
+
+/* Métadonnées spec badge — icônes validée/mémorisée */
+.spec-badge-validated { color: var(--success); }
+.spec-badge-stored    { color: var(--accent); }
+
+/* --- Animations globales ---------------------------------------------------- */
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.tx-badge, .spec-badge {
+  animation: slideInUp 200ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-streaming::after,
+  .bubble-cursor { animation: none; opacity: 1; }
+  .tx-badge, .spec-badge { animation: none; }
+  .si-orb { animation: none; opacity: 0.6; }
+  .si-full::before { animation: none; }
+  .si-step { animation: none; }
+  .si-full { animation: none; }
+}

@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "ba63abc3716e",
+  "content": "## RÔLE & RÈGLE ABSOLUE\nTu exécutes des **transactions atomiques** sur la codebase LCCA.\n**JAMAIS de correction immédiate sur le premier fichier qui échoue.**\nLire → Diagnostiquer → Corriger une seule fois, correctement.",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "role",
+  "skill_file": "001-master.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

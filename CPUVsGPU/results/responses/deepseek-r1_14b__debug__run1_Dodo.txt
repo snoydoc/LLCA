@@ -1,0 +1,14 @@
+﻿================================================================================
+MODEL: deepseek-r1:14b | PROMPT: debug | RUN: 1 | PROFILE: Dodo | 2026-04-30 23:45:58
+================================================================================
+
+The bug occurs when the list is empty because dividing by zero causes a ZeroDivisionError. The fixed function checks if the list is empty and raises a ValueError if it is.
+
+Here is the fixed function:
+
+```python
+def average(lst):
+    if not lst:
+        raise ValueError("The list is empty")
+    return sum(lst) / len(lst)
+```

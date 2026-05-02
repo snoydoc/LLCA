@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "f5d050a3514c",
+  "content": "## PALACE LOCAL LLCA (MIG-04/MIG-05)\n- Racine : `D:\\LLMCodeAgent\\mempalace\\palace\\` (créé MIG-04)\n- Config : `D:\\LLMCodeAgent\\mempalace\\config.json`\n- `PALACE_DIR` défini dans `config.py` — créé automatiquement au démarrage\n- `MemPalaceClient()` sans args pointe sur PALACE_DIR (plus sur `~/.mempalace/palace`)\n- Tests mempalace : `tmp_palace` fixture passe `palace_path` explicitement → non impactés\n- 0 dépendance vers D:\\MediBot ou le MCP palace partagé\n- Peuplement : `python mempalace/migration/migrate_palace.py` (skills LLCA + sp03 historique)\n- MCP audit MIG-05 : 3116 drawers MCP = 99.97% MediBot, 1 drawer LLCA (sp03 diary) exporté\n\n---",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "mempalace",
+  "room": "config",
+  "skill_file": "002-context.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

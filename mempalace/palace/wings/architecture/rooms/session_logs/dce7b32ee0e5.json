@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "dce7b32ee0e5",
+  "content": "## SESSION 2026-04-23 — PATTERNS APPRIS (session 3)\n- REFACTO-17 : `ollama_client.py` — nettoyage interne (12.61 KB → 10.27 KB)\n  - Extraction 3 helpers module-level : `_build_request()`, `_stream_lines()`, `_capture_tps()`\n  - Règle : nettoyage INTRA-fichier (duplication × 4) — PAS de nouveau module (responsabilité unique)\n  - 0 nouveau fichier, 0 alias rétrocompat nécessaire\n  - Couverture : test_refacto_11.py + test_v9_05.py + test_v9_06.py (tests existants suffisants)\n  - `warmup()` laissé intact : construit son Request manuellement (stream:False, options différentes)\n- Audit coverage B — `planner.py` (11.46 KB) : `test_planner.py` créé (18 tests)\n  - PatchOperation + Plan.is_valid() (dédup fichiers identiques)\n  - PlannedOperation.file_path + priorité par défaut\n  - Planner.build() : chemin normal + ValueError > MAX_FILES_PER_TX\n  - MultiFilePlanner.create_plan() : vide, dédup, limite MAX, tri topologique (core en premier)\n  - validate_plan_consistency() : 3 règles (max fichiers, symbole dupliqué, delete+modify)\n  - _infer_op_params() : 7 cas (ajoute/cree/supprime/corrige/inconnu + import + core)\n  - _infer_symbol() : regex, fallback snake_case, cas vide\n- Audit coverage B — `spec_validator_rules.py` (13.82 KB) : couverture satisfaisante via test_spec_layer.py (pas de lacune bloquante)",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "session_logs",
+  "skill_file": "001-master.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "73b267abd70d",
+  "content": "### ❌ T-09 — Mock au mauvais niveau après REFACTO (agent vs sous-module)\n**Symptôme** : test bloqué indéfiniment (>50 min), `KeyboardInterrupt` dans un fichier réseau (ex. `educator_github.py:60`).\n**Cause** : après un REFACTO qui extrait la logique dans un sous-module (`_ingester`, `_curator`, `_gh`...), un test mocke la méthode wrapper sur `agent` (ex. `patch.object(agent, \"_process_repo\")`), mais `run_curation` appelle directement `agent._ingester.process_repo` — le mock ne capture pas l'appel réel.\n**Règle** : après tout REFACTO qui extrait dans un sous-module, les mocks doivent cibler le sous-module, pas le wrapper :\n```python\n# ❌ Avant REFACTO (mocke le wrapper sur agent)\npatch.object(agent, \"_process_repo\")\n# ✅ Après REFACTO (mocke l'objet réel utilisé)\npatch.object(agent._ingester, \"process_repo\")\n```\n**Fichiers concernés** : `test_ed_02.py` — `test_persist_called_after_wet_curation` et `test_persist_not_called_in_dry_run`.",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "003-antipatterns",
+  "skill_file": "003-antipatterns.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

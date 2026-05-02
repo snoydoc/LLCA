@@ -1,0 +1,132 @@
+﻿================================================================================
+MODEL: gemma4:e2b | PROMPT: coding_lcca | RUN: 3 | 2026-04-27 18:16:50
+================================================================================
+
+```python
+from pathlib import Path
+from typing import List
+
+class FileManager:
+    """
+    A utility class for managing file operations within a specified base directory.
+    """
+    def __init__(self, base: Path):
+        """
+        Initializes the FileManager with a base directory path.
+
+        Args:
+            base: The base directory Path where files will be managed.
+        """
+        self.base = base
+        # Ensure the base path exists
+        if not self.base.is_dir():
+            raise FileNotFoundError(f"Base directory not found: {self.base}")
+
+    def read_file(self, filename: str) -> str:
+        """
+        Reads the content of a file.
+
+        Args:
+            filename: The name of the file to read relative to the base directory.
+
+        Returns:
+            The content of the file as a string.
+
+        Raises:
+            FileNotFoundError: If the file does not exist.
+            IOError: If there is an issue reading the file.
+        """
+        file_path = self.base / filename
+        if not file_path.is_file():
+            raise FileNotFoundError(f"File not found: {file_path}")
+        
+        try:
+            return file_path.read_text(encoding='utf-8')
+        except IOError as e:
+            raise IOError(f"Error reading file {file_path}: {e}")
+
+    def write_file(self, filename: str, data: str):
+        """
+        Writes data to a file. Creates the file if it does not exist.
+
+        Args:
+            filename: The name of the file to write to relative to the base directory.
+            data: The string content to write to the file.
+
+        Raises:
+            IOError: If there is an issue writing to the file.
+        """
+        file_path = self.base / filename
+        try:
+            # Use 'w' mode for writing (overwrites existing content)
+            file_path.write_text(data, encoding='utf-8')
+        except IOError as e:
+            raise IOError(f"Error writing to file {file_path}: {e}")
+
+    def list_files(self) -> List[Path]:
+        """
+        Lists all files and directories within the base directory.
+
+        Returns:
+            A list of Path objects representing the contents of the base directory.
+
+        Returns:
+            List[Path]: A list of Path objects.
+        """
+        try:
+            # Use iterdir() to list contents
+            return sorted(list(self.base.iterdir()))
+        except FileNotFoundError:
+            # This should ideally be caught in __init__, but included for robustness
+            return []
+        except PermissionError:
+            raise PermissionError(f"Permission denied accessing directory: {self.base}")
+
+if __name__ == '__main__':
+    # Example Usage and Testing
+    
+    # 1. Setup a temporary directory for testing
+    test_dir = Path("./temp_file_manager_test")
+    test_dir.mkdir(exist_ok=True)
+
+    print(f"--- Initializing FileManager in: {test_dir.resolve()} ---")
+    
+    try:
+        manager = FileManager(test_dir)
+
+        # 2. Test writing a file
+        file_name = "test_output.txt"
+        content = "Hello, world!\nThis is a test file."
+        print(f"\n--- Writing to {file_name} ---")
+        manager.write_file(file_name, content)
+        print(f"Successfully wrote data to {file_name}")
+
+        # 3. Test listing files
+        print("\n--- Listing files in base directory ---")
+        files = manager.list_files()
+        for p in files:
+            print(f"Found: {p.name}")
+
+        # 4. Test reading a file
+        print(f"\n--- Reading from {file_name} ---")
+        read_content = manager.read_file(file_name)
+        print("Content read successfully:")
+        print(read_content)
+
+        # 5. Test reading a non-existent file (Edge Case)
+        print("\n--- Testing reading non-existent file ---")
+        try:
+            manager.read_file("non_existent.txt")
+        except FileNotFoundError as e:
+            print(f"Caught expected error: {e}")
+
+    except Exception as e:
+        print(f"\nAn unexpected error occurred during testing: {e}")
+    
+    finally:
+        # 6. Cleanup
+        import shutil
+        print("\n--- Cleaning up test directory ---")
+        shutil.rmtree(test_dir)
+        print("Cleanup complete.")
+```

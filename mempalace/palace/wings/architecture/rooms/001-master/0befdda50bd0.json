@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "0befdda50bd0",
+  "content": "## RÈGLES OUTILS FICHIERS (CRITIQUES)\n- `write_file` ÉCRASE sans merge → fichier existant : **read_text_file → edit_file**\n- `str_replace` natif Claude = container Linux uniquement. Sur `D:\\...` → **filesystem:edit_file**\n- `bash_tool` = 0 accès disque Windows. Jamais sur `D:\\LLMCodeAgent\\`\n- Après tout `edit_file` → relire les lignes modifiées avant de continuer\n- `oldText` = copié depuis la dernière lecture de la session. Jamais de mémoire",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "001-master",
+  "skill_file": "001-master.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

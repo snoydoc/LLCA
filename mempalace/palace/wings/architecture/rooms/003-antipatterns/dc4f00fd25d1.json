@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "dc4f00fd25d1",
+  "content": "### ❌ T-03 — Texte attendu dans un prompt non mis à jour\n**Symptôme** : `AssertionError: assert 'Current function' in \"...Current:\\n\\`\\`\\`python...\"`\n**Règle** : correction va dans le **prompt** (source de vérité), PAS dans le test.",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "003-antipatterns",
+  "skill_file": "003-antipatterns.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

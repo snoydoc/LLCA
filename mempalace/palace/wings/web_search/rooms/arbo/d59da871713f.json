@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "d59da871713f",
+  "content": "### core/ — module web_search (Sprint WEB-01→03)\n```\nweb_search.py          WEB-02/03 — WebSearchEngine orchestrateur (DDG+Brave+Wikipedia+Ollama) (12.8 KB) ⚠️ WARN >10KB\nweb_search_types.py    WEB-02 — Dataclasses SearchHit, FetchedPage, SearchResult (2.5 KB)\nweb_search_engines.py  WEB-02 — MultiEngineSearchClient : cascade DDG+Brave+Wikipedia + dédup (13.2 KB) ⚠️ WARN >10KB\nweb_search_fetcher.py  WEB-02 — _PageFetcher : fetch parallèle + scoring qualité 0.0-1.0 (8.5 KB)\nweb_search_cache.py    WEB-02 — SearchCache TTL adaptatif (5.8 KB)\n```\nRègles web_search :\n- urllib.request stdlib uniquement (pas de requests)\n- Timeout 30s fetch / 15s moteur | fetch EN PARALLÈLE (ThreadPoolExecutor)\n- Troncature à la phrase, 3000 chars/page max pour synthèse\n- Score qualité < 0.3 → exclu de la synthèse Ollama\n- re-exports rétrocompat : `from core.web_search import SearchHit, FetchedPage, SearchResult`",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "web_search",
+  "room": "arbo",
+  "skill_file": "002-context.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

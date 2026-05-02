@@ -1,0 +1,14 @@
+﻿================================================================================
+MODEL: deepseek-r1:8b | PROMPT: debug | RUN: 1 | PROFILE: Dodo | 2026-04-30 20:59:26
+================================================================================
+
+The bug occurs when the input list is empty, causing a `ZeroDivisionError` because `len(lst)` is 0 and division by zero is undefined. To fix this, we check if the list is empty and return `None` in such cases. Here's the fixed code:
+
+```python
+def average(lst):
+    if len(lst) == 0:
+        return None
+    return sum(lst) / len(lst)
+```
+
+This version handles the empty list case gracefully by returning `None`, avoiding the division error.

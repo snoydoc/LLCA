@@ -1,0 +1,57 @@
+﻿================================================================================
+MODEL: qwen3:8b | PROMPT: code_simple | RUN: 1 | PROFILE: Dodo | 2026-04-30 21:33:15
+================================================================================
+
+Here's a well-documented Python function named `days_between` that calculates the number of days between two date strings in the format `YYYY-MM-DD`. The function includes a detailed docstring and a usage example for clarity.
+
+---
+
+```python
+from datetime import datetime
+
+def days_between(date1, date2):
+    """
+    Calculate the number of days between two dates given as strings in YYYY-MM-DD format.
+    
+    Parameters:
+    date1 (str): First date string in the format 'YYYY-MM-DD'.
+    date2 (str): Second date string in the format 'YYYY-MM-DD'.
+    
+    Returns:
+    int: The absolute number of days between the two dates.
+    
+    Usage example:
+    >>> days_between('2023-10-01', '2023-10-05')
+    4
+    """
+    # Parse the date strings into datetime objects
+    d1 = datetime.strptime(date1, "%Y-%m-%d")
+    d2 = datetime.strptime(date2, "%Y-%m-%d")
+    
+    # Calculate the difference between the two dates
+    delta = d2 - d1
+    
+    # Return the absolute number of days
+    return abs(delta.days)
+```
+
+---
+
+### ✅ Key Features
+
+- **Input Format**: Accepts date strings in the `YYYY-MM-DD` format.
+- **Output**: Returns the absolute number of days between the two dates.
+- **Robustness**: Handles date differences across years, months, and days.
+- **Error Handling**: Assumes valid input; if invalid, `datetime.strptime` will raise a `ValueError`.
+
+---
+
+### 📌 Example Usage
+
+```python
+print(days_between('2023-10-01', '2023-10-05'))  # Output: 4
+print(days_between('2022-12-31', '2023-01-01'))  # Output: 1
+print(days_between('2023-01-01', '2023-01-01'))  # Output: 0
+```
+
+This implementation is clean, efficient, and leverages Python's built-in `datetime` module for accurate date arithmetic.

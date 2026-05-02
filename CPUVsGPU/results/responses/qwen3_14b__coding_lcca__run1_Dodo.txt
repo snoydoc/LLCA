@@ -1,0 +1,63 @@
+﻿================================================================================
+MODEL: qwen3:14b | PROMPT: coding_lcca | RUN: 1 | PROFILE: Dodo | 2026-04-30 23:21:39
+================================================================================
+
+```python
+import pathlib
+
+class FileManager:
+    """Manages file operations within a specified base directory using pathlib.Path."""
+
+    def __init__(self, base):
+        """
+        Initialize FileManager with the base directory.
+
+        Args:
+            base (str): The path to the base directory.
+
+        Raises:
+            FileNotFoundError: If the base directory does not exist.
+            NotADirectoryError: If the base path is not a directory.
+        """
+        self.base = pathlib.Path(base)
+        if not self.base.exists():
+            raise FileNotFoundError(f"Directory not found: {self.base}")
+        if not self.base.is_dir():
+            raise NotADirectoryError(f"{self.base} is not a directory")
+
+    def read_file(self, name):
+        """
+        Read the contents of a file.
+
+        Args:
+            name (str): The name of the file to read.
+
+        Returns:
+            str: The contents of the file.
+
+        Raises:
+            FileNotFoundError: If the file does not exist.
+        """
+        file_path = self.base / name
+        return file_path.read_text()
+
+    def write_file(self, name, data):
+        """
+        Write data to a file.
+
+        Args:
+            name (str): The name of the file to write.
+            data (str): The data to write to the file.
+        """
+        file_path = self.base / name
+        file_path.write_text(data)
+
+    def list_files(self):
+        """
+        List all files in the base directory.
+
+        Returns:
+            list: A list of filenames as strings.
+        """
+        return [str(file.name) for file in self.base.iterdir()]
+```

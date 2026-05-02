@@ -1,0 +1,22 @@
+# Voice/requirements.txt — Pipeline voix LCCA (VOICE-11)
+# Installer dans Voice/venv/ (PAS dans le venv LCCA principal)
+# Commande : pip install -r requirements.txt
+
+# ── STT ─────────────────────────────────────────────────────────────────────
+faster-whisper>=1.0.0          # ASR CTranslate2 — INT8, CUDA ou CPU
+webrtcvad-wheels>=2.0.14       # VAD Google — binaire precompile Windows
+sounddevice>=0.5.0             # Capture micro + lecture audio
+numpy>=1.24.0                  # Buffer PCM, fade-out, beeps
+websockets>=12.0               # Transport WebSocket STT/TTS <-> Electron
+
+# ── TTS ─────────────────────────────────────────────────────────────────────
+piper-tts>=1.2.0               # Piper ONNX — voix FR offline, CPU only
+onnxruntime>=1.17.0            # Runtime ONNX (dependency de piper-tts)
+
+# ── TTS Kokoro (optionnel — meilleure qualite, ~350 MB) ───────────────────
+# Decommentez si VRAM disponible > 1.5 GB et espeak-ng installe
+# kokoro>=0.9.4
+# torch>=2.2.0
+
+# ── Utilitaires ──────────────────────────────────────────────────────────────
+tomli>=2.0.1; python_version < "3.11"   # tomllib stdlib en 3.11+, fallback 3.10

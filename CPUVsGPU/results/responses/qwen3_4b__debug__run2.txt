@@ -1,0 +1,20 @@
+﻿================================================================================
+MODEL: qwen3:4b | PROMPT: debug | RUN: 2 | 2026-04-27 18:31:22
+================================================================================
+
+The bug in the provided function is that it does not handle the case when the input list is empty, causing a `ZeroDivisionError` due to division by zero. 
+
+**Fixed Solution**:
+```python
+def average(lst):
+    if len(lst) == 0:
+        raise ValueError("List is empty")
+    return sum(lst) / len(lst)
+```
+
+**Explanation**:
+1. **Check for empty list**: Before performing the division, we verify if the list length is zero.
+2. **Raise meaningful error**: If the list is empty, we raise a `ValueError` with a clear message to indicate the issue instead of crashing with a `ZeroDivisionError`.
+3. **Maintain original logic**: For non-empty lists, the function continues to compute the average as `sum(lst) / len(lst)`.
+
+This fix ensures the function handles empty lists gracefully while preserving the intended functionality for valid inputs. The error message helps the user understand why the operation failed.

@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "554a0c7b0808",
+  "content": "## MISE À JOUR DE SESSION (OBLIGATOIRE)\nFin de session : mettre à jour 001 (patterns nouveaux), 002 (arbo + état tests), 003 (nouvelles erreurs).\nOrdre : (1) vérifier fichiers modifiés, (2) mettre à jour skills, (3) confirmer état projet.",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "session_update",
+  "skill_file": "001-master.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

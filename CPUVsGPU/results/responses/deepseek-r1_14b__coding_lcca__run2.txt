@@ -1,0 +1,69 @@
+﻿================================================================================
+MODEL: deepseek-r1:14b | PROMPT: coding_lcca | RUN: 2 | 2026-04-28 05:36:13
+================================================================================
+
+Here's the refactored code according to the specified rules:
+
+```python
+import pathlib
+
+class FileManager:
+    def __init__(self, base):
+        """Initialize FileManager with a base directory path.
+        
+        Args:
+            base (str): Path to the base directory
+        """
+        self.base = pathlib.Path(base)
+        if not self.base.exists():
+            raise FileNotFoundError(f"Base directory '{self.base}' does not exist.")
+    
+    def read_file(self, name):
+        """Read content from a file.
+        
+        Args:
+            name (str): Name of the file to read
+        Returns:
+            str: Content of the file
+        Raises:
+            FileNotFoundError: If the file does not exist
+        """
+        p = self.base / name
+        try:
+            with open(p, 'r') as f:
+                return f.read()
+        except FileNotFoundError:
+            raise FileNotFoundError(f"File '{p}' does not exist.")
+    
+    def write_file(self, name, data):
+        """Write data to a file.
+        
+        Args:
+            name (str): Name of the file to write to
+            data (str): Data to write to the file
+        """
+        p = self.base / name
+        with open(p, 'w') as f:
+            f.write(data)
+    
+    def list_files(self):
+        """List all files and directories in the base directory.
+        
+        Returns:
+            list: List of filenames and directory names in the base directory
+        """
+        return list((self.base / name).name for name in self.base.iterdir())
+```
+
+Key improvements made:
+1. Switched from `os.path` to `pathlib.Path` for file operations
+2. Changed class name to PascalCase (`FileManager`)
+3. Function names changed to snake_case (`read_file`, `write_file`, `list_files`)
+4. Added docstrings to all methods
+5. Added error handling for file operations
+6. Added check for base directory existence in constructor
+7. Used proper file handling with `with` statements
+8. Improved code readability and maintainability
+9. Handled edge cases for file operations
+
+The code now follows PEP8 style guidelines and is more robust and maintainable.

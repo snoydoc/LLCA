@@ -1,0 +1,468 @@
+/* ui03.css — Sprint UI-03 : FileTree, SpecCard, TxCard, Modals, ContextPanel sections */
+
+/* ─── ContextPanel sections ──────────────────────────────────────────────────── */
+.context-section {
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.context-section:last-child { border-bottom: none; }
+
+.context-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--bg-secondary);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.context-section-header h3 {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+.context-refresh-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  line-height: 1;
+}
+.context-refresh-btn:hover { color: var(--text-primary); background: var(--bg-surface); }
+
+.context-section-body {
+  max-height: 220px;
+  overflow-y: auto;
+  padding: var(--space-xs) 0;
+}
+
+/* ─── FileTree ───────────────────────────────────────────────────────────────── */
+.file-tree { font-size: var(--font-size-xs); }
+
+.tree-dir-header,
+.tree-file {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 0;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  overflow: hidden;
+}
+.tree-dir-header:hover,
+.tree-file:hover { background: var(--bg-surface); }
+
+.tree-dir-arrow { color: var(--text-muted); font-size: 10px; width: 10px; flex-shrink: 0; }
+.tree-dir-name  { color: var(--text-secondary); }
+.tree-file-name { color: var(--text-primary); overflow: hidden; text-overflow: ellipsis; }
+.tree-dir-icon,
+.tree-file-icon { font-size: 11px; flex-shrink: 0; }
+
+.tree-file-modified .tree-file-name { color: var(--warning); }
+.tree-modified-badge {
+  margin-left: auto;
+  margin-right: var(--space-xs);
+  font-size: 10px;
+  color: var(--warning);
+  flex-shrink: 0;
+}
+.tree-empty { padding: var(--space-sm); text-align: center; }
+
+/* ─── SpecCard ────────────────────────────────────────────────────────────────── */
+.spec-card {
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 120ms;
+}
+.spec-card:hover { background: var(--bg-surface); }
+
+.spec-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: 2px;
+}
+.spec-card-title { font-size: var(--font-size-xs); color: var(--text-primary); font-weight: 500; }
+.spec-card-status { font-size: 11px; flex-shrink: 0; }
+
+.spec-card-meta {
+  display: flex;
+  gap: var(--space-sm);
+  font-size: 10px;
+  color: var(--text-muted);
+}
+.spec-card-domain { font-family: var(--font-mono); color: var(--accent); }
+
+/* ─── TxCard ─────────────────────────────────────────────────────────────────── */
+.tx-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 3px var(--space-sm);
+  font-size: var(--font-size-xs);
+  border-radius: var(--radius-sm);
+}
+.tx-card:hover { background: var(--bg-surface); }
+.tx-card-status { flex-shrink: 0; font-size: 11px; }
+.tx-card-id     { font-family: var(--font-mono); color: var(--text-secondary); flex-shrink: 0; }
+.tx-card-file   { color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; flex: 1; }
+.tx-card-time   { color: var(--text-muted); flex-shrink: 0; font-size: 10px; }
+
+/* ─── Modal — base ────────────────────────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  animation: fadeIn 120ms ease-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.modal-content {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 10px);
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  animation: scaleIn 140ms ease-out;
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.modal-header h2 {
+  font-size: var(--font-size-md, 15px);
+  font-weight: 600;
+  margin: 0;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.modal-filepath {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 200px;
+}
+.modal-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.modal-close-btn:hover { color: var(--text-primary); }
+
+.modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-md);
+}
+.modal-loading {
+  padding: var(--space-lg, 24px);
+  text-align: center;
+  color: var(--text-muted);
+  font-style: italic;
+}
+.modal-error {
+  padding: var(--space-md);
+  color: var(--error);
+  background: rgba(248, 113, 113, 0.08);
+  border-radius: var(--radius-md);
+  margin: var(--space-md);
+}
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+/* ─── SpecDetailModal ─────────────────────────────────────────────────────────── */
+.spec-detail-modal { width: min(720px, 96vw); }
+
+.spec-detail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+}
+.spec-detail-meta code {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1px 5px;
+  color: var(--accent);
+}
+
+/* ─── Corps scrollable avec scrollbar visible fine ─── */
+.spec-detail-body {
+  flex: 1;
+  min-height: 0;           /* essentiel pour que flex-child scroll */
+  overflow-y: auto;
+  padding: var(--space-md);
+
+  /* Scrollbar fine et visible — remplace le display:none global */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+/* WebKit — scrollbar fine dans la modal */
+.spec-detail-body::-webkit-scrollbar {
+  display: block;
+  width: 5px;
+}
+.spec-detail-body::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 3px;
+}
+.spec-detail-body::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 3px;
+  transition: background 150ms;
+}
+.spec-detail-body::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ─── Markdown dans la spec — espacements et blocs ─── */
+.spec-detail-body .markdown-body {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-base);
+  color: var(--text-primary);
+}
+
+.spec-detail-body .markdown-body h3,
+.spec-detail-body .markdown-body h4 {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin: var(--space-md) 0 var(--space-xs);
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+}
+
+.spec-detail-body .markdown-body h3:first-child,
+.spec-detail-body .markdown-body h4:first-child { margin-top: 0; }
+
+.spec-detail-body .markdown-body p {
+  margin: 0 0 var(--space-sm);
+  color: var(--text-secondary);
+}
+
+.spec-detail-body .markdown-body ul,
+.spec-detail-body .markdown-body ol {
+  padding-left: var(--space-md);
+  margin: 0 0 var(--space-sm);
+  color: var(--text-secondary);
+}
+.spec-detail-body .markdown-body li { margin-bottom: 2px; }
+
+/* ─── Code blocks Python dans la modal ─── */
+.spec-detail-body .code-block {
+  margin: var(--space-sm) 0 var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Header : fond plus distinct, label python en amber */
+.spec-detail-body .code-block-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 5px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+[data-theme="dark"] .spec-detail-body .code-block-header {
+  background: #04040b;
+}
+[data-theme="light"] .spec-detail-body .code-block-header {
+  background: #ddd9ce;
+}
+
+.spec-detail-body .code-block-lang {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-left: var(--space-sm);
+  flex: 1;
+}
+
+/* Pre + code — scroll horizontal propre, fond profond */
+.spec-detail-body .code-block-pre {
+  margin: 0;
+  padding: 14px 16px;
+  overflow-x: auto;
+  line-height: var(--line-height-code);
+  font-family: var(--font-mono);
+  font-size: 12px;
+
+  /* Scrollbar horizontale fine */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+[data-theme="dark"] .spec-detail-body .code-block-pre {
+  background: var(--code-bg);
+}
+[data-theme="light"] .spec-detail-body .code-block-pre {
+  background: var(--code-bg);
+}
+
+.spec-detail-body .code-block-pre::-webkit-scrollbar {
+  display: block;
+  height: 4px;
+}
+.spec-detail-body .code-block-pre::-webkit-scrollbar-track {
+  background: transparent;
+}
+.spec-detail-body .code-block-pre::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 2px;
+}
+
+/* Numéros de ligne optionnels — via ::before sur chaque ligne */
+.spec-detail-body .code-block-pre code {
+  display: block;
+  counter-reset: line;
+}
+
+/* Séparateur visuel entre sections du body */
+.spec-detail-body .markdown-body hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: var(--space-md) 0;
+}
+
+/* Table dans la spec — alignement propre */
+.spec-detail-body .table-wrapper {
+  overflow-x: auto;
+  margin: var(--space-sm) 0 var(--space-md);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+.spec-detail-body .table-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-xs);
+  font-family: var(--font-mono);
+}
+.spec-detail-body .table-wrapper th {
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-align: left;
+  padding: 5px 10px;
+  border-bottom: 1px solid var(--border-strong);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.spec-detail-body .table-wrapper td {
+  padding: 5px 10px;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+}
+.spec-detail-body .table-wrapper tr:last-child td { border-bottom: none; }
+.spec-detail-body .table-wrapper tr:hover td {
+  background: var(--bg-hover);
+}
+
+.spec-detail-violations {
+  padding: var(--space-sm) var(--space-md);
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.spec-detail-violations h3 {
+  font-size: var(--font-size-sm);
+  color: var(--warning);
+  margin: 0 0 var(--space-xs);
+}
+.violation {
+  font-size: var(--font-size-xs);
+  padding: 3px 0;
+  border-bottom: 1px solid var(--border);
+}
+.violation:last-child { border-bottom: none; }
+.violation-rule { font-family: var(--font-mono); color: var(--text-secondary); }
+.violation-fix  { color: var(--text-muted); }
+.violation-blocking .violation-rule { color: var(--error); }
+.violation-warning  .violation-rule { color: var(--warning); }
+
+/* ─── FileViewModal ───────────────────────────────────────────────────────────── */
+.file-view-modal { width: min(800px, 95vw); }
+.file-view-body  { padding: 0; }
+.file-view-body .code-block { border-radius: 0; border: none; margin: 0; }
+
+/* ─── Boutons primaire / secondaire ──────────────────────────────────────────── */
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: var(--space-xs) var(--space-md);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+.btn-primary:hover { opacity: 0.88; }
+
+.btn-secondary {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-xs) var(--space-md);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+}
+.btn-secondary:hover { background: var(--bg-input); }

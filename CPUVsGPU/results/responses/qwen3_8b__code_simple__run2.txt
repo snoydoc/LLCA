@@ -1,0 +1,48 @@
+﻿================================================================================
+MODEL: qwen3:8b | PROMPT: code_simple | RUN: 2 | 2026-04-27 21:56:30
+================================================================================
+
+```python
+from datetime import datetime
+
+def days_between(date1, date2):
+    """
+    Calculate the number of days between two dates given as strings in YYYY-MM-DD format.
+
+    Parameters:
+    date1 (str): The first date string.
+    date2 (str): The second date string.
+
+    Returns:
+    int: The absolute number of days between the two dates.
+
+    Example:
+    >>> days_between('2023-10-01', '2023-10-05')
+    4
+    """
+    d1 = datetime.strptime(date1, "%Y-%m-%d")
+    d2 = datetime.strptime(date2, "%Y-%m-%d")
+    delta = d2 - d1
+    return abs(delta.days)
+```
+
+---
+
+### Explanation
+
+- **Import Statement**: The `datetime` module is imported at the top of the script to enable date parsing and manipulation.
+- **Function Definition**: The `days_between` function accepts two date strings in the `YYYY-MM-DD` format.
+- **Date Parsing**: Each date string is converted into a `datetime` object using `strptime` with the format string `"%Y-%m-%d"`.
+- **Time Delta Calculation**: The difference between the two `datetime` objects is computed as a `timedelta` object.
+- **Absolute Days**: The `days` attribute of the `timedelta` object gives the number of days between the two dates, and `abs()` ensures the result is always positive, regardless of the order of the input dates.
+
+---
+
+### Example Usage
+
+```python
+print(days_between('2023-10-01', '2023-10-05'))  # Output: 4
+print(days_between('2023-02-28', '2023-03-01'))  # Output: 2
+print(days_between('2020-02-28', '2020-03-01'))  # Output: 2 (leap year)
+print(days_between('2024-01-01', '2024-01-01'))  # Output: 0
+```

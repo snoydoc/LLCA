@@ -1,0 +1,42 @@
+﻿================================================================================
+MODEL: qwen3:8b | PROMPT: coding_lcca | RUN: 3 | 2026-04-28 00:07:10
+================================================================================
+
+```python
+import pathlib
+
+class FileManager:
+    def __init__(self, base):
+        """Initialize the FileManager with a base directory."""
+        self.base = pathlib.Path(base)
+    
+    def read_file(self, name):
+        """Read the contents of a file.
+
+        Args:
+            name: The name of the file to read.
+
+        Returns:
+            str: The contents of the file.
+        """
+        path = self.base / name
+        return path.open().read()
+    
+    def write_file(self, name, data):
+        """Write data to a file.
+
+        Args:
+            name: The name of the file to write.
+            data: The data to write to the file.
+        """
+        path = self.base / name
+        path.write_text(data)
+    
+    def list_files(self):
+        """List all files in the base directory.
+
+        Returns:
+            list: A list of filenames in the base directory.
+        """
+        return [f.name for f in self.base.iterdir()]
+```

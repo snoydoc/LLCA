@@ -1,0 +1,75 @@
+﻿================================================================================
+MODEL: qwen3:14b | PROMPT: coding_lcca | RUN: 3 | 2026-04-28 04:24:51
+================================================================================
+
+```python
+import pathlib
+
+class FileManager:
+    """Manages file operations within a specified directory using pathlib.Path."""
+
+    def __init__(self, base):
+        """
+        Initialize the FileManager with a base directory.
+
+        Args:
+            base (str): The base directory path.
+
+        Raises:
+            NotADirectoryError: If the provided base path is not a directory.
+        """
+        self.base = pathlib.Path(base)
+        if not self.base.is_dir():
+            raise NotADirectoryError(f"The provided path {base} is not a directory.")
+
+    def read_file(self, name):
+        """
+        Read the contents of a file from the base directory.
+
+        Args:
+            name (str): The name of the file to read.
+
+        Returns:
+            str: The contents of the file.
+
+        Raises:
+            FileNotFoundError: If the file does not exist.
+            PermissionError: If there are no permissions to read the file.
+        """
+        path = self.base / name
+        try:
+            return path.read_text()
+        except FileNotFoundError:
+            raise
+        except PermissionError:
+            raise
+
+    def write_file(self, name, data):
+        """
+        Write data to a file in the base directory.
+
+        Args:
+            name (str): The name of the file to write.
+            data (str): The data to write to the file.
+
+        Raises:
+            PermissionError: If there are no permissions to write the file.
+            IOError: If an I/O error occurs.
+        """
+        path = self.base / name
+        try:
+            path.write_text(data)
+        except PermissionError:
+            raise
+        except IOError:
+            raise
+
+    def list_files(self):
+        """
+        List all files and directories in the base directory.
+
+        Returns:
+            list: A list of filenames and directory names in the base directory.
+        """
+        return [file.name for file in self.base.iterdir()]
+```

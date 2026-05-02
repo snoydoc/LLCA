@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "8f8c1620babc",
+  "content": "## POLITIQUE TIMEOUT (INVARIANT)\n- `OLLAMA_TIMEOUT = None` | `SPEC_TIMEOUT = None` → attente infinie\n- `AGENT_PIPELINE_TIMEOUT = 3600` (1h)\n- `is_available()` et `list_models()` : timeout=3 (ping rapide uniquement)\n- **NE JAMAIS** mettre une valeur entière dans OLLAMA_TIMEOUT ou SPEC_TIMEOUT",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "llm",
+  "room": "timeout_policy",
+  "skill_file": "002-context.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

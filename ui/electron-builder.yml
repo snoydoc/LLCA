@@ -1,0 +1,30 @@
+appId: com.adham.desktop
+productName: Adham Desktop
+copyright: Adham
+
+directories:
+  buildResources: assets
+  output: dist
+
+# electron-vite génère dans out/main, out/preload, out/renderer
+# node_modules géré automatiquement par electron-builder (dependencies de package.json)
+files:
+  - out/**/*
+  - package.json
+
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+  icon: assets/AdhamDesktop.ico
+
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  installerIcon: assets/AdhamDesktop.ico
+  uninstallerIcon: assets/AdhamDesktop.ico
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Adham Desktop
+
+publish: null   # distribution manuelle — pas de mise à jour auto

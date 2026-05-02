@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "a385d0ab3ccb",
+  "content": "### Fichiers > 10 KB surveillés (état 2026-04-23 post-session-3)\n| Fichier | Taille | Statut |\n|---|---|---|\n| mcp_tool_handlers.py | 2.36 KB | ✅ REFACTO-10 (façade handlers_core/spec/llm/extras) |\n| llm_generator.py | 9.09 KB | ✅ REFACTO-11 (llm_config + ollama_client + prompt_builder + llm_code_utils) |\n| ollama_client.py | 10.27 KB | ✅ REFACTO-17 (nettoyage interne, 3 helpers module-level extractés) |\n| memory_engine.py | ~7 KB | ✅ REFACTO-15 (store → memory_engine_store.py, search → memory_engine_search.py) |\n| spec_generator.py | ~7 KB | ✅ REFACTO-16 (helpers → spec_generator_helpers.py, context → spec_generator_context.py) |\n| orchestrator.py | 15.6 KB | ⚠️ Surveiller (déjà allégé par REFACTO-01) |\n| cognitive_patterns.py | 7.4 KB | ✅ REFACTO-12 (prompts extraits dans cognitive_prompts.py) |\n| cognitive_prompts.py | 7.2 KB | ✅ REFACTO-12 nouveau module |\n| mempalace_client.py | 6.4 KB | ✅ REFACTO-14 (layers + fs extraits) |\n| error_analyzer.py | 5.8 KB | ✅ REFACTO-13 (classifier + recovery_hints extraits) |\n| spec_validator_rules.py | 13.8 KB | ⚠️ Surveiller |\n| web_search_engines.py | 13.2 KB | ⚠️ Surveiller |\n| mcp_server.py | 13.5 KB | ⚠️ Surveiller |\n| mcp_edit_batch.py | 12.9 KB | OK (1 responsabilité claire) |\n| web_search.py | 12.8 KB | OK (orchestrateur léger) |\n| planner.py | 11.5 KB | ⚠️ Surveiller — test_planner.py couverture ajoutée (audit-B) |",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "002-context",
+  "skill_file": "002-context.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

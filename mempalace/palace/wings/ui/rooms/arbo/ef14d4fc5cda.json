@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "ef14d4fc5cda",
+  "content": "### ui/ — Electron + React (TypeScript)\n```\nelectron/\n  main.ts         IPC handlers + fs:writeWorkspaceFile\n  preload.ts      contextBridge (window.lcca.*)\n  mcp-bridge.ts   IPC→MCP stdio + TOOL_TIMEOUTS\n  mcp-timeouts.ts SOURCE DE VÉRITÉ timeouts MCP\nsrc/\n  components/  TitleBar (TpsIndicator + EducatorBadge), ChatPanel, Sidebar, InputZone,\n               MessageBubble, SpecBadge, TxBadge, StreamingIndicator, ContextPanel,\n               CommandPalette, WelcomeScreen, TelemetryPanel (V9-09)\n  stores/      chatStore, contextStore (polling MCP 3s + tps 10s + educator 30s),\n               settingsStore, telemetryStore (V9-09 — polling history 10s, découplé)\n  styles/      themes.css (SOURCE DE VÉRITÉ vars), globals.css, ui05-enhancements.css\n```\n\n---",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "ui",
+  "room": "arbo",
+  "skill_file": "002-context.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

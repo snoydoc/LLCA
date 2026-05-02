@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "65f4bf415f35",
+  "content": "### Audit coverage Option B (2026-04-22) — résultats\n\n**B1 — mcp_tool_handlers.py / mcp_server.py** ✅ Couverture satisfaisante\n- test_mcp_server.py : 40 tests unitaires (mocks), 13 tools vérifiés\n- test_mcp_integration.py : 38 tests intégration end-to-end (deps réelles)\n- Pipelines complets : create→run→evaluate testés\n- Sécurité : path traversal, absolu, tool inconnu — tous couverts\n- ⚠️ mcp_tool_handlers.py à 28.9 KB : candidat REFACTO-10 (handlers à découper)\n\n**B2 — orchestrator_spec.py / spec_promoter.py** ✅ Couverture satisfaisante\n- test_spec_promoter.py : 6 tests (promotion Layer 2→1→0, idempotence, config)\n- test_spec_complexity.py : 10 tests (score, mots-clés, domain, search normalisé)\n- orchestrator_spec.py : couvert indirectement via test_spec_layer.py + test_orchestrator.py\n- orchestrator_medi.py : RETIRÉ (MIG-02) — archivé dans _archive_medibot/\n- test_medibot_adapter.py : RETIRÉ (MIG-02) — archivé dans _archive_medibot/\n\n**B3 — web_search (5 fichiers WEB-01→03)** ✅ Couverture satisfaisante\n- test_web_search.py : ~35 tests couvrant :\n  - SearchHit/FetchedPage/SearchResult (types + to_dict)\n  - SearchCache : miss/set/get/expired/invalidate/stats/TTL adaptatif\n  - _PageFetcher : troncature phrase, scoring qualité, extraction sémantique/fallback\n  - MultiEngineSearchClient : dédup URL, engines_used, Wikipedia encyclopédique\n  - WebSearchEngine : ranking post-fetch WEB-03, exclusion qualité < 0.3\n  - DDG fallback : filtrage trackers/titres courts\n  - Tool MCP web_cache_stats : stats/clear_expired/invalidate/erreurs",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "002-context",
+  "skill_file": "002-context.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

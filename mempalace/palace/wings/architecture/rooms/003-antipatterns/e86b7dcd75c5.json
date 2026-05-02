@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "e86b7dcd75c5",
+  "content": "### ❌ T-05 — Dict de retour avec clés pinnées (search, tools)\n**Symptôme** : `Left contains 1 more item: {'skills': []}`\n**Cause** : sprint a ajouté une clé à `search()` mais le test compare l'égalité stricte.\n**Correction** : ajouter toutes les clés présentes, ou tester par sous-ensemble.\n**Détection** : `grep -rn \"== {.solutions\" tests/`",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "003-antipatterns",
+  "skill_file": "003-antipatterns.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

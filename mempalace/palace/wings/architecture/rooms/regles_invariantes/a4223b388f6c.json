@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "a4223b388f6c",
+  "content": "## RÈGLES INVARIANTES — MCP / McpServer\n- JSON-RPC 2.0 stdio : champs `jsonrpc`, `id`, `method`, `params`\n- Notifications (sans `id`) → retourner None, jamais écrire de réponse\n- Logs sur `sys.stderr`, JSON-RPC sur `sys.stdout`\n- Quand on ajoute des tools MCP → mettre à jour IMMÉDIATEMENT les tests `test_tools_list_*`\n- 13 tools actuels (inclut `educator_status` ajouté ED-03)",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "regles_invariantes",
+  "skill_file": "001-master.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "45935fa0208a",
+  "content": "### ❌ T-02 — Mock HTTP non adapté au mode streaming\n**Symptôme** : `AssertionError: assert 'def foo' in ''`\n**Cause** : `OllamaClient` itère ligne par ligne. `mock_resp.read.return_value` = FAUX.\n**Format correct** :\n```python\nlines = [\n    json.dumps({\"response\": \"def foo():\\n    pass\\n\", \"done\": False}).encode(),\n    json.dumps({\"response\": \"\", \"done\": True}).encode(),\n]\nmock_resp.__iter__ = lambda s: iter(lines)\n```\n**Piège** : `iter(lines)` s'épuise après le premier appel. Utiliser `side_effect` qui\nreconstruit le mock à chaque appel `urlopen`.",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "003-antipatterns",
+  "skill_file": "003-antipatterns.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

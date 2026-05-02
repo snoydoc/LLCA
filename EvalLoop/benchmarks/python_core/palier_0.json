@@ -1,0 +1,102 @@
+[
+  {
+    "id": "python_core/p0/gil_001",
+    "domain": "python_core",
+    "palier": 0,
+    "question": "Qu'est-ce que le GIL en Python et pourquoi existe-t-il ?",
+    "expected_concepts": ["GIL", "Global Interpreter Lock", "thread", "memoire", "CPython"],
+    "rubric": "Expliquer le role du GIL dans CPython et son impact sur le multi-threading.",
+    "status": "active",
+    "tags": ["concurrence", "cpython"]
+  },
+  {
+    "id": "python_core/p0/list_tuple_001",
+    "domain": "python_core",
+    "palier": 0,
+    "question": "Quelle est la difference entre une liste et un tuple en Python ?",
+    "expected_concepts": ["liste", "tuple", "mutable", "immutable", "hashable"],
+    "rubric": "Distinguer mutabilite, usage comme cle de dict, performance.",
+    "status": "active",
+    "tags": ["types", "structures"]
+  },
+  {
+    "id": "python_core/p0/str_repr_001",
+    "domain": "python_core",
+    "palier": 0,
+    "question": "Quelle est la difference entre __str__ et __repr__ en Python ?",
+    "expected_concepts": ["__str__", "__repr__", "lisible", "debogage", "repr"],
+    "rubric": "Distinguer usage utilisateur (__str__) et debogage (__repr__). Mentionner str() vs repr().",
+    "status": "active",
+    "tags": ["dunder", "classes"]
+  },
+  {
+    "id": "python_core/p0/property_001",
+    "domain": "python_core",
+    "palier": 0,
+    "question": "A quoi sert le decorateur @property en Python ?",
+    "expected_concepts": ["property", "getter", "setter", "encapsulation", "attribut"],
+    "rubric": "Expliquer l'acces controle aux attributs sans changer l'API publique.",
+    "status": "active",
+    "tags": ["classes", "decorateurs"]
+  },
+  {
+    "id": "python_core/p0/args_kwargs_001",
+    "domain": "python_core",
+    "palier": 0,
+    "question": "Expliquez *args et **kwargs en Python.",
+    "expected_concepts": ["args", "kwargs", "positional", "keyword", "deballage"],
+    "rubric": "Expliquer arguments positionnels variadic et keyword variadic, avec exemples.",
+    "status": "active",
+    "tags": ["fonctions", "arguments"]
+  },
+  {
+    "id": "python_core/p0/comprehension_001",
+    "domain": "python_core",
+    "palier": 0,
+    "question": "Quelle est la difference entre une comprehension de liste et map() ?",
+    "expected_concepts": ["comprehension", "map", "lisibilite", "lazy", "liste"],
+    "rubric": "Comparer lisibilite, evaluation (eager vs lazy), et cas d'usage appropries.",
+    "status": "active",
+    "tags": ["fonctionnel", "performance"]
+  },
+  {
+    "id": "python_core/p0/context_manager_001",
+    "domain": "python_core",
+    "palier": 0,
+    "question": "Comment fonctionne le protocole de gestionnaire de contexte (with statement) ?",
+    "expected_concepts": ["with", "__enter__", "__exit__", "contexte", "ressource"],
+    "rubric": "Expliquer __enter__ et __exit__, exemples avec fichiers et locks.",
+    "status": "active",
+    "tags": ["protocoles", "ressources"]
+  },
+  {
+    "id": "python_core/p0/eq_is_001",
+    "domain": "python_core",
+    "palier": 0,
+    "question": "Quelle est la difference entre == et is en Python ?",
+    "expected_concepts": ["==", "is", "identite", "egalite", "None"],
+    "rubric": "Distinguer egalite de valeur et identite d'objet. Mentionner le cas de None.",
+    "status": "active",
+    "tags": ["operateurs", "objets"]
+  },
+  {
+    "id": "python_core/p0/none_false_001",
+    "domain": "python_core",
+    "palier": 0,
+    "question": "Expliquez la difference entre None, False et 0 en Python.",
+    "expected_concepts": ["None", "False", "falsy", "bool", "type"],
+    "rubric": "Distinguer les trois valeurs falsy, leurs types, et les pieges de comparaison.",
+    "status": "active",
+    "tags": ["types", "comparaisons"]
+  },
+  {
+    "id": "python_core/p0/isinstance_001",
+    "domain": "python_core",
+    "palier": 0,
+    "question": "Quelle est la difference entre isinstance() et type() ?",
+    "expected_concepts": ["isinstance", "type", "heritage", "sous-classe", "ABCMeta"],
+    "rubric": "Expliquer pourquoi isinstance() est prefere (heritage). Cas d'usage de type() exact.",
+    "status": "active",
+    "tags": ["types", "heritage"]
+  }
+]

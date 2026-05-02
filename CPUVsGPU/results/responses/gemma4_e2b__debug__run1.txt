@@ -1,0 +1,25 @@
+﻿================================================================================
+MODEL: gemma4:e2b | PROMPT: debug | RUN: 1 | 2026-04-27 18:04:33
+================================================================================
+
+The bug is that the function attempts to divide by `len(lst)` without checking if the list is empty. If the list is empty, `len(lst)` is 0, which causes a `ZeroDivisionError`.
+
+## Fixed Version
+
+The fix involves adding a conditional check to ensure the list is not empty before attempting the division.
+
+```python
+def average(lst):
+    """
+    Calculates the average of a list of numbers.
+    Returns 0 if the list is empty to prevent ZeroDivisionError.
+    """
+    if not lst:
+        return 0  # Handle the empty list case
+    else:
+        return sum(lst) / len(lst)
+
+# Example Usage:
+print(average([1, 2, 3, 4]))  # Output: 2.5
+print(average([]))            # Output: 0
+```

@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "d7425219ef54",
+  "content": "### Lacunes identifiées (mineures)\n- orchestrator_spec.py : `_run_spec_layer()` testé via orchestrateur principal, pas de test isolé\n- llm_generator.py : 9.09 KB (post-REFACTO-11) — coverage via test_llm_generator.py (non audité en détail)",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "002-context",
+  "skill_file": "002-context.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

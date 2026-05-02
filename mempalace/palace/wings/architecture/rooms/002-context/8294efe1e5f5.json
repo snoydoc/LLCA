@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "8294efe1e5f5",
+  "content": "### Run Educator 2026-04-23_00-13 — résultats\n- 9 repos traités / 24 | 240 fichiers | 118 skills | 80 hashes persistés | 0 erreur | ~2min22\n- `PyCQA/flake8` rejeté (licence non conforme) → FIX : skip_license_check=true ajouté au JSON\n- 15 repos restants à traiter (dont typeshed + ruff) — rate limit GitHub 60 req/h anonyme\n- `python/typeshed` et `astral-sh/ruff` pas encore exercés (prochain run)",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "002-context",
+  "skill_file": "002-context.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

@@ -1,0 +1,43 @@
+# LCCA SelfImprove — Configuration V10.5
+# Modifiable sans restart (rechargé à chaque run observer/orchestrator)
+
+[general]
+# Mode de couplage : 1 = lecture seule | 2 = semi-couplé (défaut) | 3 = couplé pipeline
+coupling_mode = 2
+
+[observer]
+# Intervalle du daemon en secondes
+interval_sec = 60
+# Chemin des WAL transactions
+wal_dir = "D:\\LLMCodeAgent\\transactions"
+# Chemin du log principal LCCA
+log_file = "D:\\LLMCodeAgent\\logs\\lcca.log"
+# Résultats pytest
+test_results_file = "D:\\LLMCodeAgent\\tests\\last_results.json"
+# Patterns actifs (référence observer_patterns.json)
+patterns_file = "D:\\LLMCodeAgent\\SelfImprove\\observer_patterns.json"
+
+[orchestrator]
+# Nombre de fichiers d'observation à lire (les N plus récents)
+observation_window = 3
+# Ignorer les observations plus vieilles que N secondes
+observation_max_age_sec = 600
+# Fichier de règles
+rules_file = "D:\\LLMCodeAgent\\SelfImprove\\orchestrator_rules.json"
+
+[auto_fix]
+# Couverture minimale requise avant auto-fix (0.0 - 1.0)
+min_coverage = 0.60
+# Désactivation temporaire après échec (secondes)
+failure_cooldown_sec = 3600
+# Push git automatique — NE PAS ACTIVER en production
+auto_push = false
+
+[paths]
+self_improve_dir  = "D:\\LLMCodeAgent\\SelfImprove"
+observations_dir  = "D:\\LLMCodeAgent\\SelfImprove\\observations"
+auto_fixes_dir    = "D:\\LLMCodeAgent\\SelfImprove\\auto_fixes"
+patterns_dir      = "D:\\LLMCodeAgent\\SelfImprove\\patterns"
+actions_log       = "D:\\LLMCodeAgent\\SelfImprove\\actions.log"
+pending_actions   = "D:\\LLMCodeAgent\\SelfImprove\\pending_actions.json"
+borgnes_map       = "D:\\LLMCodeAgent\\SelfImprove\\borgnes_map.json"

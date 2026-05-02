@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "80d70ddbe762",
+  "content": "## EDUCATOR RUNNER (2026-04-22)\nLanceur autonome créé dans D:\\LLMCodeAgent\\Educator\\ :\n- educator_runner.py  (10 KB) — script Python, args --mode all|update|dry\n- lcca_educator.bat   (6.4 KB) — menu interactif Windows (Continuer / MAJ / Nouvelle source / Voir sources)\n- sources.json        — sources custom (initialement vide [])\n- logs/               — rapports de session YYYY-MM-DD_HH-MM.log\n\nRègles :\n- sources.json contient UNIQUEMENT les repos ajoutés par l'utilisateur (format [{owner, repo, description}])\n- La whitelist interne (24 repos) est dans educator_whitelist.json — PAS dans educator_agent.py\n- Le runner injecte les sources custom dans curator._whitelist au runtime\n- dry_run=False sur [1] Continuer | dry_run=True sur [2] MAJ\n- Pas de token GitHub (repos publics, 60 req/h anonyme suffisent)\n- Rapport de fin affiché console ET écrit dans logs/",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "educator",
+  "room": "runner",
+  "skill_file": "002-context.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

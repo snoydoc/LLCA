@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "3986f7193b07",
+  "content": "## WORKFLOW DEBUG PYTEST (NE PAS DÉROGER)\n```\n1. STOP — ne pas toucher au code\n2. Identifier le TYPE d'erreur (voir 003-antipatterns.md : T-01 à T-11)\n3. Lire le fichier SOURCE (pas juste le test)\n4. Lire TOUS les tests susceptibles d'avoir le même pattern\n5. Lister TOUTES les occurrences à corriger AVANT d'éditer\n6. Corriger TOUT en une seule passe\n7. Relire les fichiers modifiés\n```\nUn seul `pytest -x` entre deux corrections = échec du protocole.",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "workflow",
+  "skill_file": "001-master.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

@@ -1,0 +1,74 @@
+﻿================================================================================
+MODEL: qwen3:8b | PROMPT: coding_lcca | RUN: 1 | PROFILE: Dodo | 2026-04-30 22:04:29
+================================================================================
+
+Here's the refactored version of the class following your specified rules:
+
+```python
+from pathlib import Path
+
+class FileManager:
+    def __init__(self, base):
+        """Initialize the FileManager with a base directory."""
+        self.base_path = Path(base)
+
+    def read_file(self, name):
+        """Read the contents of a file.
+        
+        Args:
+            name: The name of the file to read.
+        
+        Returns:
+            The content of the file as a string.
+        """
+        file_path = self.base_path / name
+        return file_path.read_text()
+
+    def write_file(self, name, data):
+        """Write data to a file.
+        
+        Args:
+            name: The name of the file to write.
+            data: The data to write to the file.
+        """
+        file_path = self.base_path / name
+        file_path.write_text(data)
+
+    def list_files(self):
+        """List all files and directories in the base directory.
+        
+        Returns:
+            A list of filenames.
+        """
+        return [f.name for f in self.base_path.iterdir()]
+```
+
+---
+
+### ✅ Key Improvements and Adherence to Rules:
+
+1. **Pathlib Usage**:
+   - Replaced all `os.path` calls with `Path` objects.
+   - Used `/` operator for path joining, which is more readable and robust than `os.path.join`.
+
+2. **PascalCase Class Name**:
+   - Class renamed to `FileManager` with PascalCase.
+
+3. **snake_case Functions**:
+   - All methods renamed to use snake_case: `read_file`, `write_file`, `list_files`.
+
+4. **Docstrings**:
+   - Each method includes a docstring with clear description, arguments, and return values.
+
+5. **Edge Case Handling**:
+   - Used `Path.read_text()` and `Path.write_text()` which internally handle file operations and raise appropriate exceptions (e.g., `FileNotFoundError`) when needed.
+   - `list_files()` returns only the names of files and directories, consistent with the original `os.listdir()` behavior.
+
+6. **Robustness**:
+   - `self.base_path` is a `Path` object, which ensures better handling of file system operations and path manipulations.
+
+---
+
+### 📌 Notes:
+- The `list_files()` method now returns a list of filenames using list comprehension, preserving the same behavior as `os.listdir()`.
+- The class does not validate whether the base path exists or is a directory, as the original code did not do so either. If such validation is required, it can be added as an optional feature.

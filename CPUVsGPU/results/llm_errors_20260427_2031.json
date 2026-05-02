@@ -1,0 +1,91 @@
+﻿[
+    {
+        "timestamp":  "2026-04-27 21:46:42",
+        "model":  "qwen3:8b",
+        "prompt":  "code_simple",
+        "run":  1,
+        "category":  "truncated_response",
+        "error_msg":  "Truncated (done_reason=length)",
+        "done_reason":  "length",
+        "response_len":  886,
+        "tokens_out":  3072,
+        "options_used":  {
+                             "num_predict":  3072,
+                             "num_gpu":  0,
+                             "seed":  42,
+                             "temperature":  0.6
+                         },
+        "suggestion":  "Increase num_predict. Response cut short by token budget.",
+        "timeout_sec":  1200
+    },
+    {
+        "timestamp":  "2026-04-27 23:07:37",
+        "model":  "qwen3:8b",
+        "prompt":  "debug",
+        "run":  3,
+        "category":  "truncated_response",
+        "error_msg":  "Truncated (done_reason=length)",
+        "done_reason":  "length",
+        "response_len":  2075,
+        "tokens_out":  3072,
+        "options_used":  {
+                             "num_predict":  3072,
+                             "num_gpu":  0,
+                             "seed":  42,
+                             "temperature":  0.6
+                         },
+        "suggestion":  "Increase num_predict. Response cut short by token budget.",
+        "timeout_sec":  1800
+    },
+    {
+        "timestamp":  "2026-04-28 05:04:42",
+        "model":  "deepseek-r1:14b",
+        "prompt":  "debug",
+        "run":  1,
+        "category":  "truncated_response",
+        "error_msg":  "Truncated (done_reason=length)",
+        "done_reason":  "length",
+        "response_len":  315,
+        "tokens_out":  1024,
+        "options_used":  {
+                             "num_predict":  1024,
+                             "num_gpu":  0,
+                             "seed":  42,
+                             "temperature":  0.6
+                         },
+        "suggestion":  "Increase num_predict. Response cut short by token budget.",
+        "timeout_sec":  2400
+    },
+    {
+        "timestamp":  "2026-04-28 05:44:18",
+        "model":  "qwen3-coder:30b-a3b-q4_K_M",
+        "prompt":  "N/A",
+        "run":  0,
+        "category":  "oom_or_crash",
+        "error_msg":  "Ollama RAM 20691 MB apres warmup \u003e seuil",
+        "done_reason":  "",
+        "response_len":  0,
+        "tokens_out":  0,
+        "options_used":  {
+
+                         },
+        "suggestion":  "RAM threshold hit. Reduce model tier or add RAM.",
+        "timeout_sec":  0
+    },
+    {
+        "timestamp":  "2026-04-28 05:45:05",
+        "model":  "qwen3:30b-a3b",
+        "prompt":  "N/A",
+        "run":  0,
+        "category":  "oom_or_crash",
+        "error_msg":  "Ollama RAM 20692 MB apres warmup \u003e seuil",
+        "done_reason":  "",
+        "response_len":  0,
+        "tokens_out":  0,
+        "options_used":  {
+
+                         },
+        "suggestion":  "RAM threshold hit. Reduce model tier or add RAM.",
+        "timeout_sec":  0
+    }
+]

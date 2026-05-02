@@ -1,0 +1,13 @@
+{
+  "date_export": "2026-04-23",
+  "date_session": "2026-04-18",
+  "source_wing": "wing_claude",
+  "source_room": "diary",
+  "mcp_palace": "C:\\Users\\snoy\\.mempalace\\palace",
+  "original_content": "SESSION:2026-04-18|LCCA.V7.env.validation|\nACHIEVED:60/60.check_env.pass→OPERATIONNEL\nFIXED:3.bugs.in.check_env.py(not.in.core)\nBUG1:§6.log_operation.API.mismatch→old.sig(tx,OpType,str,rollback_data=bytes).new.sig(target_path,op_type,execute_func:callable)\nBUG2:§6.commit(tx)→commit()→no.args\nBUG3:§6.wal.read_text(utf-8)→utf-8-sig.BOM.fix\nBUG4:§7.apply_patch(source=code)→file_path+tempdir.workspace\nROOT.CAUSE:check_env.written.against.old.V5.API→modules.were.correct.check.was.wrong\nMETHOD:filesystem.MCP.write.direct→no.PowerShell.encoding.issues\nSTACK.STATUS:TransactionManager✓|SmartPatcher✓|ASTIndexer✓|SandboxEngine✓|McpServer✓|MemoryEngine✓|SafePath✓|Ollama.qwen2.5-coder:14b✓|Docker.29.2.1✓\nNEXT:tests.humains→main_nl.py.validation→FileMerge.CodingTest\n☆☆☆",
+  "classification": "lcca_history",
+  "wing_local": "architecture",
+  "room_local": "sprint_history",
+  "imported": false,
+  "note": "Drawer LCCA manquant lors de l'audit MIG-05. Session validation env V7 (2026-04-18) : 60/60 checks passes, 4 bugs corriges dans check_env.py, stack complete operationnelle. Decouvert lors de FIX-MCP-CRASH-01 (2026-04-23)."
+}

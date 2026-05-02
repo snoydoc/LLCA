@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "622d8abd8455",
+  "content": "### ❌ O-05 — Fichiers .bat : accents, encodage, et blocs imbriques\n**Symptome 1** : `'cho' is not recognized`, `'f' is not recognized`\n**Cause** : accents ou UTF-8 dans le .bat -- cmd.exe corrompt les caracteres non-ASCII.\n**Regle** : ASCII pur dans tous les .bat, zero accent. `Creer` pas `Créer`. `chcp 65001` ne suffit pas.\n\n**Symptome 2** : `': was unexpected at this time`\n**Cause** : `if /i \"!VAR!\"==\"val\"` imbrique dans un bloc `if errorlevel 1 ( )` avec `enabledelayedexpansion`.\nLe parser cmd ne gere pas les blocs parentheses imbriques avec expansion differee.\n**Regle** : Dans un .bat avec `enabledelayedexpansion`, ne jamais imbriquer `if \"!var!\"` dans `if ... ( )` multi-lignes.\nRefactorer avec des `goto` plats -- un label par branche, zero imbrication.",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "003-antipatterns",
+  "skill_file": "003-antipatterns.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

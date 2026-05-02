@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "5d06b55dcb5f",
+  "content": "## WHITELIST EDUCATOR (état 2026-04-23) — 22 repos\nSource de vérité : `core/agents/educator_whitelist.json` (JSON direct, pas educator_agent.py)\nLoader : `educator_whitelist.py` — expose WHITELIST, load_whitelist(), save_whitelist(), load_skip_set()\nPatch `educator_github.py` : list_py_files() lit `.endswith((\".py\", \".pyi\"))` — typeshed débloqué\n\nAjouts 2026-04-23 (+6 repos) :\n- `PyCQA/flake8`           P0 — pattern RuleChecker + plugin registry (spec_validator_rules.py) | skip_license_check\n- `lidatong/dataclasses-json` P0 — to_dict/from_dict SpecEntry, sérialisation dataclass JSON\n- `python-attrs/cattrs`    P1 — conversion dataclass ↔ dict typée stricte\n- `sqlalchemy/sqlalchemy`  P1 — vocabulaire ACID/WAL/rollback/session (domaine transaction)\n- `python/typeshed`        P0 — stubs PEP 484 stdlib, skip_license_check=true\n- `astral-sh/ruff`         P1 — 500+ règles nommées avec codes/sévérités\n\nRetirés 2026-04-23 (licences non conformes) :\n- `PyCQA/astroid`          LGPL-2.1 — copyleft, skip interdit\n- `HypothesisWorks/hypothesis` MPL-2.0 — hors ACCEPTED_SPDX\n\nFix skip_license_check 2026-04-23 :\n- `numpy/numpy`            BSD-3 confirmé mais API GitHub retourne spdx_id=null (faux positif)\n\nP2 différés (non urgents) : `microsoft/promptflow`, `sphinx-doc/sphinx`\nTests : 0 mise à jour requise — aucun test ne pinne count whitelist ni extension list_py_files",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "educator",
+  "room": "whitelist",
+  "skill_file": "002-context.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

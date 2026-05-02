@@ -1,0 +1,239 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   ui04.css — Sprint UI-04 : CommandPalette + Bouton Annuler
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* ── Overlay (fond semi-transparent) ─────────────────────────────────────── */
+.command-palette-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 12vh;
+  animation: cp-overlay-in 120ms ease;
+}
+
+@keyframes cp-overlay-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Palette (boîte de dialogue) ──────────────────────────────────────────── */
+.command-palette {
+  width: min(640px, 92vw);
+  background: var(--color-surface, #1e1e2e);
+  border: 1px solid var(--color-border, #313244);
+  border-radius: 12px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.48),
+    0 2px 8px rgba(0, 0, 0, 0.32);
+  overflow: hidden;
+  animation: cp-in 160ms cubic-bezier(0.2, 0, 0, 1.2);
+}
+
+@keyframes cp-in {
+  from { opacity: 0; transform: translateY(-12px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)     scale(1);    }
+}
+
+/* ── Input de recherche ───────────────────────────────────────────────────── */
+.command-palette-input {
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 15px;
+  font-family: inherit;
+  background: transparent;
+  color: var(--color-text, #cdd6f4);
+  border: none;
+  border-bottom: 1px solid var(--color-border, #313244);
+  outline: none;
+  caret-color: var(--color-accent, #cba6f7);
+  box-sizing: border-box;
+}
+
+.command-palette-input::placeholder {
+  color: var(--color-text-muted, #6c7086);
+}
+
+/* ── Liste des actions ────────────────────────────────────────────────────── */
+.command-palette-list {
+  list-style: none;
+  margin: 0;
+  padding: 6px 0;
+  max-height: 340px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border, #313244) transparent;
+}
+
+.command-palette-list::-webkit-scrollbar {
+  width: 5px;
+}
+.command-palette-list::-webkit-scrollbar-thumb {
+  background: var(--color-border, #313244);
+  border-radius: 3px;
+}
+
+/* ── Item normal ──────────────────────────────────────────────────────────── */
+.command-palette-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  margin: 0 6px;
+  color: var(--color-text, #cdd6f4);
+  transition: background 80ms ease;
+  user-select: none;
+}
+
+.command-palette-item:hover,
+.command-palette-item.selected {
+  background: var(--color-hover, rgba(203, 166, 247, 0.12));
+}
+
+.command-palette-item.selected {
+  outline: 1px solid var(--color-accent, #cba6f7);
+  outline-offset: -1px;
+}
+
+/* ── Icône ────────────────────────────────────────────────────────────────── */
+.cp-icon {
+  font-size: 16px;
+  width: 22px;
+  text-align: center;
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+/* ── Label ────────────────────────────────────────────────────────────────── */
+.cp-label {
+  flex: 1;
+  font-size: 13.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Raccourci clavier ────────────────────────────────────────────────────── */
+.cp-shortcut {
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--color-surface-alt, #181825);
+  color: var(--color-text-muted, #6c7086);
+  border: 1px solid var(--color-border, #313244);
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+}
+
+/* ── Message "aucun résultat" ─────────────────────────────────────────────── */
+.command-palette-empty {
+  padding: 14px 18px;
+  color: var(--color-text-muted, #6c7086);
+  font-size: 13px;
+  font-style: italic;
+  text-align: center;
+}
+
+/* ── Bouton Annuler (InputZone) ───────────────────────────────────────────── */
+.input-cancel-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--color-error, #f38ba8);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-error, #f38ba8);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 120ms ease, color 120ms ease;
+}
+
+.input-cancel-btn:hover {
+  background: var(--color-error, #f38ba8);
+  color: var(--color-surface, #1e1e2e);
+}
+
+.input-cancel-btn:active {
+  transform: scale(0.94);
+}
+
+/* ── ErrorBanner (standalone component) ──────────────────────────────────── */
+.error-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: color-mix(in srgb, var(--color-error, #f38ba8) 12%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-error, #f38ba8) 40%, transparent);
+  color: var(--color-error, #f38ba8);
+  font-size: 13px;
+}
+
+.error-banner-btn {
+  padding: 4px 10px;
+  border-radius: 5px;
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 100ms ease;
+}
+
+.error-banner-btn:hover {
+  background: color-mix(in srgb, var(--color-error, #f38ba8) 20%, transparent);
+}
+
+/* ── CommandPalette UI-DS-07 : ligne recherche + groupes + pill ESC ────────── */
+
+/* Ligne de recherche avec icône ⌕ et pill ESC — remplace input nu */
+.cpal-search-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.cpal-search-icon {
+  font-size: 15px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 1px;
+}
+.cpal-esc-pill {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  padding: 2px 6px;
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  flex-shrink: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Labels de groupe — séparateurs visuels entre catégories */
+.cpal-grp {
+  padding: 8px 14px 3px;
+  font-size: 9.5px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  list-style: none;
+  user-select: none;
+  cursor: default;
+}

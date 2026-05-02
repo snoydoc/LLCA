@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "67acdbf740e0",
+  "content": "### ❌ O-06 — Déclarer un sprint TERMINÉ sans vérifier le résultat\n**Règle** : Ordre obligatoire : (1) écrire le code, (2) relire les fichiers modifiés,\n(3) SEULEMENT ALORS mettre à jour les skills.",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "003-antipatterns",
+  "skill_file": "003-antipatterns.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

@@ -1,0 +1,61 @@
+{
+  "version": "1.0",
+  "patterns": [
+    {
+      "id": "coroutine_never_awaited",
+      "source": "log",
+      "enabled": true,
+      "regex": "coroutine '(.+)' was never awaited",
+      "severity": "high",
+      "description": "Coroutine appelée sans await"
+    },
+    {
+      "id": "missing_import",
+      "source": "log",
+      "enabled": true,
+      "regex": "ImportError: No module named '(.+)'",
+      "severity": "medium",
+      "description": "Import manquant"
+    },
+    {
+      "id": "timeout_error",
+      "source": "log",
+      "enabled": true,
+      "regex": "(TimeoutError|pytest\\.TimeoutExpired)",
+      "severity": "high",
+      "description": "Timeout détecté"
+    },
+    {
+      "id": "repeated_test_failure",
+      "source": "test",
+      "enabled": true,
+      "condition": "same_test_fails_gte_2_in_24h",
+      "severity": "medium",
+      "description": "Même test échoue 2+ fois en 24h"
+    },
+    {
+      "id": "slow_intent",
+      "source": "telemetry",
+      "enabled": true,
+      "condition": "tok_s_lt_50pct_baseline",
+      "severity": "medium",
+      "description": "Intent lent (tok/s < 50% baseline)"
+    },
+    {
+      "id": "rollback_cluster",
+      "source": "wal",
+      "enabled": true,
+      "condition": "same_error_type_in_rollback_gte_3",
+      "severity": "high",
+      "description": "Cluster de rollbacks similaires (archéologie V10)"
+    },
+    {
+      "id": "stagnation_loop",
+      "source": "wal",
+      "enabled": true,
+      "condition": "same_file_rollback_and_retry_gte_2_in_session",
+      "severity": "high",
+      "description": "Boucle de stagnation détectée sur un fichier"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+﻿================================================================================
+MODEL: qwen2.5-coder:3b | PROMPT: coding_lcca | RUN: 2 | 2026-04-27 17:55:02
+================================================================================
+
+Certainly! Below is the refactored version of the class using `pathlib.Path` for file operations, PascalCase for class names, snake_case for function names, and adding docstrings to each function. I've also included error handling for edge cases.
+
+```python
+from pathlib import Path
+
+class FileManager:
+    def __init__(self, base):
+        self.base = Path(base)
+
+    def read_file(self, name):
+        """
+        Reads the content of a file.
+
+        Args:
+            name (str): The name of the file to read.
+
+        Returns:
+            str: The content of the file.
+
+        Raises:
+            FileNotFoundError: If the file does not exist.
+        """
+        file_path = self.base / name
+        if not file_path.exists():
+            raise FileNotFoundError(f"File '{name}' not found.")
+        with file_path.open('r') as file:
+            return file.read()
+
+    def write_file(self, name, data):
+        """
+        Writes data to a file.
+
+        Args:
+            name (str): The name of the file to write.
+            data (str): The data to write to the file.
+
+        Raises:
+            PermissionError: If the file cannot be written to.
+        """
+        file_path = self.base / name
+        try:
+            with file_path.open('w') as file:
+                file.write(data)
+        except PermissionError as e:
+            raise PermissionError(f"Permission denied to write to '{name}': {e}")
+
+    def list_files(self):
+        """
+        Lists all files in the directory.
+
+        Returns:
+            list: A list of file names.
+        """
+        return [file.name for file in self.base.iterdir() if file.is_file()]
+```
+
+### Key Changes:
+1. **Pathlib Usage**: Replaced `os.path` with `pathlib.Path` for file operations.
+2. **PascalCase Class Name**: Changed `fileManager` to `FileManager`.
+3. **Snake_Case Function Names**: Changed `ReadFile` to `read_file`, `WriteFile` to `write_file`, and `listfiles` to `list_files`.
+4. **Docstrings**: Added docstrings to each function explaining their purpose, arguments, return values, and potential exceptions.
+5. **Error Handling**: Added error handling for file not found and permission errors.

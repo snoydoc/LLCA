@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "071e1607e3d1",
+  "content": "### ❌ O-02 — `str_replace` natif Claude sur fichiers Windows\n**Symptôme** : `File not found` alors que le fichier existe.\n**Cause** : str_replace natif = container Linux (`/home/claude`). PAS `D:\\...`.\n**Règle** : fichiers `D:\\LLMCodeAgent\\` → TOUJOURS `filesystem:edit_file` (MCP).",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "003-antipatterns",
+  "skill_file": "003-antipatterns.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

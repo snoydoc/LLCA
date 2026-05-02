@@ -1,0 +1,42 @@
+﻿================================================================================
+MODEL: deepseek-r1:8b | PROMPT: code_simple | RUN: 3 | 2026-04-27 20:39:50
+================================================================================
+
+To solve this problem, we need to write a Python function that calculates the number of days between two given dates in the format 'YYYY-MM-DD'. The solution involves parsing the input date strings into datetime objects, computing the absolute difference between them, and returning the number of days as an integer.
+
+### Approach
+1. **Parse Date Strings**: Convert each input date string into a `datetime.date` object using `datetime.strptime`.
+2. **Calculate Difference**: Compute the difference between the two dates to get a `timedelta` object.
+3. **Return Days**: Extract the number of days from the `timedelta` object and return its absolute value.
+
+### Solution Code
+```python
+from datetime import datetime
+
+def days_between(date1_str, date2_str):
+    """
+    Calculate the number of days between two dates given as strings in 'YYYY-MM-DD' format.
+    
+    Args:
+        date1_str (str): The first date in 'YYYY-MM-DD' format.
+        date2_str (str): The second date in 'YYYY-MM-DD' format.
+        
+    Returns:
+        int: The absolute number of days between the two dates.
+        
+    Example:
+        >>> days_between('2023-01-01', '2023-01-03')
+        2
+    """
+    date1 = datetime.strptime(date1_str, '%Y-%m-%d').date()
+    date2 = datetime.strptime(date2_str, '%Y-%m-%d').date()
+    delta = date2 - date1
+    return abs(delta.days)
+```
+
+### Explanation
+- **Parsing Dates**: The function uses `datetime.strptime` to convert each input string into a date object. The format `'%Y-%m-%d'` matches the input format 'YYYY-MM-DD'.
+- **Calculating Difference**: The difference between the two dates is computed using subtraction, resulting in a `timedelta` object.
+- **Absolute Days**: The `days` attribute of the `timedelta` object gives the number of days as an integer. The absolute value ensures the result is positive regardless of the order of the input dates.
+
+This approach efficiently handles the date parsing and arithmetic, providing a clear and concise solution to the problem.

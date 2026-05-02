@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "6af46e2d6a61",
+  "content": "### EducatorAgent V9.1\n- `run_task(contract)` → lance `run_curation()` en thread daemon → `AgentResult(success=True, payload={\"status\":\"started\"})`\n- Déduplication : `_ingested_hashes: set[str]` + `hashlib.sha256(src)[:16]`\n- `_sandbox_check(body)` : tuple EN PREMIER (`isinstance(run_result, tuple)` avant `getattr`)\n- `sandbox_check` : méthode **statique** sur `EducatorCurator`\n- `educator_agent._running` : property getter/setter → `self._curator._running`\n- `ED-02` : `if repos_filter is not None:` ([] est falsy — ne pas confondre avec None)",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "001-master",
+  "skill_file": "001-master.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

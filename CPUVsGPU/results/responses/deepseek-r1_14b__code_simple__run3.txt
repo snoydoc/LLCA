@@ -1,0 +1,50 @@
+﻿================================================================================
+MODEL: deepseek-r1:14b | PROMPT: code_simple | RUN: 3 | 2026-04-28 04:54:16
+================================================================================
+
+To solve this problem, we need to write a Python function that calculates the number of days between two given date strings in the format YYYY-MM-DD. This function will utilize Python's `datetime` module to handle date parsing and calculations efficiently.
+
+### Approach
+1. **Parse Date Strings**: Convert the input date strings into `datetime.date` objects using the `strptime` method, which allows specifying the date format.
+2. **Calculate Date Difference**: Subtract the two date objects to get a `timedelta` object, which represents the duration between the two dates.
+3. **Extract Days**: The `timedelta` object has an attribute `days` that gives the number of days between the two dates.
+4. **Return Absolute Value**: Since the number of days should be a positive value regardless of the order of the dates, we return the absolute value of the days difference.
+
+### Solution Code
+
+```python
+import datetime
+
+def days_between(date1, date2):
+    """
+    Calculate the number of days between two dates.
+    
+    Parameters:
+        date1 (str): First date string in YYYY-MM-DD format.
+        date2 (str): Second date string in YYYY-MM-DD format.
+        
+    Returns:
+        int: Number of days between the two dates, always non-negative.
+        
+    Example:
+        >>> days_between('2020-01-01', '2020-01-10')
+        9
+    """
+    # Parse both date strings into date objects
+    date_obj1 = datetime.datetime.strptime(date1, "%Y-%m-%d").date()
+    date_obj2 = datetime.datetime.strptime(date2, "%Y-%m-%d").date()
+    
+    # Calculate the difference
+    delta = date_obj2 - date_obj1
+    
+    # Return the absolute number of days
+    return abs(delta.days)
+```
+
+### Explanation
+- **Parsing Dates**: The `strptime` method is used to convert each date string into a `datetime.date` object, which allows for date arithmetic.
+- **Calculating Difference**: Subtracting two `date` objects yields a `timedelta` object, which encapsulates the duration between the dates.
+- **Extracting Days**: The `days` attribute of the `timedelta` object provides the number of days between the two dates.
+- **Absolute Value**: Using `abs()` ensures that the result is non-negative, regardless of which date comes first.
+
+This approach efficiently handles the date calculations and ensures that the result is always a positive number of days between the two given dates.

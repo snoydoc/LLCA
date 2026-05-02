@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "ad6ffc23fdff",
+  "content": "## RÈGLES INVARIANTES — EDUCATOR / WHITELIST\n- Source de vérité whitelist : `educator_whitelist.json` (PAS educator_agent.py)\n- `educator_whitelist.py` expose : WHITELIST, load_whitelist(), save_whitelist(), load_skip_set()\n- `list_py_files()` lit `.endswith((\".py\", \".pyi\"))` — stubs typeshed inclus\n- Ajout repo : éditer le JSON uniquement, pas de code Python à toucher\n- `skip_license_check: true` dans le JSON pour les repos à licence non-SPDX standard",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "regles_invariantes",
+  "skill_file": "001-master.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

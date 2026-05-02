@@ -1,0 +1,52 @@
+﻿================================================================================
+MODEL: qwen3:14b | PROMPT: code_simple | RUN: 1 | 2026-04-28 00:23:24
+================================================================================
+
+Here's a well-documented Python function that calculates the number of days between two date strings in the format `YYYY-MM-DD`. It leverages Python's `datetime` module for parsing and date arithmetic, and it ensures the result is always the absolute difference in days.
+
+---
+
+```python
+from datetime import datetime
+
+def days_between(date1, date2):
+    """
+    Calculate the number of days between two dates.
+
+    Parameters:
+    date1 (str): A date string in 'YYYY-MM-DD' format.
+    date2 (str): Another date string in 'YYYY-MM-DD' format.
+
+    Returns:
+    int: The absolute number of days between the two dates.
+
+    Example:
+    >>> days_between("2023-10-05", "2023-10-07")
+    2
+    """
+    # Parse the input date strings into datetime objects
+    d1 = datetime.strptime(date1, "%Y-%m-%d")
+    d2 = datetime.strptime(date2, "%Y-%m-%d")
+
+    # Calculate the difference in days and return the absolute value
+    return abs((d1 - d2).days)
+```
+
+---
+
+### How It Works:
+
+- **Parsing Dates**: The function uses `datetime.strptime` with the format `"%Y-%m-%d"` to convert the input strings into `datetime` objects.
+- **Date Arithmetic**: It subtracts the two `datetime` objects, which yields a `timedelta` object. The `.days` attribute of this object gives the number of days between the dates.
+- **Absolute Value**: The `abs()` function ensures that the result is always non-negative, regardless of the order of the input dates.
+
+---
+
+### Example Usage:
+
+```python
+result = days_between("2023-10-05", "2023-10-07")
+print(result)  # Output: 2
+```
+
+This function is robust and straightforward, assuming the inputs are valid date strings in the specified format. If invalid inputs are provided, it will raise a `ValueError`, which is standard behavior for `strptime`.

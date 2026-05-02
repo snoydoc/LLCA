@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "ce507efa249f",
+  "content": "## ERREURS OUTILS FICHIERS",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "tests",
+  "room": "erreurs_outils",
+  "skill_file": "003-antipatterns.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

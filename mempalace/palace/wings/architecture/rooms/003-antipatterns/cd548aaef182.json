@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "cd548aaef182",
+  "content": "### ❌ T-10 — Appels réseau accidentels bloquant la suite de tests (Windows)\n**Symptôme** : `pytest` bloqué à X% pendant des dizaines de minutes, `KeyboardInterrupt` dans `urllib.request.urlopen`.\n**Cause** : un test appelle `run_curation()` ou `_github_request()` sans mock. Sur Windows avec pare-feu, TCP peut attendre 5-10 min au lieu de lever `OSError` immédiatement.\n**Solution permanente** : `tests/conftest.py` avec fixture `autouse` qui remplace `urllib.request.urlopen` par une version qui lève `OSError` immédiatement. Les tests qui patchent `urlopen` eux-mêmes gardent leur comportement (patch local écrase le patch de la fixture).\n**Fichier créé** : `tests/conftest.py`.",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "003-antipatterns",
+  "skill_file": "003-antipatterns.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

@@ -1,0 +1,45 @@
+﻿================================================================================
+MODEL: qwen3:14b | PROMPT: debug | RUN: 2 | 2026-04-28 01:41:18
+================================================================================
+
+The bug in the given Python function is the lack of a check for an empty input list. When the list is empty, the `len(lst)` returns `0`, and attempting to divide by zero raises a `ZeroDivisionError`, which is not user-friendly and indicates a logical flaw in the function's handling of edge cases.
+
+---
+
+### ✅ **Bug Explanation:**
+- The function assumes that the input list is non-empty.
+- If the list is empty, `sum(lst)` will be `0`, and `len(lst)` will be `0`, leading to a `ZeroDivisionError`.
+
+---
+
+### 🔧 **Fix:**
+To prevent this error, we need to explicitly check whether the list is empty. A more robust and meaningful approach is to **raise a `ValueError`** with a descriptive message, as this better communicates the invalid input to the caller.
+
+---
+
+### ✅ **Corrected Version:**
+
+```python
+def average(lst):
+    if not lst:
+        raise ValueError("Cannot compute average of an empty list")
+    return sum(lst) / len(lst)
+```
+
+---
+
+### 📌 **Key Improvements:**
+- **Input Validation:** Checks if the list is empty before performing any calculations.
+- **Error Handling:** Raises a `ValueError` instead of a `ZeroDivisionError`, which is more appropriate and informative.
+- **Robustness:** Makes the function safe for use in real-world scenarios by preventing crashes due to invalid input.
+
+---
+
+### 📌 **Usage Examples:**
+
+```python
+print(average([1, 2, 3]))       # Output: 2.0
+print(average([]))              # Raises ValueError: Cannot compute average of an empty list
+```
+
+This version ensures the function behaves predictably and safely across all valid and edge-case inputs.

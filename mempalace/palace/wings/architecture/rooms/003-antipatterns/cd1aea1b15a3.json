@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "cd1aea1b15a3",
+  "content": "### ❌ T-11 — Mock au mauvais module après REFACTO (llm_generator → ollama_client)\n**Symptôme** : `AttributeError: <module 'core.llm_generator'> does not have the attribute '_log_metric'` ou `AssertionError: 99 != 0` sur num_gpu.\n**Cause** : REFACTO-11 a extrait `_log_metric` et `cfg_read` de `llm_generator.py` vers `ollama_client.py` / `llm_config.py`. Les tests qui patchaient `core.llm_generator._log_metric` ou `core.llm_generator._cfg_read` ne capturent plus rien.\n**Règle** : toujours patcher **là où le symbole est utilisé** (binding local du module), pas là où il est défini.\n```python\n# ❌ Avant REFACTO (mock sur le module façade)\npatch(\"core.llm_generator._log_metric\")\npatch(\"core.llm_generator._cfg_read\")\n# ✅ Après REFACTO-11 (mock sur le module qui utilise réellement le symbole)\npatch(\"core.ollama_client._log_metric\")\npatch(\"core.ollama_client.cfg_read\")\n```\n**Fichiers corrigés** : `test_v9_05.py` (10 occurrences), `test_v9_06.py` (2 occurrences), `test_v9_01_a.py` (1 occurrence).\n\n---",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "003-antipatterns",
+  "skill_file": "003-antipatterns.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

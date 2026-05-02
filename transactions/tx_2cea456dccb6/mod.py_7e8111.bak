@@ -1,0 +1,6 @@
+﻿"""Module minimal."""
+
+
+def hello() -> str:
+    """Retourne un salut."""
+    return "hello"

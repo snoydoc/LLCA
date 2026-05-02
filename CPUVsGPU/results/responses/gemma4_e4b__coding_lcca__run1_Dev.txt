@@ -1,0 +1,134 @@
+﻿================================================================================
+MODEL: gemma4:e4b | PROMPT: coding_lcca | RUN: 1 | PROFILE: Dev | 2026-04-30 01:01:38
+================================================================================
+
+```python
+from pathlib import Path
+from typing import List, Union
+
+class FileManager:
+    """
+    A utility class for managing file operations (reading, writing, listing)
+    within a specified base directory using pathlib.
+    """
+
+    def __init__(self, base_path: Union[str, Path]):
+        """
+        Initializes the FileManager with a base directory path.
+
+        Args:
+            base_path: The path (string or Path object) to the directory 
+                       where operations will occur.
+        """
+        self.base_dir = Path(base_path)
+        
+        # Edge case handling: Ensure the base directory exists
+        if not self.base_dir.is_dir():
+            raise FileNotFoundError(f"Base directory does not exist or is not a directory: {self.base_dir}")
+
+    def read_file(self, file_name: str) -> str:
+        """
+        Reads the content of a specified file within the base directory.
+
+        Args:
+            file_name: The name of the file to read.
+
+        Returns:
+            The content of the file as a string.
+
+        Raises:
+            FileNotFoundError: If the specified file does not exist.
+            IOError: If there are permission issues or other reading errors.
+        """
+        file_path = self.base_dir / file_name
+        
+        if not file_path.is_file():
+            raise FileNotFoundError(f"File not found at: {file_path}")
+
+        try:
+            # Use 'r' mode and 'with' statement for safe resource management
+            return file_path.read_text(encoding='utf-8')
+        except PermissionError as e:
+            raise IOError(f"Permission denied when reading {file_name}: {e}")
+        except Exception as e:
+            raise IOError(f"An unexpected error occurred while reading {file_name}: {e}")
+
+    def write_file(self, file_name: str, data: str) -> None:
+        """
+        Writes the given data string to a specified file within the base directory.
+
+        Args:
+            file_name: The name of the file to write to.
+            data: The string data to be written.
+
+        Raises:
+            IOError: If there are permission issues or other writing errors.
+        """
+        file_path = self.base_dir / file_name
+        
+        try:
+            # Use 'w' mode and 'with' statement for safe resource management
+            file_path.write_text(data, encoding='utf-8')
+        except PermissionError as e:
+            raise IOError(f"Permission denied when writing to {file_name}: {e}")
+        except Exception as e:
+            raise IOError(f"An unexpected error occurred while writing to {file_name}: {e}")
+
+    def list_files(self) -> List[str]:
+        """
+        Lists all files and directories contained within the base directory.
+
+        Returns:
+            A list of strings, where each string is the name of an item 
+            in the base directory.
+        """
+        # Use Path.iterdir() and extract the name component
+        return [item.name for item in self.base_dir.iterdir()]
+
+# Example Usage (Demonstration purposes)
+if __name__ == '__main__':
+    # Setup a temporary directory for testing
+    temp_dir = Path("./temp_test_dir")
+    temp_dir.mkdir(exist_ok=True)
+
+    try:
+        # Initialize the manager
+        manager = FileManager(temp_dir)
+
+        # 1. Write File Test
+        print("--- Testing Write ---")
+        manager.write_file("test_output.txt", "Hello, world!\nThis is a test file.")
+        print("Successfully wrote test_output.txt")
+
+        # 2. Read File Test
+        print("\n--- Testing Read ---")
+        content = manager.read_file("test_output.txt")
+        print(f"Successfully read content:\n{content.strip()}")
+
+        # 3. List Files Test
+        print("\n--- Testing List Files ---")
+        files = manager.list_files()
+        print(f"Files found in {temp_dir}: {files}")
+
+        # 4. Edge Case Test: Reading non-existent file
+        print("\n--- Testing Edge Case (Read) ---")
+        try:
+            manager.read_file("non_existent_file.txt")
+        except FileNotFoundError as e:
+            print(f"Caught expected error: {e}")
+
+    except FileNotFoundError as e:
+        print(f"Initialization Error: {e}")
+    except IOError as e:
+        print(f"Operation Error: {e}")
+    finally:
+        # Cleanup
+        print("\n--- Cleaning up ---")
+        try:
+            # Remove the created file
+            (temp_dir / "test_output.txt").unlink()
+            # Remove the directory itself
+            temp_dir.rmdir()
+        except Exception as e:
+            print(f"Cleanup warning: Could not fully clean up directory. {e}")
+```

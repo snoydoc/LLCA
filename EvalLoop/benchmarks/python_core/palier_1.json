@@ -1,0 +1,102 @@
+[
+  {
+    "id": "python_core/p1/decorator_001",
+    "domain": "python_core",
+    "palier": 1,
+    "question": "Implementez un decorateur Python qui mesure le temps d'execution d'une fonction.",
+    "expected_concepts": ["decorateur", "functools", "wraps", "time", "wrapper"],
+    "rubric": "Implementer avec functools.wraps, mesure correcte, preserver signature.",
+    "status": "active",
+    "tags": ["decorateurs", "fonctions", "performance"]
+  },
+  {
+    "id": "python_core/p1/generator_001",
+    "domain": "python_core",
+    "palier": 1,
+    "question": "Expliquez les generateurs Python et quand les utiliser plutot qu'une liste.",
+    "expected_concepts": ["yield", "generateur", "lazy", "memoire", "iterateur"],
+    "rubric": "Expliquer yield, evaluation paresseuse, avantages memoire, exemples concrets.",
+    "status": "active",
+    "tags": ["generateurs", "memoire"]
+  },
+  {
+    "id": "python_core/p1/mro_001",
+    "domain": "python_core",
+    "palier": 1,
+    "question": "Qu'est-ce que le MRO (Method Resolution Order) en Python ?",
+    "expected_concepts": ["MRO", "C3", "heritage", "multiple", "__mro__"],
+    "rubric": "Expliquer l'algorithme C3, ordre de resolution, exemple heritage multiple.",
+    "status": "active",
+    "tags": ["heritage", "classes"]
+  },
+  {
+    "id": "python_core/p1/descriptor_001",
+    "domain": "python_core",
+    "palier": 1,
+    "question": "Qu'est-ce qu'un descripteur Python ?",
+    "expected_concepts": ["descripteur", "__get__", "__set__", "data descriptor", "attribut"],
+    "rubric": "Expliquer le protocole descripteur, difference data vs non-data, exemples.",
+    "status": "active",
+    "tags": ["classes", "protocoles"]
+  },
+  {
+    "id": "python_core/p1/metaclass_001",
+    "domain": "python_core",
+    "palier": 1,
+    "question": "A quoi servent les metaclasses en Python ?",
+    "expected_concepts": ["metaclasse", "type", "__new__", "classe", "ABCMeta"],
+    "rubric": "Expliquer que les classes sont des instances de type. Cas d'usage reels.",
+    "status": "active",
+    "tags": ["classes", "avance"]
+  },
+  {
+    "id": "python_core/p1/asyncio_001",
+    "domain": "python_core",
+    "palier": 1,
+    "question": "Expliquez la difference entre threading, multiprocessing et asyncio en Python.",
+    "expected_concepts": ["threading", "multiprocessing", "asyncio", "GIL", "I/O"],
+    "rubric": "Distinguer I/O-bound vs CPU-bound, role du GIL, cas d'usage de chacun.",
+    "status": "active",
+    "tags": ["concurrence", "performance"]
+  },
+  {
+    "id": "python_core/p1/slots_001",
+    "domain": "python_core",
+    "palier": 1,
+    "question": "Qu'est-ce que __slots__ en Python et quand l'utiliser ?",
+    "expected_concepts": ["__slots__", "memoire", "__dict__", "attribut", "performance"],
+    "rubric": "Expliquer economie memoire, suppression de __dict__, limitations (heritage).",
+    "status": "active",
+    "tags": ["classes", "memoire", "performance"]
+  },
+  {
+    "id": "python_core/p1/weakref_001",
+    "domain": "python_core",
+    "palier": 1,
+    "question": "Qu'est-ce qu'une reference faible (weakref) et quand l'utiliser ?",
+    "expected_concepts": ["weakref", "reference", "garbage collector", "cycle", "cache"],
+    "rubric": "Expliquer difference ref forte/faible, cycles de reference, exemples cache.",
+    "status": "active",
+    "tags": ["memoire", "garbage-collector"]
+  },
+  {
+    "id": "python_core/p1/contextlib_001",
+    "domain": "python_core",
+    "palier": 1,
+    "question": "Implementez un gestionnaire de contexte avec @contextmanager.",
+    "expected_concepts": ["contextmanager", "yield", "contextlib", "with", "__enter__"],
+    "rubric": "Implementer avec contextlib.contextmanager, gestion des exceptions via try/finally.",
+    "status": "active",
+    "tags": ["protocoles", "contextlib"]
+  },
+  {
+    "id": "python_core/p1/dataclass_001",
+    "domain": "python_core",
+    "palier": 1,
+    "question": "Qu'apportent les dataclasses Python par rapport aux classes ordinaires ?",
+    "expected_concepts": ["dataclass", "__init__", "__repr__", "field", "frozen"],
+    "rubric": "Expliquer generation automatique, field(), frozen=True, comparaisons avec attrs/namedtuple.",
+    "status": "active",
+    "tags": ["classes", "dataclasses"]
+  }
+]

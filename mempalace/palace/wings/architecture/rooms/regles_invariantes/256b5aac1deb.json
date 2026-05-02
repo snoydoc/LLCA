@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "256b5aac1deb",
+  "content": "## RÈGLES INVARIANTES — UI ELECTRON/REACT\n- Toute nouvelle méthode IPC = 3 fichiers : `main.ts` + `preload.ts` + composant\n- `TOOL_TIMEOUTS: Record<string, number>` module-level dans `mcp-bridge.ts`\n- Patterns NL français : `normalize('NFD')` avant tout test regex\n- Patterns NL : ordre critique — spécifiques AVANT généraux\n- `themes.css` : importé AVANT `globals.css`\n- `msg.isStreaming` positionné à `true` dès `appendMessage()` avant tout token",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "regles_invariantes",
+  "skill_file": "001-master.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

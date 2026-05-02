@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "39c63fc18f24",
+  "content": "## PROTOCOLE TRANSACTIONNEL\nSNAPSHOT → WAL → PATCH (libcst) → VERIFY (compile()) → COMMIT/ROLLBACK\n- ❌ `file.write()` direct sans snapshot\n- ❌ regex pour modifier du code Python\n- ❌ `\"python\"` hardcodé → toujours `sys.executable`\n- ❌ op disque MCP sans `safe_path()` en amont\n- ❌ Spec non validée → jamais de génération de code",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "001-master",
+  "skill_file": "001-master.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

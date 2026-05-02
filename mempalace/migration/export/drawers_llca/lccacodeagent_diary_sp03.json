@@ -1,0 +1,10 @@
+{
+  "date": "2026-04-23",
+  "source": "MCP palace wing_lccacodeagent/diary",
+  "original_content": "SESSION:2026-04-16|SP03.bug.fixed+13/13.PASSED|BUG:ImportFrom stored auth.authenticate instead of auth|FIX:ast_indexer._index_file node.module.only|DG.build:resolved auth->auth.py|SP03:DONE|SP04:NEXT=planner-orchestrator",
+  "classification": "lcca_history",
+  "wing_local": "architecture",
+  "room_local": "sprint_history",
+  "imported": true,
+  "note": "Seul drawer LLCA trouve dans le MCP palace. Log de session sprint-03 (2026-04-16). Importe dans palace local wing=architecture/room=sprint_history."
+}

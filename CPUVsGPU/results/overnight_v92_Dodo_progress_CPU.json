@@ -1,0 +1,18 @@
+﻿{
+    "done_qwen3:8b":  "ok",
+    "run_deepseek-r1_14b__code_simple__1":  "ok",
+    "done_deepseek-r1:14b":  "ok",
+    "run_deepseek-r1_14b__debug__1":  "ok",
+    "run_deepseek-r1_8b__debug__1":  "ok",
+    "run_qwen3_14b__debug__1":  "ok",
+    "run_qwen3_8b__debug__1":  "ok",
+    "run_qwen3_8b__code_simple__1":  "ok",
+    "run_qwen3_14b__coding_lcca__1":  "ok",
+    "run_deepseek-r1_14b__coding_lcca__1":  "ok",
+    "done_deepseek-r1:8b":  "ok",
+    "run_qwen3_8b__coding_lcca__1":  "ok",
+    "run_deepseek-r1_8b__coding_lcca__1":  "ok",
+    "done_qwen3:14b":  "ok",
+    "run_deepseek-r1_8b__code_simple__1":  "ok",
+    "run_qwen3_14b__code_simple__1":  "ok"
+}

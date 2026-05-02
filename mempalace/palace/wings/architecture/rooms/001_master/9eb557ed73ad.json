@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "9eb557ed73ad",
+  "content": "# LCCA — MASTER SKILL (v11)\n# LIRE EN PREMIER. Résumé exécutif pour toute session.",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "001_master",
+  "skill_file": "001-master.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

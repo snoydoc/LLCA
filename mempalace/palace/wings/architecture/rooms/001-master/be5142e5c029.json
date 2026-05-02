@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "be5142e5c029",
+  "content": "### Pipeline (KarpathyLoop)\n- Architect → Coder → Reviewer → Tester (orchestrator_loop.py)\n- `LoopResult.timed_out=True` → `OrchestratorResult.timed_out=True`\n- `timeout_sec <= 0` → guard AVANT time.monotonic() (voir T-06)\n- Educator appelé APRÈS la boucle, AVANT construction finale, MÊME en timeout",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "001-master",
+  "skill_file": "001-master.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

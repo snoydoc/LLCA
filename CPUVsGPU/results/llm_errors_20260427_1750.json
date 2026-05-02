@@ -1,0 +1,56 @@
+﻿[
+    {
+        "timestamp":  "2026-04-27 18:22:56",
+        "model":  "qwen3:4b",
+        "prompt":  "code_simple",
+        "run":  1,
+        "category":  "empty_response",
+        "error_msg":  "Empty response",
+        "done_reason":  "length",
+        "response_len":  0,
+        "tokens_out":  3072,
+        "options_used":  {
+                             "num_predict":  3072,
+                             "num_gpu":  -1,
+                             "seed":  42,
+                             "temperature":  0.6
+                         },
+        "suggestion":  "Model has thinking block: multiply num_predict x4.",
+        "timeout_sec":  1200
+    },
+    {
+        "timestamp":  "2026-04-27 20:04:18",
+        "model":  "phi4-mini-reasoning:latest",
+        "prompt":  "coding_lcca",
+        "run":  2,
+        "category":  "truncated_response",
+        "error_msg":  "Truncated (done_reason=length)",
+        "done_reason":  "length",
+        "response_len":  60022,
+        "tokens_out":  12288,
+        "options_used":  {
+                             "num_predict":  12288,
+                             "num_gpu":  -1,
+                             "seed":  42,
+                             "temperature":  0.6
+                         },
+        "suggestion":  "Increase num_predict. Response cut short by token budget.",
+        "timeout_sec":  7200
+    },
+    {
+        "timestamp":  "2026-04-27 20:15:46",
+        "model":  "gemma4:e4b",
+        "prompt":  "N/A",
+        "run":  0,
+        "category":  "oom_or_crash",
+        "error_msg":  "Ollama RAM 14301 MB apres warmup \u003e seuil",
+        "done_reason":  "",
+        "response_len":  0,
+        "tokens_out":  0,
+        "options_used":  {
+
+                         },
+        "suggestion":  "RAM threshold hit. Reduce model tier or add RAM.",
+        "timeout_sec":  0
+    }
+]

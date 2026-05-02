@@ -1,0 +1,51 @@
+﻿================================================================================
+MODEL: qwen3:14b | PROMPT: code_simple | RUN: 3 | 2026-04-28 01:09:37
+================================================================================
+
+To calculate the number of days between two date strings in the format `YYYY-MM-DD`, we can utilize Python’s built-in `datetime` module. This module allows us to parse date strings into `datetime` objects, compute the difference between them, and then extract the number of days from that difference.
+
+The function `days_between` is designed to return the **absolute** number of days between two given dates, regardless of the order in which the dates are provided.
+
+---
+
+### ✅ Implementation
+
+```python
+import datetime
+
+def days_between(date1, date2):
+    """
+    Returns the absolute number of days between two date strings in 'YYYY-MM-DD' format.
+
+    Args:
+        date1 (str): First date string in 'YYYY-MM-DD' format.
+        date2 (str): Second date string in 'YYYY-MM-DD' format.
+
+    Returns:
+        int: The absolute number of days between the two dates.
+
+    Example:
+        >>> days_between('2023-01-01', '2023-01-03')
+        2
+    """
+    # Parse the date strings into datetime objects
+    d1 = datetime.datetime.strptime(date1, "%Y-%m-%d")
+    d2 = datetime.datetime.strptime(date2, "%Y-%m-%d")
+
+    # Calculate the time difference
+    delta = d1 - d2
+
+    # Return the absolute number of days
+    return abs(delta.days)
+```
+
+---
+
+### 📌 Example Usage
+
+```python
+result = days_between('2023-01-01', '2023-01-03')
+print(result)  # Output: 2
+```
+
+This function ensures that the difference is always a non-negative integer, making it robust and user-friendly for any pair of valid date strings in the expected format.

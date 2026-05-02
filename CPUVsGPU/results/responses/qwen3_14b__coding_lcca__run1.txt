@@ -1,0 +1,60 @@
+﻿================================================================================
+MODEL: qwen3:14b | PROMPT: coding_lcca | RUN: 1 | 2026-04-28 02:30:57
+================================================================================
+
+```python
+import pathlib
+
+class FileManager:
+    """Manages file operations within a specified base directory using pathlib.Path."""
+
+    def __init__(self, base):
+        """
+        Initialize the FileManager with the given base directory.
+
+        Args:
+            base (str or pathlib.Path): The base directory path.
+
+        Raises:
+            ValueError: If the provided base path is not a valid directory.
+        """
+        self.base = pathlib.Path(base)
+        if not self.base.is_dir():
+            raise ValueError(f"Base path is not a directory: {self.base}")
+
+    def read_file(self, name):
+        """
+        Read the contents of the file with the given name.
+
+        Args:
+            name (str): The name of the file to read.
+
+        Returns:
+            str: The contents of the file.
+
+        Raises:
+            FileNotFoundError: If the specified file does not exist.
+        """
+        file_path = self.base / name
+        return file_path.read_text()
+
+    def write_file(self, name, data):
+        """
+        Write the given data to the file with the given name.
+
+        Args:
+            name (str): The name of the file to write to.
+            data (str): The data to write into the file.
+        """
+        file_path = self.base / name
+        file_path.write_text(data)
+
+    def listfiles(self):
+        """
+        List all files and directories in the base directory.
+
+        Returns:
+            list: A list of strings representing the names of files and directories.
+        """
+        return [item.name for item in self.base.iterdir()]
+```

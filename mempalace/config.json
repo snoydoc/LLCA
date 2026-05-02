@@ -1,0 +1,16 @@
+{
+  "palace_name": "LLCA",
+  "palace_path": "D:\\LLMCodeAgent\\mempalace\\palace",
+  "version": "1.0",
+  "created": "2026-04-23",
+  "collections": [
+    "lcca_solutions",
+    "lcca_context",
+    "lcca_failures",
+    "lcca_patches",
+    "lcca_specs",
+    "lcca_skills"
+  ],
+  "source": "migration MIG-04 (separe de MediBot)",
+  "note": "Palace autonome LLCA. 0 dependance vers D:\\MediBot ou le MCP palace partage. ChromaDB cree ses sous-dossiers au premier demarrage de MemPalaceClient."
+}

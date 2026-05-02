@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "0720d2600f69",
+  "content": "### ❌ T-08 — Clé absente dans la branche d'échec d'un payload\n**Symptôme** : `AssertionError: assert 'clé' in msg.payload` sur le message envoyé à architect.\n**Cause** : une clé enrichie (ex. `llm_review`, `llm_used`) ajoutée dans la branche succès (`syntax_ok=True`) a été oubliée dans la branche échec (`syntax_ok=False`).\n**Règle** : toute clé présente dans le payload `tester` doit aussi être présente dans le payload `architect` — les deux branches doivent être symétriques sur les clés informationnelles.\n**Correction** : ajouter les clés manquantes dans `reject_payload` :\n```python\nreject_payload = {\n    ...,\n    \"llm_review\": llm_review,\n    \"llm_used\": llm_used,\n}\n```\n**Fichier concerné** : `reviewer_agent.py` — branche `else` de `run_task()`.",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "003-antipatterns",
+  "skill_file": "003-antipatterns.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

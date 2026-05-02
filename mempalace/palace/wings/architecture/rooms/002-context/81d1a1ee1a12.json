@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "81d1a1ee1a12",
+  "content": "## PROCHAIN SPRINT SUGGÉRÉ\nV9-09 TERMINÉ (2026-04-23) — spec_diff, spec_retry, TelemetryPanel, REFACTO-13, REFACTO-14.\nREFACTO-15 TERMINÉ (2026-04-23) — `memory_engine.py` découpé + 18 tests ✅ validés (test_refacto_15.py + test_memory_engine.py)\nREFACTO-16 TERMINÉ (2026-04-23) — `spec_generator.py` découpé + 18 tests ✅ validés (test_refacto_16.py + test_spec_layer.py + test_spec_retry.py)\nDETTE-01/02/03 TERMINÉS (2026-04-23 session 4) — `orchestrator.py` dead code supprimé, `web_search_engines.py` R9 corrigé, `002-context.md` tailles + arbo à jour.\nFIX-MCP-CRASH-01 (2026-04-23) — `core/mempalace_adapter.py` créé : module manquant causant crash MCP Server au démarrage.\nProchain candidat REFACTO : `ollama_client.py` (10.27 KB) si croissance. Surveiller `planner.py` (11.5 KB) si nouvelles fonctionnalités.",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "002-context",
+  "skill_file": "002-context.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

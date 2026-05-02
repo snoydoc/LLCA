@@ -1,0 +1,7 @@
+{
+  "session_date": "2026-05-02",
+  "checkpoint": "AMC-MIG-05 TERMINE",
+  "status": "done",
+  "next_action": "AMC-MIG-06 -- messages i18n amc_* (FR/AR/EN) dans messages/*.py"
+}
+}

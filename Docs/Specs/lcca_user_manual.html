@@ -1,0 +1,1158 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+  :root {
+    --bg: var(--color-background-primary);
+    --bg2: var(--color-background-secondary);
+    --bg3: var(--color-background-tertiary);
+    --text: var(--color-text-primary);
+    --muted: var(--color-text-secondary);
+    --hint: var(--color-text-tertiary);
+    --border: var(--color-border-tertiary);
+    --border2: var(--color-border-secondary);
+    --accent: #185FA5;
+    --accent-light: #E6F1FB;
+    --green: #3B6D11;
+    --green-light: #EAF3DE;
+    --amber: #854F0B;
+    --amber-light: #FAEEDA;
+    --red: #A32D2D;
+    --red-light: #FCEBEB;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text);
+    background: var(--bg);
+  }
+
+  /* ── NAV ── */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border2);
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav-brand {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    padding: 0.75rem 1.5rem 0.75rem 0;
+    border-right: 1px solid var(--border);
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+  }
+  .nav-item {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--muted);
+    padding: 0.75rem 0.75rem;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+    flex-shrink: 0;
+    border-top: 2px solid transparent;
+  }
+  .nav-item:hover { color: var(--text); }
+  .nav-item.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 500; }
+
+  /* ── LAYOUT ── */
+  .doc {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  /* ── SECTIONS ── */
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* ── HERO ── */
+  .hero {
+    border: 1px solid var(--border2);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    background: var(--bg2);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 200px; height: 100%;
+    background: linear-gradient(135deg, transparent 60%, rgba(24,95,165,0.06));
+    pointer-events: none;
+  }
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .hero h1 {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+  .hero p {
+    font-size: 13px;
+    color: var(--muted);
+    max-width: 540px;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.25rem;
+    flex-wrap: wrap;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .stat-val {
+    font-family: var(--mono);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  h2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 2rem 0 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  h3 {
+    font-size: 13px;
+    font-weight: 600;
+    margin: 1.5rem 0 0.5rem;
+    color: var(--text);
+  }
+  p { font-size: 13px; color: var(--muted); margin-bottom: 0.75rem; }
+  strong { color: var(--text); font-weight: 500; }
+
+  /* ── CODE BLOCKS ── */
+  .code-block {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0.75rem 0 1rem;
+    overflow: hidden;
+  }
+  .code-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.4rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+  }
+  .code-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--hint);
+    text-transform: uppercase;
+  }
+  .copy-btn {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 8px;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .copy-btn:hover { color: var(--accent); border-color: var(--accent); }
+  pre {
+    padding: 0.75rem 1rem;
+    overflow-x: auto;
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text);
+  }
+  code {
+    font-family: var(--mono);
+    font-size: 12px;
+    background: var(--bg3);
+    padding: 1px 5px;
+    border-radius: 4px;
+    color: var(--text);
+  }
+
+  /* ── CALLOUTS ── */
+  .callout {
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin: 0.75rem 0 1rem;
+    font-size: 13px;
+    border-left: 3px solid;
+    display: flex;
+    gap: 0.6rem;
+  }
+  .callout-icon { flex-shrink: 0; font-size: 14px; }
+  .callout-text { color: var(--muted); line-height: 1.6; }
+  .callout.info { background: var(--accent-light); border-color: var(--accent); }
+  .callout.info .callout-text { color: #0C447C; }
+  .callout.warn { background: var(--amber-light); border-color: var(--amber); }
+  .callout.warn .callout-text { color: var(--amber); }
+  .callout.ok { background: var(--green-light); border-color: var(--green); }
+  .callout.ok .callout-text { color: var(--green); }
+  .callout.danger { background: var(--red-light); border-color: var(--red); }
+  .callout.danger .callout-text { color: var(--red); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 0.75rem 0 1.25rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  th {
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--hint);
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--border2);
+    background: var(--bg2);
+  }
+  td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+    vertical-align: top;
+  }
+  td:first-child { font-family: var(--mono); font-size: 11.5px; color: var(--text); white-space: nowrap; }
+  tr:last-child td { border-bottom: none; }
+
+  /* ── PIPELINE ── */
+  .pipeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 1rem 0 1.5rem;
+  }
+  .pipe-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .pipe-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .pipe-num {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .pipe-line {
+    width: 1px;
+    flex: 1;
+    min-height: 20px;
+    background: var(--border2);
+    margin: 2px 0;
+  }
+  .pipe-content {
+    padding: 0 0 1.25rem;
+  }
+  .pipe-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+  .pipe-desc {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ── CARDS ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.75rem;
+    margin: 0.75rem 0 1.25rem;
+  }
+  .card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.875rem 1rem;
+    background: var(--bg2);
+  }
+  .card-icon { font-size: 18px; margin-bottom: 0.4rem; }
+  .card-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 0.25rem; }
+  .card-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* ── BADGE ── */
+  .badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+  }
+  .badge.ok { background: var(--green-light); color: var(--green); }
+  .badge.warn { background: var(--amber-light); color: var(--amber); }
+  .badge.info { background: var(--accent-light); color: var(--accent); }
+  .badge.neutral { background: var(--bg3); color: var(--muted); }
+
+  /* ── DSL ANATOMY ── */
+  .dsl-anatomy {
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0.75rem 0 1.25rem;
+  }
+  .dsl-display {
+    background: var(--bg3);
+    padding: 1rem 1.25rem;
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    align-items: center;
+  }
+  .dsl-part { cursor: default; }
+  .dsl-part:hover .dsl-tok { opacity: 0.7; }
+  .dsl-tok { transition: opacity 0.15s; }
+  .tok-proj { color: #185FA5; font-weight: 600; }
+  .tok-sep { color: var(--hint); margin: 0 4px; }
+  .tok-target { color: #3B6D11; font-weight: 600; }
+  .tok-action { color: #854F0B; font-weight: 600; }
+  .tok-detail { color: var(--muted); }
+  .dsl-legend {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0;
+  }
+  .dsl-leg-item {
+    padding: 0.5rem 1rem;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    font-size: 11.5px;
+  }
+  .dsl-leg-item:nth-child(even) { border-right: none; }
+  .dsl-leg-label { font-family: var(--mono); font-weight: 600; font-size: 11px; margin-bottom: 2px; }
+  .dsl-leg-desc { color: var(--muted); font-size: 11px; }
+
+  /* ── CHECKLIST ── */
+  .checklist { list-style: none; margin: 0.75rem 0 1.25rem; }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 0.35rem 0;
+    font-size: 13px;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .chk { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+  /* ── RULES ── */
+  .rule-list { list-style: none; margin: 0.75rem 0 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .rule-item {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.6rem 0.875rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background: var(--bg2);
+  }
+  .rule-badge {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--red);
+    background: var(--red-light);
+    padding: 2px 6px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .rule-badge.ok { color: var(--green); background: var(--green-light); }
+  .rule-text { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+</style>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">LCCA V7</div>
+  <div class="nav-item active" onclick="showSection('intro')">Introduction</div>
+  <div class="nav-item" onclick="showSection('install')">Installation</div>
+  <div class="nav-item" onclick="showSection('dsl')">Interface DSL</div>
+  <div class="nav-item" onclick="showSection('nl')">Interface NL</div>
+  <div class="nav-item" onclick="showSection('pipeline')">Pipeline</div>
+  <div class="nav-item" onclick="showSection('tx')">Transactions</div>
+  <div class="nav-item" onclick="showSection('memory')">Mémoire</div>
+  <div class="nav-item" onclick="showSection('spec')">Spec Layer</div>
+  <div class="nav-item" onclick="showSection('ref')">Référence</div>
+</nav>
+
+<div class="doc">
+
+<!-- ══════════════════════════════════════════════════════ INTRO -->
+<div class="section active" id="s-intro">
+  <div class="hero">
+    <div class="hero-tag">Mode d'emploi — v7.1.0</div>
+    <h1>LCCA — Local Cognitive Coding Agency</h1>
+    <p>Agent de codage local transactionnel pour Python. Toute modification passe par l'AST (libcst), jamais par du texte brut. Chaque opération est atomique : rollback automatique en cas d'erreur.</p>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-val">517</span><span class="stat-label">tests passing</span></div>
+      <div class="stat"><span class="stat-val">ACID</span><span class="stat-label">transactions</span></div>
+      <div class="stat"><span class="stat-val">100%</span><span class="stat-label">offline</span></div>
+      <div class="stat"><span class="stat-val">2 CLI</span><span class="stat-label">DSL + NL</span></div>
+    </div>
+  </div>
+
+  <h2>Qu'est-ce que LCCA ?</h2>
+  <p>LCCA est un agent de codage local qui modifie votre code de façon chirurgicale et sécurisée. Contrairement aux éditeurs qui font du chercher-remplacer, LCCA parse l'AST (arbre syntaxique) de vos fichiers Python pour ajouter, modifier ou supprimer des fonctions avec une précision parfaite.</p>
+  <p>Chaque modification est encapsulée dans une <strong>transaction</strong> : si quelque chose tourne mal (syntaxe invalide, erreur réseau, crash), les fichiers sont automatiquement restaurés à leur état d'origine.</p>
+
+  <h2>Deux interfaces</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">⌨️</div>
+      <div class="card-title">Interface DSL</div>
+      <div class="card-desc">Commandes structurées <code>Projet - Cible - Action</code>. Précis, reproductible, idéal pour scripts et pipelines CI.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">💬</div>
+      <div class="card-title">Interface NL</div>
+      <div class="card-desc">Langage naturel via Ollama (Qwen2.5-Coder). "Ajoute validate_email dans core/utils.py". Mode REPL interactif disponible.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔒</div>
+      <div class="card-title">Transactions ACID</div>
+      <div class="card-desc">WAL JSONL, snapshots MD5, rollback automatique. Vos fichiers originaux sont toujours préservés.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🧠</div>
+      <div class="card-title">Spec Layer</div>
+      <div class="card-desc">Avant toute modification complexe, une spec est générée et validée par 15 règles. Garantit la cohérence architecturale.</div>
+    </div>
+  </div>
+
+  <h2>Architecture en un coup d'œil</h2>
+  <div class="code-block">
+    <div class="code-header"><span class="code-label">Structure</span></div>
+    <pre>D:\LLMCodeAgent\
+├── core\              — Moteur transactionnel (30 modules)
+│   ├── orchestrator   — Pipeline end-to-end
+│   ├── smart_patcher  — Patches AST via libcst
+│   ├── transaction_manager — ACID + WAL + rollback
+│   ├── memory_engine  — 5 collections ChromaDB
+│   ├── spec_generator — Génération specs avant code
+│   └── mcp_server     — JSON-RPC 2.0 stdio (7 tools)
+├── workspace\         — Votre code cible (seul dossier modifié)
+├── transactions\      — WAL JSONL + backups .bak
+├── tests\             — 517 tests
+├── main.py            — CLI DSL
+├── main_nl.py         — CLI langage naturel
+└── config.py          — Configuration centralisée</pre>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ INSTALL -->
+<div class="section" id="s-install">
+  <h2>Prérequis</h2>
+  <ul class="checklist">
+    <li><span class="chk">✓</span><span><strong>Python 3.11+</strong> — obligatoire pour libcst optimisé</span></li>
+    <li><span class="chk">✓</span><span><strong>Windows</strong> avec paths <code>D:\</code> — encodage utf-8-sig</span></li>
+    <li><span class="chk">○</span><span><strong>Ollama</strong> — optionnel, pour interface NL et Spec Layer LLM. Sans Ollama, mode heuristique.</span></li>
+    <li><span class="chk">○</span><span><strong>Docker</strong> — optionnel, pour sandbox d'exécution sécurisé (mode auto)</span></li>
+  </ul>
+
+  <h2>Installation</h2>
+  <div class="code-block">
+    <div class="code-header"><span class="code-label">PowerShell</span><button class="copy-btn" onclick="copyCode(this)">copier</button></div>
+    <pre>cd D:\LLMCodeAgent
+python -m venv venv
+venv\Scripts\Activate.ps1
+pip install -r requirements.txt</pre>
+  </div>
+
+  <h2>Vérification</h2>
+  <div class="code-block">
+    <div class="code-header"><span class="code-label">PowerShell</span><button class="copy-btn" onclick="copyCode(this)">copier</button></div>
+    <pre>python main.py --status
+# → Affiche index, WAL, transactions</pre>
+  </div>
+
+  <h2>Ollama (optionnel mais recommandé)</h2>
+  <p>L'interface NL et la Spec Layer utilisent Ollama pour la génération de code et de specs. Sans Ollama, l'interface DSL reste entièrement fonctionnelle.</p>
+  <div class="code-block">
+    <div class="code-header"><span class="code-label">PowerShell — Installation Ollama</span><button class="copy-btn" onclick="copyCode(this)">copier</button></div>
+    <pre># Télécharger depuis https://ollama.com
+ollama pull qwen2.5-coder:14b    # Modèle principal (~9GB)
+ollama serve                      # Démarrer le serveur (port 11434)</pre>
+  </div>
+
+  <div class="callout info">
+    <span class="callout-icon">ℹ</span>
+    <span class="callout-text">Si Ollama est indisponible, LCCA passe automatiquement en <strong>mode stub</strong> : les modifications sont générées avec un placeholder, la transaction reste ACID. L'interface DSL fonctionne sans Ollama.</span>
+  </div>
+
+  <h2>Lancer les tests</h2>
+  <div class="code-block">
+    <div class="code-header"><span class="code-label">PowerShell</span><button class="copy-btn" onclick="copyCode(this)">copier</button></div>
+    <pre>pytest tests/ -q --tb=short
+# Attendu : 517 passed, 5 skipped, 0 failed</pre>
+  </div>
+
+  <h2>Configuration</h2>
+  <p>Tout est dans <code>config.py</code>. Les paramètres clés :</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Paramètre</th><th>Défaut</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>WORKSPACE_DIR</td><td>D:/LLMCodeAgent/workspace</td><td>Dossier cible des modifications</td></tr>
+        <tr><td>OLLAMA_MODEL</td><td>qwen2.5-coder:14b</td><td>Modèle LLM pour génération</td></tr>
+        <tr><td>OLLAMA_TIMEOUT</td><td>90s</td><td>Timeout HTTP vers Ollama</td></tr>
+        <tr><td>MAX_FILES_PER_TX</td><td>3</td><td>Max fichiers par transaction</td></tr>
+        <tr><td>ADAPTIVE_SPEC_ENABLED</td><td>True</td><td>Active la Spec Layer</td></tr>
+        <tr><td>SANDBOX_MODE</td><td>auto</td><td>soft / docker / auto</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ DSL -->
+<div class="section" id="s-dsl">
+  <h2>Format de commande DSL</h2>
+  <p>Le DSL est le langage natif de LCCA. Chaque commande suit un format structuré qui permet un parsing déterministe et une haute confiance d'interprétation.</p>
+
+  <div class="dsl-anatomy">
+    <div class="dsl-display">
+      <span class="dsl-part"><span class="dsl-tok tok-proj">DashboardV1</span></span>
+      <span class="tok-sep"> - </span>
+      <span class="dsl-part"><span class="dsl-tok tok-target">Auth</span></span>
+      <span class="tok-sep"> - </span>
+      <span class="dsl-part"><span class="dsl-tok tok-action">Ajoute</span></span>
+      <span class="tok-sep"> </span>
+      <span class="dsl-part"><span class="dsl-tok tok-detail">validate_email(email: str) -> bool</span></span>
+    </div>
+    <div class="dsl-legend">
+      <div class="dsl-leg-item">
+        <div class="dsl-leg-label" style="color:#185FA5">Projet</div>
+        <div class="dsl-leg-desc">Nom logique du projet. Sert à contextualiser le sprint log.</div>
+      </div>
+      <div class="dsl-leg-item">
+        <div class="dsl-leg-label" style="color:#3B6D11">Cible</div>
+        <div class="dsl-leg-desc">Nom du module ou fichier (sans extension). FileSelector résout le path.</div>
+      </div>
+      <div class="dsl-leg-item">
+        <div class="dsl-leg-label" style="color:#854F0B">Action</div>
+        <div class="dsl-leg-desc">Verbe : Ajoute, Modifie, Supprime, Crée, Corrige, Refactore.</div>
+      </div>
+      <div class="dsl-leg-item">
+        <div class="dsl-leg-label" style="color:var(--muted)">Détails</div>
+        <div class="dsl-leg-desc">Signature, description, contraintes — transmis au LLM.</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Commandes disponibles</h2>
+  <div class="code-block">
+    <div class="code-header"><span class="code-label">PowerShell — main.py</span><button class="copy-btn" onclick="copyCode(this)">copier</button></div>
+    <pre>python main.py "Projet - Cible - Action Détails"
+
+# Options :
+python main.py --dry-run "..."    # Simulation sans modification
+python main.py --status           # État du système
+python main.py --list-tx          # 10 dernières transactions
+python main.py --recover          # Réparer TX orphelines
+python main.py --clear-wal        # Archiver et vider le WAL
+python main.py -v "..."           # Mode verbeux (DEBUG)
+python main.py --no-rollback "..."# Désactiver rollback auto</pre>
+  </div>
+
+  <h2>Exemples de commandes DSL</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Commande</th><th>Effet</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>"Auth - auth - Ajoute validate_token()"</td>
+          <td>Ajoute la fonction <code>validate_token</code> dans le fichier auth.py</td>
+        </tr>
+        <tr>
+          <td>"MediBot - RDV - Modifie confirm_rdv()"</td>
+          <td>Modifie la fonction existante <code>confirm_rdv</code></td>
+        </tr>
+        <tr>
+          <td>"Projet - utils - Crée le module helpers"</td>
+          <td>Crée un nouveau fichier <code>utils.py</code> ou <code>helpers.py</code></td>
+        </tr>
+        <tr>
+          <td>"Dash - login - Corrige le bug de session None"</td>
+          <td>Analyse l'erreur et propose un correctif via LLM</td>
+        </tr>
+        <tr>
+          <td>"App - services - Refactore handle_request()"</td>
+          <td>Refactoring AST de la fonction ciblée</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Mode dry-run</h2>
+  <p>Le dry-run affiche exactement ce qui serait fait, sans toucher à aucun fichier ni créer d'entrée WAL.</p>
+  <div class="code-block">
+    <div class="code-header"><span class="code-label">Sortie d'un dry-run</span></div>
+    <pre>Mode dry-run — aucune modification ne sera effectuée
+
+🎯 Intent parsé:
+   Projet    : Auth
+   Cible     : auth
+   Action    : add_function
+   Confiance : 92%
+
+📁 Fichiers cibles (1):
+   📄 existant: auth.py
+
+📋 Plan (1 opération):
+   1. [ADD] auth.py :: validate_token
+      ↳ Ajouter la fonction validate_token()</pre>
+  </div>
+
+  <h2>Workspace cible</h2>
+  <p>Par défaut, LCCA opère sur <code>D:\LLMCodeAgent\workspace\</code>. Pour cibler un autre projet :</p>
+  <div class="code-block">
+    <div class="code-header"><span class="code-label">PowerShell</span><button class="copy-btn" onclick="copyCode(this)">copier</button></div>
+    <pre>python main.py -w D:\MediBot "Auth - auth - Ajoute validate_token()"</pre>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ NL -->
+<div class="section" id="s-nl">
+  <h2>Interface langage naturel</h2>
+  <p>L'interface NL transforme vos instructions en commandes DSL via Qwen2.5-Coder (Ollama), puis les exécute normalement dans le pipeline LCCA. Sans Ollama, un mode heuristique (regex) prend le relais avec une confiance réduite.</p>
+
+  <div class="callout warn">
+    <span class="callout-icon">⚠</span>
+    <span class="callout-text"><strong>Ollama requis</strong> pour les meilleures performances. Sans Ollama, le mode heuristique fonctionne pour les commandes simples mais peut échouer sur les formulations ambiguës.</span>
+  </div>
+
+  <h2>REPL interactif</h2>
+  <div class="code-block">
+    <div class="code-header"><span class="code-label">Démarrage du REPL</span><button class="copy-btn" onclick="copyCode(this)">copier</button></div>
+    <pre>python main_nl.py
+# → Lance le REPL interactif
+# → Tapez vos commandes en français ou anglais
+# → Tapez 'help' pour l'aide, 'exit' pour quitter</pre>
+  </div>
+
+  <h3>Commandes spéciales REPL</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Commande</th><th>Effet</th></tr></thead>
+      <tbody>
+        <tr><td>status / état</td><td>Statut système, Ollama, fichiers indexés, stats session</td></tr>
+        <tr><td>history / historique</td><td>Historique des commandes de la session</td></tr>
+        <tr><td>dry / simulate</td><td>Activer/désactiver le mode dry-run</td></tr>
+        <tr><td>help / aide / ?</td><td>Aide contextuelle</td></tr>
+        <tr><td>exit / quit / q</td><td>Quitter avec résumé de session</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Mode direct (non-interactif)</h2>
+  <div class="code-block">
+    <div class="code-header"><span class="code-label">PowerShell — main_nl.py</span><button class="copy-btn" onclick="copyCode(this)">copier</button></div>
+    <pre># Exécution directe
+python main_nl.py "Ajoute validate_email dans core/utils.py"
+
+# Dry-run
+python main_nl.py --dry "Corrige le bug dans handle_timeout"
+
+# Sur un autre projet
+python main_nl.py --project D:\MediBot "Ajoute confirm_rdv dans rdv.py"
+
+# Changer de modèle Ollama
+python main_nl.py --model qwen2.5-coder:7b "..."
+
+# Baisser le seuil de confiance (défaut : 40%)
+python main_nl.py --min-confidence 0.2 "..."
+
+# Mode non-interactif (scripts CI)
+python main_nl.py --auto-confirm "Ajoute logger dans core/utils.py"
+
+# Statut
+python main_nl.py --status</pre>
+  </div>
+
+  <h2>Exemples de commandes NL</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Commande naturelle</th><th>Intent détecté</th></tr></thead>
+      <tbody>
+        <tr><td>"Ajoute une fonction validate_phone dans core/utils.py"</td><td>add_function / core/utils.py</td></tr>
+        <tr><td>"Modifie handle_timeout pour gérer session=None"</td><td>modify_function / handle_timeout</td></tr>
+        <tr><td>"Corrige le bug dans parse_message"</td><td>fix_bug / parse_message</td></tr>
+        <tr><td>"Crée un fichier utils/validators.py avec des helpers"</td><td>create_file / validators.py</td></tr>
+        <tr><td>"Add type hints to all functions in auth.py"</td><td>modify_file / auth.py</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Confiance et seuil</h2>
+  <p>Le NLParser attribue un score de confiance (0–100%) à chaque intent détecté. En dessous de 40%, la commande est refusée par défaut.</p>
+
+  <ul class="rule-list">
+    <li class="rule-item">
+      <span class="rule-badge ok">OK</span>
+      <span class="rule-text"><strong>Confiance ≥ 40%</strong> — commande exécutée normalement. Mentionner le fichier cible améliore toujours la confiance.</span>
+    </li>
+    <li class="rule-item">
+      <span class="rule-badge">REFUS</span>
+      <span class="rule-text"><strong>Confiance &lt; 40%</strong> — refusé sans <code>--auto-confirm</code>. Reformulez avec plus de précision (fichier, fonction, action).</span>
+    </li>
+  </ul>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ PIPELINE -->
+<div class="section" id="s-pipeline">
+  <h2>Pipeline d'exécution complet</h2>
+  <p>Chaque commande DSL ou NL traverse le même pipeline de 9 étapes. Toutes sont instrumentées (logs, télémétrie).</p>
+
+  <div class="pipeline">
+    <div class="pipe-step">
+      <div class="pipe-left"><div class="pipe-num">1</div><div class="pipe-line"></div></div>
+      <div class="pipe-content">
+        <div class="pipe-title">DSLParser — Intent structuré</div>
+        <div class="pipe-desc">Parse la commande en objet <code>Intent</code> : projet, cible, sous-cible, action, détails, confiance (0–1). Les commandes NL sont converties en DSL avant cette étape.</div>
+      </div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-left"><div class="pipe-num">2</div><div class="pipe-line"></div></div>
+      <div class="pipe-content">
+        <div class="pipe-title">Spec Layer — Validation architecturale (optionnelle)</div>
+        <div class="pipe-desc">Si <code>ADAPTIVE_SPEC_ENABLED=True</code> et complexité ≥ seuil : génère une spec, la valide via 15 règles. Bloque si la spec n'est pas validable après auto-fix. Réutilise les specs existantes depuis <code>lcca_specs</code>.</div>
+      </div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-left"><div class="pipe-num">3</div><div class="pipe-line"></div></div>
+      <div class="pipe-content">
+        <div class="pipe-title">FileSelector — Sélection des fichiers</div>
+        <div class="pipe-desc">3 stratégies : correspondance directe nom → fichier, recherche dans l'index AST, fallback sur le dependency graph. Maximum 3 fichiers par transaction (<code>MAX_FILES_PER_TX</code>).</div>
+      </div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-left"><div class="pipe-num">4</div><div class="pipe-line"></div></div>
+      <div class="pipe-content">
+        <div class="pipe-title">MultiFilePlanner — Plan ordonné</div>
+        <div class="pipe-desc">Crée un plan d'opérations trié par ordre topologique (dépendances entre fichiers). Valide la cohérence du plan avant exécution.</div>
+      </div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-left"><div class="pipe-num">5</div><div class="pipe-line"></div></div>
+      <div class="pipe-content">
+        <div class="pipe-title">TransactionManager — BEGIN + snapshots</div>
+        <div class="pipe-desc">Ouvre une transaction ACID. Prend des snapshots MD5 de chaque fichier cible. Écrit un BEGIN dans le WAL JSONL. Crée les backups <code>.bak</code>.</div>
+      </div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-left"><div class="pipe-num">6</div><div class="pipe-line"></div></div>
+      <div class="pipe-content">
+        <div class="pipe-title">LLMGenerator — Génération code</div>
+        <div class="pipe-desc">Appelle Ollama (Qwen2.5-Coder) avec le contexte du fichier. Cache LLM versionné par modèle. Si Ollama indisponible → FallbackGenerator (stub).</div>
+      </div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-left"><div class="pipe-num">7</div><div class="pipe-line"></div></div>
+      <div class="pipe-content">
+        <div class="pipe-title">SmartPatcher — Patch AST via libcst</div>
+        <div class="pipe-desc">Applique le code généré dans l'AST du fichier existant. Retourne le code modifié (jamais n'écrit directement). L'écriture est faite par TransactionManager.</div>
+      </div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-left"><div class="pipe-num">8</div><div class="pipe-line"></div></div>
+      <div class="pipe-content">
+        <div class="pipe-title">Validation syntaxe</div>
+        <div class="pipe-desc">Vérifie chaque fichier modifié avec <code>compile()</code>. Si une erreur syntaxique est détectée : rollback automatique, restauration des backups <code>.bak</code>.</div>
+      </div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-left"><div class="pipe-num">9</div><div class="pipe-line"></div></div>
+      <div class="pipe-content">
+        <div class="pipe-title">COMMIT — Finalisation</div>
+        <div class="pipe-desc">Écrit COMMIT dans le WAL. Re-indexe l'AST du workspace. Met à jour le sprint log dans <code>Docs/Sprints/current-sprint.md</code>.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ TX -->
+<div class="section" id="s-tx">
+  <h2>Gestion des transactions</h2>
+  <p>LCCA implémente un modèle transactionnel ACID via un WAL (Write-Ahead Log) JSONL. Chaque modification est tracée et peut être restaurée.</p>
+
+  <h2>WAL — Write-Ahead Log</h2>
+  <p>Le WAL est un fichier <code>transactions/wal.jsonl</code> qui trace toutes les opérations en temps réel. Chaque ligne est un objet JSON autonome.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Type d'entrée</th><th>Signification</th></tr></thead>
+      <tbody>
+        <tr><td>BEGIN</td><td>Ouverture d'une transaction — snapshot MD5 pris</td></tr>
+        <tr><td>OP_START</td><td>Début d'une opération sur un fichier</td></tr>
+        <tr><td>OP_SUCCESS</td><td>Opération appliquée avec succès</td></tr>
+        <tr><td>OP_ERROR</td><td>Erreur sur l'opération — rollback déclenché</td></tr>
+        <tr><td>COMMIT</td><td>Transaction terminée et commitée</td></tr>
+        <tr><td>ROLLBACK</td><td>Transaction annulée, fichiers restaurés</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Consulter les transactions</h2>
+  <div class="code-block">
+    <div class="code-header"><span class="code-label">PowerShell</span><button class="copy-btn" onclick="copyCode(this)">copier</button></div>
+    <pre># 10 dernières transactions commitées
+python main.py --list-tx
+
+# Sortie :
+# ✅ tx_1e1044830819 | 2026-04-18 14:32 | 2 op(s)
+# ✅ tx_2363e45c41d4 | 2026-04-18 15:01 | 1 op(s)</pre>
+  </div>
+
+  <h2>Rollback et récupération</h2>
+  <p>En cas d'erreur, LCCA effectue automatiquement un rollback. Les backups <code>.bak</code> sont utilisés pour restaurer les fichiers originaux.</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-label">PowerShell — Récupération manuelle</span><button class="copy-btn" onclick="copyCode(this)">copier</button></div>
+    <pre># Détecter et réparer les TX orphelines (crash système, etc.)
+python main.py --recover
+
+# Sortie :
+# 2 transaction(s) orpheline(s) détectée(s).
+# ✅ tx_abc123: committed
+# ⏮️  tx_def456: rolled_back</pre>
+  </div>
+
+  <h2>Archivage du WAL</h2>
+  <p>Le WAL peut grossir avec le temps. La commande <code>--clear-wal</code> l'archive et repart sur un WAL vide.</p>
+  <div class="code-block">
+    <div class="code-header"><span class="code-label">PowerShell</span><button class="copy-btn" onclick="copyCode(this)">copier</button></div>
+    <pre>python main.py --clear-wal
+# → Demande confirmation
+# → Archive vers transactions/wal_archive_20260418.jsonl</pre>
+  </div>
+
+  <div class="callout ok">
+    <span class="callout-icon">✓</span>
+    <span class="callout-text">Les archives WAL sont conservées indéfiniment dans <code>transactions/</code>. Les backups <code>.bak</code> sont créés par transaction dans <code>transactions/tx_&lt;id&gt;/</code>.</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ MEMORY -->
+<div class="section" id="s-memory">
+  <h2>Moteur mémoire — MemoryEngine V7</h2>
+  <p>LCCA maintient une mémoire vectorielle via ChromaDB (optionnel) pour stocker et retrouver solutions, erreurs, contexte et specs passées. Si ChromaDB est indisponible, les opérations sont silencieusement ignorées.</p>
+
+  <h2>5 collections</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Collection</th><th>Contenu</th><th>Seuil de stockage</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>lcca_solutions</td>
+          <td>Code validé (fonctions commitées avec succès)</td>
+          <td><span class="badge ok">score ≥ 0.8</span></td>
+        </tr>
+        <tr>
+          <td>lcca_context</td>
+          <td>Snippets de contexte récents</td>
+          <td><span class="badge warn">score ≥ 0.6</span></td>
+        </tr>
+        <tr>
+          <td>lcca_failures</td>
+          <td>Erreurs + correctifs appliqués</td>
+          <td><span class="badge neutral">toujours</span></td>
+        </tr>
+        <tr>
+          <td>lcca_patches</td>
+          <td>Historique complet des transactions</td>
+          <td><span class="badge neutral">toujours</span></td>
+        </tr>
+        <tr>
+          <td>lcca_specs</td>
+          <td>Specs générées et validées par la Spec Layer</td>
+          <td><span class="badge info">Spec Layer</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Via MCP Server (7 tools JSON-RPC)</h2>
+  <p>Le MCP Server expose la mémoire via JSON-RPC 2.0 stdio pour intégration avec d'autres outils :</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Tool</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>memory_search</td><td>Recherche sémantique cross-collection</td></tr>
+        <tr><td>memory_store</td><td>Stocke une entrée dans une collection</td></tr>
+        <tr><td>project_search</td><td>Recherche dans l'index AST du projet</td></tr>
+        <tr><td>edit_batch</td><td>Applique un lot de modifications transactionnelles</td></tr>
+        <tr><td>sandbox_run</td><td>Exécute du code en sandbox sécurisé</td></tr>
+        <tr><td>evaluate_quality</td><td>Score qualité d'un fichier (5 critères)</td></tr>
+        <tr><td>analyze_error</td><td>Analyse une erreur Python et propose un correctif</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout info">
+    <span class="callout-icon">ℹ</span>
+    <span class="callout-text">La mémoire est entièrement locale. Aucune donnée ne quitte votre machine. ChromaDB est optionnel : si non installé, les opérations de stockage/recherche sont ignorées silencieusement.</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ SPEC -->
+<div class="section" id="s-spec">
+  <h2>Spec Layer — Validation architecturale</h2>
+  <p>Avant toute modification complexe, la Spec Layer génère et valide une spec technique. Ce mécanisme garantit la cohérence architecturale et prévient les modifications non réfléchies.</p>
+
+  <div class="callout info">
+    <span class="callout-icon">ℹ</span>
+    <span class="callout-text">La Spec Layer est active par défaut (<code>ADAPTIVE_SPEC_ENABLED=True</code>). Elle ne s'active que si la complexité estimée dépasse le seuil (<code>SPEC_COMPLEXITY_THRESHOLD=3</code>). Les commandes simples la court-circuitent.</span>
+  </div>
+
+  <h2>Flux Spec Layer</h2>
+  <div class="pipeline">
+    <div class="pipe-step">
+      <div class="pipe-left"><div class="pipe-num">1</div><div class="pipe-line"></div></div>
+      <div class="pipe-content">
+        <div class="pipe-title">Estimation de complexité</div>
+        <div class="pipe-desc"><code>SpecComplexityEstimator</code> analyse l'intent. Score ≥ seuil → spec requise. Score &lt; seuil → pipeline continue directement.</div>
+      </div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-left"><div class="pipe-num">2</div><div class="pipe-line"></div></div>
+      <div class="pipe-content">
+        <div class="pipe-title">Recherche spec existante</div>
+        <div class="pipe-desc">Cherche dans <code>lcca_specs</code> une spec réutilisable. Si trouvée et <code>is_usable()</code> → incrément usage_count, pipeline continue.</div>
+      </div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-left"><div class="pipe-num">3</div><div class="pipe-line"></div></div>
+      <div class="pipe-content">
+        <div class="pipe-title">Génération nouvelle spec</div>
+        <div class="pipe-desc"><code>DeepReasoningPattern</code> + <code>SpecFormatterPattern</code> (via LLM) génèrent une spec Markdown structurée avec titre, abstract, corps, critères d'acceptation.</div>
+      </div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-left"><div class="pipe-num">4</div><div class="pipe-line"></div></div>
+      <div class="pipe-content">
+        <div class="pipe-title">Validation — 15 règles</div>
+        <div class="pipe-desc"><code>SpecValidatorService</code> applique le RULE_REGISTRY (R01–R15). Si violations bloquantes → <code>auto_fix()</code> (max 3 itérations).</div>
+      </div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-left"><div class="pipe-num">5</div><div class="pipe-line"></div></div>
+      <div class="pipe-content">
+        <div class="pipe-title">Stockage ou blocage</div>
+        <div class="pipe-desc">Spec valide → stockée dans <code>lcca_specs</code>, pipeline continue. Spec non validable après auto-fix → erreur loggée dans <code>lcca_failures</code>, exécution bloquée.</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Désactiver la Spec Layer</h2>
+  <p>Pour les commandes simples ou les tests, vous pouvez désactiver la Spec Layer dans <code>config.py</code> :</p>
+  <div class="code-block">
+    <div class="code-header"><span class="code-label">config.py</span></div>
+    <pre>ADAPTIVE_SPEC_ENABLED = False   # désactive la Spec Layer globalement
+SPEC_COMPLEXITY_THRESHOLD = 10  # ou monter le seuil</pre>
+  </div>
+
+  <div class="callout warn">
+    <span class="callout-icon">⚠</span>
+    <span class="callout-text">La Spec Layer requiert Ollama pour générer des specs de qualité. Si Ollama est indisponible, la génération retourne une spec vide qui échoue la validation → exécution bloquée. Désactivez <code>ADAPTIVE_SPEC_ENABLED</code> si Ollama n'est pas disponible.</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ REF -->
+<div class="section" id="s-ref">
+  <h2>Référence rapide — Toutes les commandes</h2>
+
+  <h3>main.py — Interface DSL</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Commande</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>python main.py "..."</td><td>Exécuter une commande DSL</td></tr>
+        <tr><td>python main.py --dry-run "..."</td><td>Simuler sans modifier</td></tr>
+        <tr><td>python main.py --status</td><td>État système, index, WAL</td></tr>
+        <tr><td>python main.py --list-tx</td><td>10 dernières TX</td></tr>
+        <tr><td>python main.py --recover</td><td>Réparer TX orphelines</td></tr>
+        <tr><td>python main.py --clear-wal</td><td>Archiver et vider le WAL</td></tr>
+        <tr><td>python main.py -v "..."</td><td>Mode verbeux (DEBUG)</td></tr>
+        <tr><td>python main.py -w PATH "..."</td><td>Workspace cible personnalisé</td></tr>
+        <tr><td>python main.py --no-rollback "..."</td><td>Désactiver rollback auto</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>main_nl.py — Interface NL</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Commande</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>python main_nl.py</td><td>REPL interactif</td></tr>
+        <tr><td>python main_nl.py "..."</td><td>Commande directe NL</td></tr>
+        <tr><td>python main_nl.py --dry "..."</td><td>Dry-run NL</td></tr>
+        <tr><td>python main_nl.py --status</td><td>Statut Ollama + projet</td></tr>
+        <tr><td>python main_nl.py --project PATH</td><td>Projet cible</td></tr>
+        <tr><td>python main_nl.py --model MODEL</td><td>Modèle Ollama</td></tr>
+        <tr><td>python main_nl.py --min-confidence N</td><td>Seuil confiance (0.0–1.0)</td></tr>
+        <tr><td>python main_nl.py --auto-confirm</td><td>Exécuter même si confiance faible</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Conventions DSL — Verbes d'action</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Verbe</th><th>Effet AST</th></tr></thead>
+      <tbody>
+        <tr><td>Ajoute / Add</td><td>Insère une nouvelle fonction ou classe</td></tr>
+        <tr><td>Modifie / Modify</td><td>Remplace le corps d'une fonction existante</td></tr>
+        <tr><td>Crée / Create</td><td>Crée un nouveau fichier Python</td></tr>
+        <tr><td>Corrige / Fix</td><td>Analyse et corrige un bug via LLM</td></tr>
+        <tr><td>Supprime / Remove</td><td>Supprime une fonction ou classe</td></tr>
+        <tr><td>Refactore / Refactor</td><td>Restructure sans changer le comportement</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Règles invariantes</h3>
+  <ul class="rule-list">
+    <li class="rule-item">
+      <span class="rule-badge">❌</span>
+      <span class="rule-text">Jamais de modification directe hors <code>workspace\</code> — safe_path() bloque toute tentative de traversal.</span>
+    </li>
+    <li class="rule-item">
+      <span class="rule-badge">❌</span>
+      <span class="rule-text">Maximum 3 fichiers par transaction (<code>MAX_FILES_PER_TX</code>). Au-delà, décomposer en plusieurs commandes.</span>
+    </li>
+    <li class="rule-item">
+      <span class="rule-badge ok">✓</span>
+      <span class="rule-text">Toujours utiliser <code>--dry-run</code> avant une première modification sur un fichier critique.</span>
+    </li>
+    <li class="rule-item">
+      <span class="rule-badge ok">✓</span>
+      <span class="rule-text">Les backups <code>.bak</code> dans <code>transactions/tx_*/</code> permettent une restauration manuelle si nécessaire.</span>
+    </li>
+    <li class="rule-item">
+      <span class="rule-badge">❌</span>
+      <span class="rule-text">Spec Layer requiert Ollama. Si Ollama est indisponible, définir <code>ADAPTIVE_SPEC_ENABLED=False</code>.</span>
+    </li>
+  </ul>
+
+  <h3>Résolution de problèmes courants</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Symptôme</th><th>Cause probable</th><th>Solution</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>"Aucun fichier cible identifié"</td>
+          <td>Nom de module introuvable dans l'index AST</td>
+          <td>Vérifier le nom exact avec <code>--status</code>, ou préciser le chemin complet</td>
+        </tr>
+        <tr>
+          <td>"Spec Layer a bloqué l'exécution"</td>
+          <td>Ollama indisponible ou spec non validable</td>
+          <td>Démarrer Ollama, ou définir <code>ADAPTIVE_SPEC_ENABLED=False</code></td>
+        </tr>
+        <tr>
+          <td>"Confiance trop faible"</td>
+          <td>Commande NL ambiguë</td>
+          <td>Mentionner le fichier cible explicitement, ou utiliser <code>--auto-confirm</code></td>
+        </tr>
+        <tr>
+          <td>"Syntaxe invalide après patch"</td>
+          <td>LLM a généré du code syntaxiquement incorrect</td>
+          <td>Rollback auto effectué. Reformuler la commande avec plus de contexte</td>
+        </tr>
+        <tr>
+          <td>TX orphelines au démarrage</td>
+          <td>Crash système pendant une transaction</td>
+          <td><code>python main.py --recover</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</div><!-- /doc -->
+
+<script>
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('s-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+function copyCode(btn) {
+  const pre = btn.closest('.code-block').querySelector('pre');
+  navigator.clipboard.writeText(pre.textContent.trim()).then(() => {
+    btn.textContent = 'copié !';
+    setTimeout(() => btn.textContent = 'copier', 1500);
+  });
+}
+</script>

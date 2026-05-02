@@ -1,0 +1,44 @@
+﻿================================================================================
+MODEL: deepseek-r1:14b | PROMPT: code_simple | RUN: 1 | PROFILE: Dodo | 2026-04-30 23:30:25
+================================================================================
+
+Here's a Python function that calculates the number of days between two dates:
+
+```python
+from datetime import datetime
+
+def days_between(date1, date2):
+    """
+    Calculate the number of days between two dates.
+    
+    Args:
+        date1 (str): First date in YYYY-MM-DD format.
+        date2 (str): Second date in YYYY-MM-DD format.
+        
+    Returns:
+        int: Number of days between the two dates. The result is always non-negative.
+        
+    Example:
+        date1 = "2023-01-01"
+        date2 = "2023-01-10"
+        print(days_between(date1, date2))  # Output: 9
+    """
+    # Convert the date strings to datetime objects
+    date_obj1 = datetime.strptime(date1, "%Y-%m-%d")
+    date_obj2 = datetime.strptime(date2, "%Y-%m-%d")
+    
+    # Calculate the difference between the two dates
+    delta = date_obj2 - date_obj1
+    
+    # Return the absolute number of days
+    return abs(delta.days)
+```
+
+**Usage Example:**
+```python
+date1 = "2023-01-01"
+date2 = "2023-01-10"
+print(days_between(date1, date2))  # Output: 9
+```
+
+This function converts the input date strings to `datetime.date` objects, calculates the difference between them, and returns the absolute number of days between the two dates.

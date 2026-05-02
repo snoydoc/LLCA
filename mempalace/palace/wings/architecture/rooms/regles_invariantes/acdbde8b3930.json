@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "acdbde8b3930",
+  "content": "## RÈGLES INVARIANTES — ARCHITECTURE\n- `Orchestrator` = alias legacy vers `LCCAV5Fusion`\n- `callable(getattr(obj, \"method\", None))` avant appel dynamique\n- Sérialisation dataclass : (1) dataclass (2) to_dict() (3) from_dict() (4) tests\n- Import tardif dans `__init__` pour éviter imports circulaires\n- Tout nouveau paramètre `create()` / `__init__()` → valeur par défaut `= None`",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "regles_invariantes",
+  "skill_file": "001-master.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

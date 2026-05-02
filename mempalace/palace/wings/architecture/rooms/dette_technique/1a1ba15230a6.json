@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "1a1ba15230a6",
+  "content": "## DETTE TECHNIQUE\nAucune dette ouverte (toutes résolues avant le 2026-04-21).\nSeuils de surveillance :\n- > 7 KB + 2 responsabilités → INFO\n- > 10 KB → WARN (candidat REFACTO)\n- Constante dupliquée entre 2 fichiers → WARN",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "dette_technique",
+  "skill_file": "002-context.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

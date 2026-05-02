@@ -1,0 +1,32 @@
+﻿================================================================================
+MODEL: qwen2.5-coder:3b | PROMPT: code_simple | RUN: 3 | 2026-04-27 17:52:12
+================================================================================
+
+```python
+from datetime import datetime
+
+def days_between(date1, date2):
+    """
+    Calculate the number of days between two dates.
+    
+    Parameters:
+    date1 (str): The first date in 'YYYY-MM-DD' format.
+    date2 (str): The second date in 'YYYY-MM-DD' format.
+    
+    Returns:
+    int: The number of days between the two dates.
+    """
+    # Convert the string dates to datetime objects
+    date_format = "%Y-%m-%d"
+    date_obj1 = datetime.strptime(date1, date_format)
+    date_obj2 = datetime.strptime(date2, date_format)
+    
+    # Calculate the difference in days
+    delta = date_obj2 - date_obj1
+    return delta.days
+
+# Example usage
+print(days_between("2023-01-01", "2023-01-31"))  # Output: 30
+```
+
+This Python function uses the `datetime` module to parse and calculate the difference between two dates. The `strptime` method is used to convert the date strings into `datetime` objects, and then the difference is calculated using the `days` attribute of the resulting `timedelta` object.

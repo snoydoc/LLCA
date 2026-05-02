@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "0c64958cdc42",
+  "content": "## CHECKLIST AVANT DE CORRIGER UN TEST FAILING\n\n```\n[ ] Type d'erreur identifié (T-01 à T-11)\n[ ] TOUS les fichiers de test scannés pour le même pattern\n[ ] TOUTES les occurrences listées avant d'en corriger une seule\n[ ] Correction en une seule passe (multi-edits dans la même réponse)\n[ ] pytest non relancé entre deux corrections partielles du même pattern\n```",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "tests",
+  "room": "checklists",
+  "skill_file": "003-antipatterns.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

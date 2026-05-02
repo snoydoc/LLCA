@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "ff2156c1ed43",
+  "content": "## CHECKLIST AVANT CHAQUE ÉCRITURE FICHIER\n\n```\n[ ] Fichier dans D:\\LLMCodeAgent\\ → filesystem:edit_file ou write_file (MCP uniquement)\n[ ] Fichier existant → read_text_file d'abord, JAMAIS write_file direct\n[ ] oldText tiré de la dernière lecture de cette session (pas de mémoire)\n[ ] Unicité de oldText vérifiée dans le fichier\n[ ] Après édition → relu les lignes modifiées avant de continuer\n```",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "tests",
+  "room": "checklists",
+  "skill_file": "003-antipatterns.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

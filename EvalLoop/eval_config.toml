@@ -1,0 +1,38 @@
+[model]
+# model non spécifié → lu depuis config.py (OLLAMA_MODEL = "qwen2.5-coder:3b")
+# OLLAMA_TIMEOUT = None → invariant absolu, non configurable ici
+
+[scoring]
+min_inject_score  = 0.70   # Seuil injection lcca_context — vérifié par EvalLoop, indépendant de MemoryEngine
+unlock_threshold  = 0.70   # Seuil unlock palier suivant
+gatekeeper_min    = 0.30   # Seuil JudgeLocal pour transmettre à JudgeClaude
+
+[sessions]
+sessions_dir  = "EvalLoop/sessions"
+state_file    = "EvalLoop/eval_state.json"
+dedup_index   = "EvalLoop/eval_dedup_index.json"
+
+[storage]
+collection      = "lcca_context"
+max_skill_words = 400   # ~600 tokens en français
+
+# ── Flags système (désactivés par défaut en V3, activables en V4) ─────────────
+
+[sys02_retrograde]
+# SYS-02 : rétrogradation de palier si N sessions consécutives < seuil
+retrograde_enabled    = false   # Activer en V4
+retrograde_threshold  = 0.50
+retrograde_window     = 3       # Nombre de sessions consécutives
+
+[sys03_cooldown]
+# SYS-03 : pause entre questions pour libérer le GPU
+probe_cooldown_sec = 0          # Augmenter à 2.0 si contention GPU observée
+
+[sys04_error_patterns]
+# SYS-04 : détection des erreurs récurrentes sur une même question
+track_error_patterns   = false  # Activer en V4
+error_repeat_threshold = 3      # Nombre de répétitions avant alerte CRITICAL
+
+[health]
+# OPP-01 : métriques de santé Ollama dans session_report.md
+track_health_metrics = true     # Activé par défaut — coût nul

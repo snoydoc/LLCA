@@ -1,0 +1,18 @@
+﻿================================================================================
+MODEL: deepseek-r1:8b | PROMPT: debug | RUN: 1 | 2026-04-28 23:01:21
+================================================================================
+
+To fix the bug where the function crashes with a `ZeroDivisionError` when the input list is empty, we need to handle the empty list case explicitly. The solution involves checking if the list is empty before attempting to compute the average. If the list is empty, we return `None` to indicate that the average is undefined. Otherwise, we proceed with the original calculation.
+
+Fixed code:
+```python
+def average(lst):
+    if len(lst) == 0:
+        return None
+    return sum(lst) / len(lst)
+```
+
+**Explanation:**
+- **Check for empty list:** The function first checks if the list is empty using `len(lst) == 0`. If it is empty, the function returns `None`, preventing division by zero.
+- **Handle non-empty list:** If the list is not empty, the function calculates the average as before by summing the elements and dividing by the length of the list.
+- This approach ensures the function handles all cases gracefully without crashing.

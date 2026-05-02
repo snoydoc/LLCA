@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "466f5f3a5f20",
+  "content": "### RefactoPattern (appliqué à tous les agents > 10 KB)\n- Classe orchestration légère (< 8 KB) + modules responsabilité unique\n- Aliases retrocompat sur l'agent original (wrappers 1 ligne)\n- Injectable via `agent._composant = mock` dans les tests",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "agents_rules",
+  "skill_file": "001-master.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

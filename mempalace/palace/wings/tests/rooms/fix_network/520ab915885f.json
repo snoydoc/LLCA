@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "520ab915885f",
+  "content": "## FIX-NETWORK (2026-04-22) — fichiers modifiés\n| Fichier | Action |\n|---|---|\n| tests/conftest.py | CRÉÉ — autouse fixture bloque urllib.request.urlopen dans tous les tests |\n| tests/test_educator_agent.py | FIX — test_run_task_dry_run_from_context mocke run_curation |\n| tests/test_ed_02.py | FIX — test_persist_* mockent agent._ingester.process_repo (bon niveau post-REFACTO) |",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "tests",
+  "room": "fix_network",
+  "skill_file": "002-context.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

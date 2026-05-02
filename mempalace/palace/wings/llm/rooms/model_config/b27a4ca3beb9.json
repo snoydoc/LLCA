@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "b27a4ca3beb9",
+  "content": "## MODÈLE ACTIF\n**`qwen2.5-coder:3b`** (~2.0 GB VRAM, ~11 tok/s full-GPU)\n- 7b écarté : débordement RAM → -60% vitesse\n- `hardware_profile.py` tier `low` (16 GB RAM) → sélectionne automatiquement le 3b\n\n| Modèle | VRAM | tok/s |\n|---|---|---|\n| qwen2.5-coder:3b | ~2.0 GB | 10.87 (retenu) |\n| qwen2.5-coder:7b | ~4.7 GB | 4.01 (écarté) |",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "llm",
+  "room": "model_config",
+  "skill_file": "002-context.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

@@ -1,0 +1,205 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   themes.css — Sprint UI-05 : Variables de thème LCCA Desktop
+   Ce fichier est la source de vérité pour les deux thèmes (dark / light).
+   Les variables sont appliquées via data-theme dans App.tsx :
+     document.documentElement.setAttribute('data-theme', theme)
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Thème DARK "Terminal Forge" (défaut) ─────────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  /* Arrière-plans */
+  --bg-base:       #07070f;
+  --bg-primary:    #0c0c18;
+  --bg-secondary:  #10101e;
+  --bg-surface:    #161628;
+  --bg-elevated:   #1c1c32;
+  --bg-input:      #0e0e1c;
+  --bg-hover:      rgba(245, 158, 11, 0.06);
+
+  /* Accent ambre */
+  --accent:        #f59e0b;
+  --accent-dim:    rgba(245, 158, 11, 0.15);
+  --accent-glow:   rgba(245, 158, 11, 0.08);
+  --accent-soft:   #2a1f08;
+
+  /* Texte */
+  --text-primary:  #e8e8f0;
+  --text-secondary:#9898b0;
+  --text-muted:    #505068;
+  --text-inverse:  #07070f;
+
+  /* Bordures */
+  --border:        rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.12);
+  --border-focus:  rgba(245, 158, 11, 0.6);
+  --border-accent: #f59e0b;
+
+  /* États sémantiques */
+  --success:       #34d399;
+  --success-dim:   rgba(52, 211, 153, 0.12);
+  --warning:       #fbbf24;
+  --warning-dim:   rgba(251, 191, 36, 0.12);
+  --error:         #f87171;
+  --error-dim:     rgba(248, 113, 113, 0.12);
+  --info:          #60a5fa;
+  --info-dim:      rgba(96, 165, 250, 0.12);
+
+  /* Code */
+  --code-bg:       #05050e;
+
+  /* Ombres */
+  --shadow-sm:  0 1px 2px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.03);
+  --shadow-md:  0 4px 16px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.04);
+  --shadow-lg:  0 12px 40px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.05);
+  --shadow-xl:  0 24px 64px rgba(0,0,0,.8), 0 0 0 1px rgba(255,255,255,.06);
+  --glow-accent: 0 0 24px rgba(245, 158, 11, 0.2);
+
+  /* Alias courts (spec Claude_UX_Design_Skill) */
+  --glass:   rgba(255, 255, 255, 0.035);
+  --b1:      rgba(255, 255, 255, 0.055);
+  --b2:      rgba(255, 255, 255, 0.09);
+  --b-acc:   rgba(245, 158, 11, 0.35);
+  --shadow:  0 8px 32px rgba(0,0,0,0.7);
+
+  /* Coloration syntaxique dark (CodeBlock) */
+  --syn-keyword: #FF7B72;
+  --syn-fn:      #D2A8FF;
+  --syn-string:  #A5D6FF;
+  --syn-comment: #4A5568;
+  --syn-number:  #79C0FF;
+  --syn-tag:     #7EE787;
+  --syn-attr:    #F2CC60;
+
+  /* Alias rétrocompat (ui02 / ui03 / ui04) */
+  --color-surface:    #10101e;
+  --color-surface-alt:#07070f;
+  --color-border:     rgba(255, 255, 255, 0.07);
+  --color-text:       #e8e8f0;
+  --color-text-muted: #505068;
+  --color-accent:     #f59e0b;
+  --color-hover:      rgba(245, 158, 11, 0.08);
+  --color-error:      #f87171;
+}
+
+/* ─── Thème LIGHT "Forge Papier" ───────────────────────────────────────────── */
+[data-theme="light"] {
+  /* Arrière-plans — tons crème/parchemin */
+  --bg-base:       #f5f2ec;
+  --bg-primary:    #f8f6f0;
+  --bg-secondary:  #ffffff;
+  --bg-surface:    #f0ede6;
+  --bg-elevated:   #e8e4da;
+  --bg-input:      #ffffff;
+  --bg-hover:      rgba(180, 120, 0, 0.05);
+
+  /* Accent ambre foncé (contraste WCAG AA sur fond clair) */
+  --accent:        #b45309;
+  --accent-dim:    rgba(180, 83, 9, 0.10);
+  --accent-glow:   rgba(180, 83, 9, 0.06);
+  --accent-soft:   #fef3c7;
+
+  /* Texte */
+  --text-primary:  #1c1510;
+  --text-secondary:#4a3f30;
+  --text-muted:    #9c8f7a;
+  --text-inverse:  #f8f6f0;
+
+  /* Bordures */
+  --border:        rgba(100, 80, 40, 0.12);
+  --border-strong: rgba(100, 80, 40, 0.22);
+  --border-focus:  rgba(180, 83, 9, 0.55);
+  --border-accent: #b45309;
+
+  /* États sémantiques (contraste WCAG AA vérifié) */
+  --success:       #047857;
+  --success-dim:   rgba(4, 120, 87, 0.09);
+  --warning:       #b45309;
+  --warning-dim:   rgba(180, 83, 9, 0.09);
+  --error:         #b91c1c;
+  --error-dim:     rgba(185, 28, 28, 0.09);
+  --info:          #1d4ed8;
+  --info-dim:      rgba(29, 78, 216, 0.09);
+
+  /* Code */
+  --code-bg:       #ede9df;
+
+  /* Ombres légères (fond clair) */
+  --shadow-sm:  0 1px 3px rgba(60, 40, 10, 0.08);
+  --shadow-md:  0 4px 16px rgba(60, 40, 10, 0.12);
+  --shadow-lg:  0 12px 40px rgba(60, 40, 10, 0.16);
+  --shadow-xl:  0 24px 64px rgba(60, 40, 10, 0.20);
+  --glow-accent: 0 0 20px rgba(180, 83, 9, 0.12);
+
+  /* Alias courts (spec Claude_UX_Design_Skill) */
+  --glass:   rgba(0, 0, 0, 0.025);
+  --b1:      rgba(100, 80, 40, 0.10);
+  --b2:      rgba(100, 80, 40, 0.18);
+  --b-acc:   rgba(180, 83, 9, 0.40);
+  --shadow:  0 4px 24px rgba(60,40,10,0.14);
+
+  /* Coloration syntaxique light (CodeBlock) */
+  --syn-keyword: #A21C30;
+  --syn-fn:      #6D28D9;
+  --syn-string:  #047857;
+  --syn-comment: #9C8F7A;
+  --syn-number:  #1D4ED8;
+  --syn-tag:     #065F46;
+  --syn-attr:    #92400E;
+
+  /* Alias rétrocompat (ui02 / ui03 / ui04) */
+  --color-surface:    #ffffff;
+  --color-surface-alt:#f5f2ec;
+  --color-border:     rgba(100, 80, 40, 0.12);
+  --color-text:       #1c1510;
+  --color-text-muted: #9c8f7a;
+  --color-accent:     #b45309;
+  --color-hover:      rgba(180, 83, 9, 0.06);
+  --color-error:      #b91c1c;
+}
+
+/* ─── Variables non-thémées (communes aux deux thèmes) ─────────────────────── */
+:root {
+  /* Typographie */
+  --font-sans:    'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono:    'Cascadia Code', 'Fira Code', 'JetBrains Mono', Consolas, monospace;
+  --font-display: 'Segoe UI', system-ui, sans-serif;
+
+  --font-size-xs:   11px;
+  --font-size-sm:   12.5px;
+  --font-size-base: 13.5px;
+  --font-size-md:   15px;
+  --font-size-lg:   18px;
+  --font-size-xl:   24px;
+  --font-size-2xl:  32px;
+
+  --line-height-base: 1.65;
+  --line-height-code: 1.55;
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-wide:   0.06em;
+
+  /* Espacements */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+
+  /* Rayons */
+  --radius-xs:   3px;
+  --radius-sm:   5px;
+  --radius-md:   8px;
+  --radius-lg:  12px;
+  --radius-xl:  16px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast:   100ms ease;
+  --transition-normal: 180ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow:   320ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Dimensions shell */
+  --sidebar-width:   52px;
+  --titlebar-height: 36px;
+}

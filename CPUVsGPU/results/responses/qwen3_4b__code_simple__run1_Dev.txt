@@ -1,0 +1,41 @@
+﻿================================================================================
+MODEL: qwen3:4b | PROMPT: code_simple | RUN: 1 | PROFILE: Dev | 2026-04-29 23:58:14
+================================================================================
+
+To solve this problem, we need to write a Python function that calculates the absolute number of days between two given dates in "YYYY-MM-DD" format. The solution involves parsing the input date strings, converting them into datetime objects, and then computing the absolute difference in days.
+
+### Approach
+1. **Import Required Module**: The `datetime` module is used for handling date and time operations.
+2. **Parse Date Strings**: Convert the input strings (in "YYYY-MM-DD" format) into `datetime.date` objects using `strptime`.
+3. **Compute Absolute Difference**: Calculate the absolute difference in days between the two parsed dates using the `timedelta` object's `.days` attribute.
+
+### Solution Code
+```python
+import datetime
+
+def days_between(date1_str, date2_str):
+    """
+    Return the absolute number of days between two dates.
+
+    Args:
+        date1_str (str): First date string in YYYY-MM-DD format.
+        date2_str (str): Second date string in YYYY-MM-DD format.
+
+    Returns:
+        int: The absolute number of days between the two dates.
+
+    Example:
+        days_between("2021-01-01", "2021-01-02") returns 1
+    """
+    date1 = datetime.datetime.strptime(date1_str, "%Y-%m-%d").date()
+    date2 = datetime.datetime.strptime(date2_str, "%Y-%m-%d").date()
+    return abs((date2 - date1).days)
+```
+
+### Explanation
+1. **Importing datetime**: The `datetime` module provides classes for working with dates and times.
+2. **Parsing Dates**: The `strptime` method converts the input strings into `datetime.date` objects. For example, `"2021-01-01"` is parsed into a `date` object representing January 1, 2021.
+3. **Calculating Days Difference**: The difference between two `date` objects is a `timedelta` object. The `.days` attribute of this object gives the number of days between the two dates. Taking the absolute value ensures the result is positive regardless of the order of the input dates.
+4. **Example**: For inputs `"2021-01-01"` and `"2021-01-02"`, the function returns `1` because there is one day between these two dates.
+
+This approach efficiently handles the problem by leveraging Python's built-in date and time operations to compute the required difference with minimal code and optimal performance.

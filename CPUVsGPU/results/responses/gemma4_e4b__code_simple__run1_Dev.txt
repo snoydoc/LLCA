@@ -1,0 +1,80 @@
+﻿================================================================================
+MODEL: gemma4:e4b | PROMPT: code_simple | RUN: 1 | PROFILE: Dev | 2026-04-30 00:54:34
+================================================================================
+
+This solution uses Python's built-in `datetime` module, which is the standard way to handle date calculations.
+
+```python
+from datetime import date
+from typing import Union
+
+def days_between(date_str1: str, date_str2: str) -> int:
+    """
+    Calculates the absolute number of days between two given date strings.
+
+    The date strings must be in the format 'YYYY-MM-DD'.
+
+    Args:
+        date_str1: The first date string (e.g., '2023-01-01').
+        date_str2: The second date string (e.g., '2023-01-15').
+
+    Returns:
+        int: The absolute number of days between the two dates.
+
+    Raises:
+        ValueError: If the date strings are not in the correct format.
+
+    Example:
+        >>> days_between('2023-01-01', '2023-01-15')
+        14
+        >>> days_between('2024-12-31', '2024-01-01')
+        364
+    """
+    try:
+        # Convert the string inputs into date objects
+        date1 = date.fromisoformat(date_str1)
+        date2 = date.fromisoformat(date_str2)
+    except ValueError as e:
+        raise ValueError(f"Invalid date format. Please use YYYY-MM-DD. Error: {e}")
+
+    # Subtracting two date objects results in a timedelta object.
+    # We use abs() to ensure the result is positive, regardless of the input order.
+    difference = date2 - date1
+    return abs(difference.days)
+
+# ======================================================================
+# Usage Example
+# ======================================================================
+
+if __name__ == "__main__":
+    # Example 1: Standard calculation (Date 2 is later than Date 1)
+    date_a = '2023-01-01'
+    date_b = '2023-01-15'
+    days = days_between(date_a, date_b)
+    print(f"The number of days between {date_a} and {date_b} is: {days} days.")
+
+    print("-" * 30)
+
+    # Example 2: Testing reverse order (should yield the same result)
+    date_c = '2025-12-31'
+    date_d = '2025-01-01'
+    days_reverse = days_between(date_c, date_d)
+    print(f"The number of days between {date_c} and {date_d} is: {days_reverse} days.")
+
+    print("-" * 30)
+
+    # Example 3: Testing a year boundary (Leap year check)
+    # 2024 is a leap year (Feb 29 exists)
+    date_e = '2024-02-01'
+    date_f = '2024-03-01'
+    days_leap = days_between(date_e, date_f)
+    print(f"The number of days between {date_e} and {date_f} (Leap Year) is: {days_leap} days.")
+
+    print("-" * 30)
+
+    # Example 4: Handling invalid input (This will raise a ValueError)
+    try:
+        days_between('2023/01/01', '2023-01-02')
+    except ValueError as e:
+        print(f"Error caught successfully: {e}")
+```

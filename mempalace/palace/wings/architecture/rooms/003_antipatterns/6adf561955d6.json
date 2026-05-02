@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "6adf561955d6",
+  "content": "# LCCA — ANTI-PATTERNS & ERREURS CONNUES (v4)\n# Lire si une session précédente a laissé des fichiers corrompus ou si des tests échouent.\n# Fusion de 006-claude-deconne.md + ClaudeDesonneSkill.md\n\n---",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "003_antipatterns",
+  "skill_file": "003-antipatterns.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

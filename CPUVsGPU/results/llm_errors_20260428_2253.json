@@ -1,0 +1,66 @@
+﻿[
+    {
+        "timestamp":  "2026-04-28 23:57:50",
+        "model":  "qwen3:14b",
+        "prompt":  "N/A",
+        "run":  0,
+        "category":  "oom_or_crash",
+        "error_msg":  "Ollama RAM 11855 MB apres warmup \u003e seuil",
+        "done_reason":  "",
+        "response_len":  0,
+        "tokens_out":  0,
+        "options_used":  {
+
+                         },
+        "suggestion":  "RAM threshold hit. Reduce model tier or add RAM.",
+        "timeout_sec":  0
+    },
+    {
+        "timestamp":  "2026-04-28 23:59:28",
+        "model":  "deepseek-r1:14b",
+        "prompt":  "N/A",
+        "run":  0,
+        "category":  "oom_or_crash",
+        "error_msg":  "Ollama RAM 12029 MB apres warmup \u003e seuil",
+        "done_reason":  "",
+        "response_len":  0,
+        "tokens_out":  0,
+        "options_used":  {
+
+                         },
+        "suggestion":  "RAM threshold hit. Reduce model tier or add RAM.",
+        "timeout_sec":  0
+    },
+    {
+        "timestamp":  "2026-04-29 00:01:44",
+        "model":  "qwen3-coder:30b-a3b-q4_K_M",
+        "prompt":  "N/A",
+        "run":  0,
+        "category":  "oom_or_crash",
+        "error_msg":  "Ollama RAM 20509 MB apres warmup \u003e seuil",
+        "done_reason":  "",
+        "response_len":  0,
+        "tokens_out":  0,
+        "options_used":  {
+
+                         },
+        "suggestion":  "RAM threshold hit. Reduce model tier or add RAM.",
+        "timeout_sec":  0
+    },
+    {
+        "timestamp":  "2026-04-29 00:03:41",
+        "model":  "qwen3:30b-a3b",
+        "prompt":  "N/A",
+        "run":  0,
+        "category":  "oom_or_crash",
+        "error_msg":  "Ollama RAM 20513 MB apres warmup \u003e seuil",
+        "done_reason":  "",
+        "response_len":  0,
+        "tokens_out":  0,
+        "options_used":  {
+
+                         },
+        "suggestion":  "RAM threshold hit. Reduce model tier or add RAM.",
+        "timeout_sec":  0
+    }
+]

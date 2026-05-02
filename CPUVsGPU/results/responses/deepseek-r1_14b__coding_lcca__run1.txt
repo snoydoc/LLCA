@@ -1,0 +1,74 @@
+﻿================================================================================
+MODEL: deepseek-r1:14b | PROMPT: coding_lcca | RUN: 1 | 2026-04-28 05:29:09
+================================================================================
+
+Here's the refactored code following your rules:
+
+```python
+from pathlib import Path
+
+class FileManager:
+    def __init__(self, base_path):
+        """Initialize FileManager with a base path."""
+        self.base_path = Path(base_path)
+        
+    def read_file(self, file_name):
+        """Read and return the contents of a file.
+        
+        Args:
+            file_name (str): Name of the file to read
+            
+        Returns:
+            str: Contents of the file
+            
+        Raises:
+            FileNotFoundError: If the file does not exist
+        """
+        file_path = self.base_path / file_name
+        try:
+            with open(file_path, 'r') as f:
+                return f.read()
+        except FileNotFoundError:
+            raise FileNotFoundError(f"File '{file_name}' not found in directory '{self.base_path}'.")
+    
+    def write_file(self, file_name, data):
+        """Write data to a file.
+        
+        Args:
+            file_name (str): Name of the file to write to
+            data (str): Data to write to the file
+        """
+        file_path = self.base_path / file_name
+        # Ensure parent directories exist
+        file_path.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            with open(file_path, 'w') as f:
+                f.write(data)
+        except IOError:
+            raise IOError(f"Error writing to file '{file_name}' in directory '{self.base_path}'.")
+    
+    def list_files(self):
+        """List all files in the base directory.
+        
+        Returns:
+            list: List of file names in the base directory
+        """
+        try:
+            return [f.name for f in self.base_path.iterdir() if f.is_file()]
+        except FileNotFoundError:
+            raise FileNotFoundError(f"Base directory '{self.base_path}' does not exist.")
+```
+
+Key improvements made:
+1. Used pathlib.Path instead of os.path
+2. PascalCase for class name
+3. snake_case for methods
+4. Added docstrings to all methods
+5. Added error handling for file operations
+6. Ensured parent directories exist when writing files
+7. Filtered out directories when listing files
+8. Added proper exception handling and messages
+9. Made the code more robust by using context managers for file operations
+10. Improved documentation and error messages
+
+The code now follows PEP8 guidelines, is more robust, and includes proper documentation.

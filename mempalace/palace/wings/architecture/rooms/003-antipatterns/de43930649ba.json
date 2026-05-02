@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "de43930649ba",
+  "content": "### ❌ T-04 — Comportement `raises` incorrect par rapport au code réel\n**Symptôme** : `Failed: DID NOT RAISE <class 'RuntimeError'>`\n**Cause** : le code swallow silencieusement (`except: return \"\"`). Vérifier le chemin\nréel dans le code source avant d'écrire `pytest.raises()`.",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "003-antipatterns",
+  "skill_file": "003-antipatterns.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

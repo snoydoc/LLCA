@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "be6b141a7286",
+  "content": "### ❌ O-06 — Supposer que `create()` accepte les mêmes args qu'avant\n**Symptôme** : `TypeError` en test car la signature a changé.\n**Règle** : tout nouveau paramètre → valeur par défaut `= None`. Grep les tests après.\n\n---",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "003-antipatterns",
+  "skill_file": "003-antipatterns.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

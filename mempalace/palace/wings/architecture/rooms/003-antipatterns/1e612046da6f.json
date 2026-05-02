@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "1e612046da6f",
+  "content": "### ❌ T-01 — Valeur numérique pinnée dépassée par un sprint feature\n**Symptôme** : `AssertionError: assert 12 == 9` ou `assert '7.2.0' == '7.1.0'`\n**Cause** : sprint a ajouté des tools / changé une version sans mettre à jour les tests.\n**Détection** : après chaque sprint qui ajoute des tools, scanner immédiatement :\n```\ngrep -rn \"== [0-9]\" tests/test_mcp_*.py\n```\n**Correction** : lire `core/mcp_tools_schema.py` → vrai compte → corriger TOUTES les\noccurrences dans `test_mcp_server.py` ET `test_mcp_integration.py` en une passe.",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "003-antipatterns",
+  "skill_file": "003-antipatterns.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

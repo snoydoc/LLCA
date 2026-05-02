@@ -1,0 +1,123 @@
+{
+  "version": "1.1",
+  "rules": [
+    {
+      "id": "rule_notify_high_severity",
+      "description": "Notifier l'humain sur tout signal de sévérité haute",
+      "condition": {
+        "field": "signal.severity",
+        "operator": "==",
+        "value": "high",
+        "filters": {}
+      },
+      "action": "notify_human",
+      "params": {
+        "message_template": "Signal haute sévérité : {pattern} dans {file} (count={count})"
+      },
+      "require_human_ack": true,
+      "cooldown_sec": 600,
+      "max_trigger_per_day": 10,
+      "min_coupling_mode": 1
+    },
+    {
+      "id": "rule_test_retry",
+      "description": "Relancer Coder une fois si le même test échoue deux fois de suite",
+      "condition": {
+        "field": "signal.count",
+        "operator": ">=",
+        "value": 2,
+        "filters": {
+          "pattern": "repeated_test_failure",
+          "scope": "same_file"
+        }
+      },
+      "action": "retry_coder_once",
+      "params": {
+        "max_retries": 1,
+        "test_filter": "only_failed"
+      },
+      "require_human_ack": false,
+      "cooldown_sec": 300,
+      "max_trigger_per_day": 2,
+      "min_coupling_mode": 2
+    },
+    {
+      "id": "rule_auto_fix_await",
+      "description": "Déclencher auto-fix sur coroutine non awaitée (si auto-fix activé)",
+      "condition": {
+        "field": "signal.count",
+        "operator": ">=",
+        "value": 1,
+        "filters": {
+          "pattern": "coroutine_never_awaited"
+        }
+      },
+      "action": "trigger_auto_fix",
+      "params": {
+        "pattern_id": "coroutine_never_awaited"
+      },
+      "require_human_ack": false,
+      "cooldown_sec": 3600,
+      "max_trigger_per_day": 3,
+      "min_coupling_mode": 2
+    },
+    {
+      "id": "rule_auto_fix_import",
+      "description": "Déclencher auto-fix sur import manquant (si auto-fix activé)",
+      "condition": {
+        "field": "signal.count",
+        "operator": ">=",
+        "value": 1,
+        "filters": {
+          "pattern": "missing_import"
+        }
+      },
+      "action": "trigger_auto_fix",
+      "params": {
+        "pattern_id": "missing_import"
+      },
+      "require_human_ack": false,
+      "cooldown_sec": 1800,
+      "max_trigger_per_day": 5,
+      "min_coupling_mode": 2
+    },
+    {
+      "id": "rule_log_slow_intent",
+      "description": "Logger les intents lents pour analyse Educator",
+      "condition": {
+        "field": "signal.count",
+        "operator": ">=",
+        "value": 1,
+        "filters": {
+          "pattern": "slow_intent"
+        }
+      },
+      "action": "log_only",
+      "params": {},
+      "require_human_ack": false,
+      "cooldown_sec": 120,
+      "max_trigger_per_day": 50,
+      "min_coupling_mode": 1
+    },
+    {
+      "id": "rule_notify_stagnation",
+      "description": "Notifier et bloquer en cas de boucle de stagnation",
+      "condition": {
+        "field": "signal.count",
+        "operator": ">=",
+        "value": 1,
+        "filters": {
+          "pattern": "stagnation_loop"
+        }
+      },
+      "action": "notify_human",
+      "params": {
+        "message_template": "Boucle de stagnation détectée sur {file} — intervention manuelle requise"
+      },
+      "require_human_ack": true,
+      "cooldown_sec": 900,
+      "max_trigger_per_day": 5,
+      "min_coupling_mode": 1
+    }
+  ]
+}

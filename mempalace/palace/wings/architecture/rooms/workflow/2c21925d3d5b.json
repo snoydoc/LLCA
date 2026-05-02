@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "2c21925d3d5b",
+  "content": "## WORKFLOW OBLIGATOIRE\n1. Lire les 4 skills dans l'ordre\n2. `filesystem:list_directory_with_sizes` sur le dossier cible\n3. `filesystem:read_multiple_files` sur les fichiers concernés\n4. Plan (≤ 3 fichiers/TX) → PATCH via `filesystem:edit_file` → relire → COMMIT",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "workflow",
+  "skill_file": "001-master.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

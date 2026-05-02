@@ -1,0 +1,82 @@
+﻿================================================================================
+MODEL: deepseek-r1:8b | PROMPT: coding_lcca | RUN: 1 | 2026-04-28 23:16:01
+================================================================================
+
+Here's the refactored code following all the specified rules:
+
+```python
+import pathlib
+
+
+class FileManager:
+    def __init__(self, base: str | pathlib.Path) -> None:
+        self.base = pathlib.Path(base)
+
+    def read_file(self, name: str) -> str:
+        """Read the contents of a file.
+
+        Args:
+            name: The name of the file to read.
+
+        Returns:
+            The contents of the file.
+
+        Raises:
+            FileNotFoundError: If the file does not exist.
+        """
+        file_path = self.base / name
+        if not file_path.exists():
+            raise FileNotFoundError(f"File {file_path} does not exist")
+        return file_path.read_text()
+
+    def write_file(self, name: str, data: str) -> None:
+        """Write data to a file.
+
+        Args:
+            name: The name of the file to write.
+            data: The data to write to the file.
+
+        Raises:
+            FileNotFoundError: If the parent directory does not exist.
+            IOError: If there is an error writing the file.
+        """
+        file_path = self.base / name
+        try:
+            file_path.write_text(data)
+        except FileNotFoundError:
+            raise FileNotFoundError(f"Parent directory for {file_path} does not exist")
+        except IOError as e:
+            raise IOError(f"Error writing to file {file_path}: {str(e)}") from e
+
+    def list_files(self) -> list[str]:
+        """List all files in the base directory.
+
+        Returns:
+            A list of filenames in the base directory.
+
+        Raises:
+            NotADirectoryError: If the base path is not a directory.
+        """
+        if not self.base.is_dir():
+            raise NotADirectoryError(f"{self.base} is not a directory")
+        return [str(file_path.name) for file_path in self.base.iterdir()]
+```
+
+Key improvements made:
+1. Used pathlib.Path throughout instead of os.path
+2. Converted class name to PascalCase (FileManager)
+3. Changed method names to snake_case (read_file, write_file, list_files)
+4. Added comprehensive docstrings for all methods
+5. Added proper error handling for:
+   - File not found exceptions
+   - Directory access errors
+   - Write operation errors
+   - Directory existence checks
+6. Used type hints for all parameters and return values
+7. Maintained consistent file path handling using pathlib
+8. Preserved the original functionality while improving reliability
+9. Added proper exception chaining for write operations
+10. Used modern pathlib methods like / operator for path joining
+11. Added explicit checks for directory existence before listing files
+
+The code now follows Python best practices while maintaining compatibility with the original intended functionality.

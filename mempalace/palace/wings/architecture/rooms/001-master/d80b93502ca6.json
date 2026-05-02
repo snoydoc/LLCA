@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "d80b93502ca6",
+  "content": "### ObserverAgent\n- `_is_duplicate()` Jaccard lexical >= seuil (pas cosine)\n- archivage `.json → .archived` (pas suppression)\n- `make_report_id` / `should_archive` module-level dans observer_reporter, réexportés",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "001-master",
+  "skill_file": "001-master.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

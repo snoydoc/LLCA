@@ -1,0 +1,76 @@
+﻿================================================================================
+MODEL: gemma4:e2b | PROMPT: code_simple | RUN: 3 | 2026-04-27 18:03:32
+================================================================================
+
+```python
+from datetime import datetime
+
+def days_between(date_str1: str, date_str2: str) -> int:
+    """
+    Calculates the absolute number of days between two given dates.
+
+    The input dates must be provided in the format 'YYYY-MM-DD'.
+
+    Args:
+        date_str1: The first date string (YYYY-MM-DD).
+        date_str2: The second date string (YYYY-MM-DD).
+
+    Returns:
+        The absolute number of days between the two dates.
+
+    Raises:
+        ValueError: If the date strings are not in the expected format.
+    """
+    date_format = '%Y-%m-%d'
+    
+    try:
+        # Convert the string dates into datetime objects
+        date1 = datetime.strptime(date_str1, date_format)
+        date2 = datetime.strptime(date_str2, date_format)
+        
+        # Calculate the difference (results in a timedelta object)
+        time_difference = date2 - date1
+        
+        # Return the absolute number of days
+        return abs(time_difference.days)
+        
+    except ValueError as e:
+        # Handle cases where the input strings are not valid dates
+        raise ValueError(f"Invalid date format provided. Ensure dates are in YYYY-MM-DD format. Error: {e}")
+
+# --- Usage Example ---
+if __name__ == "__main__":
+    # Example 1: Standard calculation
+    date_a = "2023-01-01"
+    date_b = "2023-01-10"
+    
+    try:
+        days = days_between(date_a, date_b)
+        print(f"The number of days between {date_a} and {date_b} is: {days}")
+    except ValueError as e:
+        print(f"Error: {e}")
+
+    print("-" * 30)
+
+    # Example 2: Calculation with reversed order (testing absolute value)
+    date_c = "2024-05-15"
+    date_d = "2024-05-01"
+    
+    try:
+        days = days_between(date_c, date_d)
+        print(f"The number of days between {date_c} and {date_d} is: {days}")
+    except ValueError as e:
+        print(f"Error: {e}")
+
+    print("-" * 30)
+
+    # Example 3: Handling invalid input
+    date_e = "2023/01/01" # Incorrect format
+    date_f = "2023-01-02"
+    
+    try:
+        days = days_between(date_e, date_f)
+        print(f"The number of days between {date_e} and {date_f} is: {days}")
+    except ValueError as e:
+        print(f"Caught expected error for invalid input: {e}")
+```

@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "providers": [
+    {
+      "id": "kimi",
+      "name": "Kimi (Moonshot AI)",
+      "api_url": "https://api.moonshot.ai/v1/chat/completions",
+      "model_name": "moonshot-v1-8k",
+      "online": true,
+      "timeout_sec": 30,
+      "max_tokens": 2000,
+      "description": "Modele cloud Moonshot AI — 8k contexte. Bon pour coding et debug complexe. Plan gratuit : 15 req/min, 200k tokens/mois.",
+      "roles": [
+        "coding",
+        "debug",
+        "spec"
+      ],
+      "min_complexity": 6
+    },
+    {
+      "id": "groq_deepseek_r1_70b",
+      "name": "DeepSeek-R1-Distill-Llama-70B via Groq",
+      "api_url": "https://api.groq.com/openai/v1/chat/completions",
+      "model_name": "deepseek-r1-distill-llama-70b",
+      "online": false,
+      "timeout_sec": 60,
+      "max_tokens": 2000,
+      "description": "DeepSeek R1 distille sur Llama 70B — raisonnement avance. Plan gratuit Groq : 1000 req/jour, rate limit 100k tokens/min. Cle API dans .secret/groq_api_key.",
+      "roles": [
+        "coding",
+        "spec"
+      ],
+      "min_complexity": 7
+    }
+  ],
+  "routing": {
+    "enabled": false,
+    "complexity_source": "spec_estimator",
+    "fallback_to_local": true,
+    "thresholds": {
+      "use_heavy_local": 5,
+      "use_online": 6,
+      "force_online": 8
+    }
+  }
+}

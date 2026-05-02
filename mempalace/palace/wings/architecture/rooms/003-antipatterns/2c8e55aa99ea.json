@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "2c8e55aa99ea",
+  "content": "### ❌ O-04 — `edit_file` avec `oldText` contenant des caractères spéciaux\n**Symptôme** : patch au mauvais endroit, syntaxe cassée.\n**Règle** : `oldText` doit être **unique dans le fichier** (min 3 lignes de contexte).\nAprès chaque `edit_file` → relire les 20 lignes autour de la modification.\n`oldText` de mémoire après modification du fichier = PÉRIMÉ.",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "003-antipatterns",
+  "skill_file": "003-antipatterns.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

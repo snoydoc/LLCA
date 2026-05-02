@@ -1,0 +1,53 @@
+﻿================================================================================
+MODEL: qwen3:14b | PROMPT: code_simple | RUN: 1 | PROFILE: Dodo | 2026-04-30 22:22:23
+================================================================================
+
+Here's a well-documented Python function that calculates the number of days between two date strings in `YYYY-MM-DD` format. The implementation uses Python's `datetime` module for accurate date parsing and arithmetic.
+
+---
+
+```python
+from datetime import datetime
+
+def days_between(date_str1, date_str2):
+    """Calculate the number of days between two dates.
+
+    Args:
+        date_str1 (str): A date string in 'YYYY-MM-DD' format.
+        date_str2 (str): Another date string in 'YYYY-MM-DD' format.
+
+    Returns:
+        int: The absolute number of days between the two dates.
+
+    Example:
+        >>> days_between("2023-01-01", "2023-01-05")
+        4
+    """
+    # Parse the input strings into datetime objects
+    date1 = datetime.strptime(date_str1, "%Y-%m-%d")
+    date2 = datetime.strptime(date_str2, "%Y-%m-%d")
+
+    # Calculate the difference and return the absolute number of days
+    delta = date1 - date2
+    return abs(delta.days)
+```
+
+---
+
+### Explanation
+
+- **Parsing Dates**: The `datetime.strptime()` function is used to convert the string inputs into `datetime` objects, ensuring proper date handling.
+- **Date Arithmetic**: Subtracting two `datetime` objects yields a `timedelta` object, which has a `.days` attribute representing the difference in days.
+- **Absolute Value**: Since the function returns the number of days *between* the two dates, the absolute value of the difference is taken to ensure the result is always non-negative, regardless of the order of the input dates.
+
+---
+
+### Example Usage
+
+```python
+print(days_between("2023-01-01", "2023-01-05"))  # Output: 4
+print(days_between("2023-01-05", "2023-01-01"))  # Output: 4
+print(days_between("2023-12-25", "2023-12-25"))  # Output: 0
+```
+
+This function is robust, clear, and handles all valid date inputs in the expected format.

@@ -1,0 +1,75 @@
+﻿================================================================================
+MODEL: qwen3:8b | PROMPT: coding_lcca | RUN: 2 | 2026-04-27 23:51:16
+================================================================================
+
+Here's the refactored code that adheres to your specified rules and best practices:
+
+```python
+import pathlib
+
+class FileManager:
+    def __init__(self, base):
+        """
+        Initialize the FileManager with a base directory.
+        
+        Args:
+            base (str): The base directory path.
+        
+        Raises:
+            NotADirectoryError: If the provided base is not a valid directory.
+        """
+        self.base = pathlib.Path(base)
+        if not self.base.is_dir():
+            raise NotADirectoryError(f"{self.base} is not a valid directory")
+
+    def read_file(self, name):
+        """
+        Read the contents of a file in the base directory.
+        
+        Args:
+            name (str): The name of the file to read.
+        
+        Returns:
+            str: The contents of the file.
+        
+        Raises:
+            FileNotFoundError: If the file does not exist.
+            PermissionError: If the file cannot be read.
+        """
+        file_path = self.base / name
+        return file_path.open().read()
+
+    def write_file(self, name, data):
+        """
+        Write data to a file in the base directory.
+        
+        Args:
+            name (str): The name of the file to write.
+            data (str): The data to write to the file.
+        """
+        file_path = self.base / name
+        file_path.write_text(data)
+
+    def list_files(self):
+        """
+        List all files and directories in the base directory.
+        
+        Returns:
+            list: A list of strings representing the names of files and directories.
+        """
+        return [str(p) for p in self.base.iterdir()]
+```
+
+---
+
+### ✅ Key Improvements and Compliance
+
+1. **Pathlib Usage**: Replaced all `os.path` calls with `pathlib.Path` for more modern and readable file system operations.
+2. **PascalCase Class**: The class is now named `FileManager` with PascalCase.
+3. **snake_case Functions**: All methods use snake_case naming convention.
+4. **Comprehensive Docstrings**: Each method has a clear docstring describing its purpose, arguments, return values, and potential exceptions.
+5. **Edge Case Handling**:
+   - The constructor checks if the provided base path is a valid directory.
+   - `read_file` raises `FileNotFoundError` and `PermissionError` for missing or inaccessible files.
+   - `list_files` returns a list of string names for all items in the directory.
+6. **Complete File Output**: The full refactored code is provided without truncation, ensuring no missing logic or structure.

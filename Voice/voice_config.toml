@@ -1,0 +1,38 @@
+# Voice/voice_config.toml
+# Configuration du pipeline voix LCCA — VOICE-00
+# Toml charge par voice_types.load_voice_config()
+
+[stt]
+enabled = true
+mode = "push_to_talk"        # push_to_talk | continuous
+model = "small"              # tiny | small | medium
+language = "fr"              # fr | en (pas d'auto-detection en V1)
+device = "auto"              # auto | cuda | cpu
+compute_type = "int8"        # int8 | float16 | float32
+port = 8765
+vad_aggressiveness = 2       # 0-3 (2 = equilibre bruit/sensibilite)
+continuous_mode = false      # push_to_talk par defaut, continu opt-in
+show_partial_transcript = true
+
+[tts]
+enabled = true
+engine = "auto"              # auto | piper | kokoro
+port = 8766
+volume = 0.85                # 0.0 - 1.0
+
+[tts.piper]
+model_fr = "fr_FR-mls-medium"
+model_en = "en_US-amy-medium"
+models_dir = "models/tts/piper"
+
+[tts.kokoro]
+lang = "a"                   # a=american-en, b=british-en
+voice = "af_heart"
+models_dir = "models/tts/kokoro"
+
+[ui]
+shortcut_push_to_talk = "Alt+V"
+shortcut_scope = "local"     # local uniquement en V1 (pas d'iohook global)
+auto_submit = false          # l'utilisateur lit et valide la transcription
+show_partial_transcript = true
+audio_feedback = true        # bips 440Hz (start) / 220Hz (stop)

@@ -1,0 +1,10 @@
+﻿================================================================================
+MODEL: deepseek-r1:14b | PROMPT: debug | RUN: 1 | 2026-04-28 05:04:42
+================================================================================
+
+To fix the bug in the `average` function, we need to handle the case where the input list is empty to prevent a `ZeroDivisionError`.
+
+**Step-by-step explanation:**
+
+1. **Identify the Issue:** The function crashes when the list is empty because it attempts to divide by zero.
+2. **Add a Check:** Before computing the

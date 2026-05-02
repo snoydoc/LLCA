@@ -1,0 +1,12 @@
+{
+  "task_id": "t_test_001",
+  "agent": "tester",
+  "input_hash": "592a55ee3a44",
+  "output_hash": "592a55ee3a44",
+  "sandbox_passed": false,
+  "tests_passed": 0,
+  "tests_failed": 1,
+  "tx_id": null,
+  "timestamp": "2026-04-29T02:12:02.678455+00:00",
+  "signature": "ed092679b4376f39ccbc4c6525b1a123850c8e51490028398fdbf3c4c2acb9ab"
+}

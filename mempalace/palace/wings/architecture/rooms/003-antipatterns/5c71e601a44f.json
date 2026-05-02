@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "5c71e601a44f",
+  "content": "### ❌ O-03 — `bash_tool` pour accéder au disque Windows\n**Symptôme** : `No such file or directory` même avec `/mnt/d/...`\n**Règle** : bash_tool = container Linux isolé, 0 accès à `D:\\`.\nLire/écrire `D:\\LLMCodeAgent\\` → UNIQUEMENT les outils MCP `filesystem:*`.",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "003-antipatterns",
+  "skill_file": "003-antipatterns.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

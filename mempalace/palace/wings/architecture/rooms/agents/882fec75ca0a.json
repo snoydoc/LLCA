@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "882fec75ca0a",
+  "content": "### core/agents/ — 24 fichiers (état post-REFACTO-09 + whitelist refacto)\n```\na2a_bus.py              V8-01 — A2ALocalBus, A2AMessage, TaskContract (SQLite3 :memory:)\nagent_card.py           V8-02/FIX — AgentCard, RecoveryPolicy, AgentRegistry (+llm_review capability)\nbase_agent.py           V8-03 — BaseAgent ABC, AgentResult, _call_mcp (allowlist)\narchitect_agent.py      REFACTO-06 — orchestration légère (6.16 KB)\narchitect_decomposer.py REFACTO-06 — _detect_domain, _decompose_intent, ArchitectDecomposer\ncoder_agent.py          REFACTO-07 — orchestration légère (8.32 KB)\ncoder_builder.py        REFACTO-07 — CODER_SYSTEM, build_coder_prompt, format_skills_context, build_patch\nreviewer_agent.py       REFACTO-09 — orchestration légère (~7.1 KB)\nreviewer_validator.py   REFACTO-09 — _check_syntax, _build_reflection (module-level)\nreviewer_analyzer.py    REFACTO-09 — ReviewerLlmAnalyzer, prompts LLM\ntester_agent.py         REFACTO-05 — orchestration légère (10.28 KB)\ntester_runner.py        REFACTO-05 — _hash, _run_sandbox_safe, TesterReceiptBuilder\nagent_orchestrator.py   V9-07 — KarpathyLoop + OrchestratorResult (~8.5 KB)\norchestrator_loop.py    REFACTO-04 — KarpathyLoop + LoopResult + _detect_stagnation\nobserver_agent.py       REFACTO-08 — dédup skills, archivage (~10.37 KB)\nobserver_analyzer.py    REFACTO-03 — ObserverAnalyzer : find_low_quality, find_duplicates\nobserver_reporter.py    REFACTO-08 — make_report_id, should_archive, ObserverReporter\neducator_agent.py       ED-04/REFACTO-08 — EducatorAgent V9.1 (16.64 KB)\neducator_github.py      REFACTO-02 — EducatorGitHub : couche réseau GitHub\neducator_filter.py      REFACTO-02 — EducatorFilter : 7 règles LCCA\neducator_ingester.py    REFACTO-08 — EducatorIngester : process_repo, ingest, _extract_symbols\neducator_curator.py     REFACTO-08 — EducatorCurator : run_curation, run_diff, sandbox_check\neducator_whitelist.py   — Loader JSON whitelist : load_whitelist(), save_whitelist(), load_skip_set()\neducator_whitelist.json — SOURCE DE VÉRITÉ whitelist 24 repos (JSON, modifiable sans toucher au code)\n```",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "agents",
+  "skill_file": "002-context.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

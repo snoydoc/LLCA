@@ -1,0 +1,184 @@
+﻿"model","tier","mode","prompt","run","tok_s","tokens_out","total_ms","load_ms","eval_ms","prompt_ms","ram_avg_mb","vram_before","vram_after","vram_delta","gpu_util_pct","cpu_util_pct","temp_c","done_reason","response_len","error","num_predict_used","tok_multiplier","timeout_sec","profile","category","response_snippet"
+"deepseek-r1:8b","CPU","CPU","code_simple","1","2,68","617","236636,4","287,3","230524,5","5074,9","8066","0","0","0","0","4,7","0","stop","2331","","8192","1","2400","Dodo","","To solve this problem, we need to create a Python function that calculates the number of days between two given dates in the format ""YYYY-MM-DD"". The solution involves parsing the date strings into datetime objects, computing the absolute difference between them, and returning the number of days as an integer.
+
+### Approach
+1. **Import the datetime module**: This module provides classes for manipulating dates and times.
+2. **Parse the input strings**: Convert the input date strings into datetime"
+"deepseek-r1:8b","CPU","CPU","debug","1","2,36","1590","682145,6","305,9","673412,4","6368,2","8072","0","0","0","0","4,2","0","stop","441","","8192","1","3600","Dodo","","The bug occurs when the input list is empty, causing a `ZeroDivisionError` because `len(lst)` is 0 and division by zero is undefined. To fix this, we check if the list is empty and return `None` in such cases. Here's the fixed code:
+
+```python
+def average(lst):
+    if len(lst) == 0:
+        return None
+    return sum(lst) / len(lst)
+```
+
+This version handles the empty list case gracefully by returning `None`, avoiding the division error."
+"deepseek-r1:8b","CPU","CPU","coding_lcca","1","2,52","3331","1345243,4","527,7","1322276,2","20874,6","8074","0","0","0","0","10,4","0","stop","3069","","4096","1","9000","Dodo","","Here's the refactored code using pathlib.Path, PascalCase for the class, snake_case for functions, and proper docstrings:
+
+```python
+from pathlib import Path
+
+
+class FileManager:
+    """"""A class for managing files in a base directory.""""""
+
+    def __init__(self, base: str) -> None:
+        """"""
+        Initialize the FileManager with a base directory path.
+
+        Args:
+            base (str): The base directory path
+
+        Raises:
+            NotADirectoryError: If the base path is not a valid "
+"qwen3:8b","CPU","CPU","code_simple","1","2,78","1580","573178,4","149,2","568611,2","3573,4","8066","0","0","0","0","2,4","0","stop","1705","","8192","4","1800","Dodo","","Here's a well-documented Python function named `days_between` that calculates the number of days between two date strings in the format `YYYY-MM-DD`. The function includes a detailed docstring and a usage example for clarity.
+
+---
+
+```python
+from datetime import datetime
+
+def days_between(date1, date2):
+    """"""
+    Calculate the number of days between two dates given as strings in YYYY-MM-DD format.
+    
+    Parameters:
+    date1 (str): First date string in the format 'YYYY-MM-DD'.
+    date2 (st"
+"qwen3:8b","CPU","CPU","debug","1","2,38","1608","684066,7","172,8","676791,5","6098,9","8071","0","0","0","0","1","0","stop","1953","","8192","4","2400","Dodo","","The provided Python function:
+
+```python
+def average(lst):
+    return sum(lst) / len(lst)
+```
+
+is **buggy** because it throws a `ZeroDivisionError` when the input list is empty. This happens because `len(lst)` evaluates to `0`, and dividing by zero in Python raises an exception.
+
+---
+
+### ✅ **Bug Identification**
+
+- **Error Type**: `ZeroDivisionError`
+- **Cause**: The function attempts to divide by the length of the list, which is `0` when the list is empty.
+- **Impact**: The function fails cata"
+"qwen3:8b","CPU","CPU","coding_lcca","1","2,14","2478","1176296,4","177,1","1156306,6","18280,2","8074","0","0","0","0","3,7","0","stop","2421","","16384","4","7200","Dodo","","Here's the refactored version of the class following your specified rules:
+
+```python
+from pathlib import Path
+
+class FileManager:
+    def __init__(self, base):
+        """"""Initialize the FileManager with a base directory.""""""
+        self.base_path = Path(base)
+
+    def read_file(self, name):
+        """"""Read the contents of a file.
+        
+        Args:
+            name: The name of the file to read.
+        
+        Returns:
+            The content of the file as a string.
+        """"""
+        f"
+"qwen3:14b","CPU","CPU","code_simple","1","1,43","1356","959385,8","178","948695","9688,4","12066","0","0","0","0","8,5","0","stop","1818","","8192","4","1800","Dodo","","Here's a well-documented Python function that calculates the number of days between two date strings in `YYYY-MM-DD` format. The implementation uses Python's `datetime` module for accurate date parsing and arithmetic.
+
+---
+
+```python
+from datetime import datetime
+
+def days_between(date_str1, date_str2):
+    """"""Calculate the number of days between two dates.
+
+    Args:
+        date_str1 (str): A date string in 'YYYY-MM-DD' format.
+        date_str2 (str): Another date string in 'YYYY-MM-DD' forma"
+"qwen3:14b","CPU","CPU","debug","1","1,48","1998","1364821,9","176,3","1351478,5","11855,3","12072","0","0","0","0","10,3","0","stop","1708","","8192","4","2400","Dodo","","The original function:
+
+```python
+def average(lst):
+    return sum(lst) / len(lst)
+```
+
+crashes with a `ZeroDivisionError` when the input list `lst` is empty because `len(lst)` evaluates to `0`, and dividing by zero in Python is undefined and raises an error.
+
+---
+
+### ✅ **Identified Bug**
+
+The primary issue is the lack of input validation. The function does not account for the possibility of an empty list, leading to a division by zero.
+
+---
+
+### 🔧 **Fix**
+
+To prevent the crash, the function s"
+"qwen3:14b","CPU","CPU","coding_lcca","1","1,29","2751","2176537,3","191,9","2138467,5","35983","12074","0","0","0","0","10,1","0","stop","1619","","16384","4","7200","Dodo","","```python
+import pathlib
+
+class FileManager:
+    """"""Manages file operations within a specified base directory using pathlib.Path.""""""
+
+    def __init__(self, base):
+        """"""
+        Initialize FileManager with the base directory.
+
+        Args:
+            base (str): The path to the base directory.
+
+        Raises:
+            FileNotFoundError: If the base directory does not exist.
+            NotADirectoryError: If the base path is not a directory.
+        """"""
+        self.base = pathlib.Pa"
+"deepseek-r1:14b","CPU","CPU","code_simple","1","1,69","689","414741,5","159,7","406997,4","7211,1","12233","0","0","0","0","1,9","0","stop","1214","","8192","1","2400","Dodo","","Here's a Python function that calculates the number of days between two dates:
+
+```python
+from datetime import datetime
+
+def days_between(date1, date2):
+    """"""
+    Calculate the number of days between two dates.
+    
+    Args:
+        date1 (str): First date in YYYY-MM-DD format.
+        date2 (str): Second date in YYYY-MM-DD format.
+        
+    Returns:
+        int: Number of days between the two dates. The result is always non-negative.
+        
+    Example:
+        date1 = ""2023-01-01""
+    "
+"deepseek-r1:14b","CPU","CPU","debug","1","1,56","1433","925841,5","161,7","916073,5","8861,2","12239","0","0","0","0","17,1","0","stop","326","","8192","1","3600","Dodo","","The bug occurs when the list is empty because dividing by zero causes a ZeroDivisionError. The fixed function checks if the list is empty and raises a ValueError if it is.
+
+Here is the fixed function:
+
+```python
+def average(lst):
+    if not lst:
+        raise ValueError(""The list is empty"")
+    return sum(lst) / len(lst)
+```"
+"deepseek-r1:14b","CPU","CPU","coding_lcca","1","1,71","805","505370,8","177,8","471693","33188","12241","0","0","0","0","0,3","0","stop","2053","","4096","1","9000","Dodo","","Here's the refactored code following the specified rules:
+
+```python
+import pathlib
+
+class FileManager:
+    def __init__(self, base):
+        """"""Initialize FileManager with a base directory path.""""""
+        self.base = pathlib.Path(base).resolve()
+    
+    def read_file(self, name):
+        """"""Read and return the content of a file.
+        
+        Args:
+            name (str): Name of the file to read.
+            
+        Returns:
+            str: Content of the file.
+            
+        Rais"

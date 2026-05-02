@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "fb2a09ef5748",
+  "content": "## RÈGLES INVARIANTES — SPEC LAYER V7.2\n- `SpecEntry.make_spec_id(body_md)` : classmethod (MD5 du corps)\n- `is_usable()` : validated AND NOT deprecated AND superseded_by is None AND score >= min_score\n- `validate()` retourne **dict** : `{valid, score, violations, validation_notes}`\n- `SpecDirectPattern` : 1 appel LLM (~120s) vs pipeline 2 appels (~360s)",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "regles_invariantes",
+  "skill_file": "001-master.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

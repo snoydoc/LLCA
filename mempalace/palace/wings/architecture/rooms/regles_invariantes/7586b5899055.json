@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "7586b5899055",
+  "content": "## RÈGLES INVARIANTES — LLM / OLLAMA\n- `generate(op, intent, context)` → `GenerationResult` — Pipeline TX uniquement\n- `generate_text(system, user)` → `str` — CognitivePatterns uniquement (pas de cache)\n- Toujours passer `\"options\": {\"num_predict\": self.max_tokens}` à Ollama\n- `OLLAMA_TIMEOUT = None` | `SPEC_TIMEOUT = None` → NE JAMAIS mettre une valeur entière\n- `AGENT_PIPELINE_TIMEOUT = 3600` (1h)",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "regles_invariantes",
+  "skill_file": "001-master.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

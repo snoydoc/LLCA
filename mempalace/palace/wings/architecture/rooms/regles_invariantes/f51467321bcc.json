@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "f51467321bcc",
+  "content": "## RÈGLES INVARIANTES — CODE PYTHON\n- `libcst` pour MODIFICATIONS, `ast` pour INDEXATION\n- `SmartPatcher.apply_patch()` retourne `str`, n'écrit jamais sur disque\n- `Path` (pathlib) toujours | Classes `PascalCase` | fonctions `snake_case`\n- JSON : `utf-8` (sans BOM) | `.py` : `utf-8-sig` (BOM Windows)\n- `.ps1` : ASCII pur, zéro accent\n- `log.info(\"msg %s\", var)` jamais `log.info(f\"msg {var}\")`\n- `_lock = threading.Lock()` → attribut d'**instance** (jamais de classe)\n- SQLite `:memory:` → connexion persistante unique `self._conn` + `check_same_thread=False`",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "regles_invariantes",
+  "skill_file": "001-master.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "d8f5e74a310a",
+  "content": "## SPRINTS TERMINÉS (liste complète condensée)\nSprints 01→22 (core V7.2) | Sprint 05 (MemPalaceClient 4 layers) | Sprint 08 (RETIRÉ — passerelles MediBot archivées MIG-02)\nSprint 12 (TransactionManager + McpEditBatch) | Sprint 15 (SpecComplexityEstimator + SpecPromoter)\nSprint 16 (SpecPromoter Règle 19) | Sprint 18 (LLMGenerator + dette spec_complexity) | Sprint 19 (SpecPromoter memory_layer)\nV8-01→V8-09 | UI-01→UI-08 | UI-DS | UI-CHARTE\nWEB-01→WEB-03 | CTX-01→CTX-05 | V9-00→V9-08 | ED-01→ED-04 | V9-02-A\nREFACTO-01 (OrchestratorSpecMixin extrait) | REFACTO-02→REFACTO-09\nREFACTO-10 (mcp_tool_handlers.py découpé : context_builders + handlers_core/spec/llm/extras)\nREFACTO-11 (llm_generator.py découpé : llm_config + ollama_client + prompt_builder + llm_code_utils)\nREFACTO-15 (memory_engine.py 17.16 KB → 6.6 KB) : store → memory_engine_store.py | search → memory_engine_search.py | +18 tests\nREFACTO-16 (spec_generator.py 16.75 KB → 8.8 KB) : helpers → spec_generator_helpers.py | context → spec_generator_context.py | +18 tests\nREFACTO-12 (cognitive_patterns.py : prompts extraits dans cognitive_prompts.py | +18 tests)\nFIX-V9-08 : agent_card.py — ajout llm_review dans VALID_CAPABILITIES",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "sprint_history",
+  "skill_file": "002-context.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "f25f8ca62807",
+  "content": "### ❌ T-07 — Référence circulaire JSON dans les payloads de bus\n**Symptôme** : `ValueError: Circular reference detected` dans `json.dumps(payload)`\n**Cause** : `payload` contient `\"contract\"` qui contient `context` qui contient `payload`.\n**Correction** : filtrer `\"contract\"` avant injection dans context :\n```python\nsafe_payload = {k: v for k, v in payload.items() if k != \"contract\"}\ncontract.context[\"original_payload\"] = safe_payload\n```\n**Agents concernés** : `ReviewerAgent.run_once()` ET `TesterAgent.run_once()`.",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "003-antipatterns",
+  "skill_file": "003-antipatterns.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

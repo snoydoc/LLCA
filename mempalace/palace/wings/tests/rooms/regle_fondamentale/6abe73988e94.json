@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "6abe73988e94",
+  "content": "## ⚠️ RÈGLE FONDAMENTALE — LIRE AVANT TOUT\n\n> **Le rythme \"erreur pytest → correction rapide\" désactive le jugement.**\n> Chaque correction semblait simple. Aucune ne l'était vraiment.\n> Le vrai coût : 6 allers-retours au lieu de 1 passe globale.\n\n**Règle de session** : si une erreur pytest apparaît, la première réponse\nn'est JAMAIS une correction. C'est un diagnostic complet.\n\n**Workflow obligatoire avant toute correction** :\n1. Identifier le TYPE d'erreur (T-01 à T-11 ci-dessous)\n2. Scanner TOUS les fichiers de test pour le même pattern\n3. Lister TOUTES les occurrences à corriger\n4. Corriger TOUT en une seule passe (multi-edits dans la même réponse)\n5. Ne PAS relancer pytest entre deux corrections partielles du même pattern\n\n---",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "tests",
+  "room": "regle_fondamentale",
+  "skill_file": "003-antipatterns.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

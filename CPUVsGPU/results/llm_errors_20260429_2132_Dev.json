@@ -1,0 +1,19 @@
+﻿{
+    "timestamp":  "2026-04-29 21:41:59",
+    "model":  "qwen3:4b",
+    "prompt":  "code_simple",
+    "run":  1,
+    "category":  "empty_response",
+    "error_msg":  "Empty response",
+    "done_reason":  "length",
+    "response_len":  0,
+    "tokens_out":  4096,
+    "options_used":  {
+                         "num_predict":  4096,
+                         "num_gpu":  -1,
+                         "seed":  42,
+                         "temperature":  0.6
+                     },
+    "suggestion":  "Model has thinking block: multiply num_predict x4.",
+    "timeout_sec":  2700
+}

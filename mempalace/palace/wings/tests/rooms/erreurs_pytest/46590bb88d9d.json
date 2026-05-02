@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "46590bb88d9d",
+  "content": "## ERREURS PYTEST — DÉSYNCHRONISATION CODE/TESTS",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "tests",
+  "room": "erreurs_pytest",
+  "skill_file": "003-antipatterns.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

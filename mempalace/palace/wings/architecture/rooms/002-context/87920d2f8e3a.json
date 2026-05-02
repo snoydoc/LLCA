@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "87920d2f8e3a",
+  "content": "### Run Educator 2026-04-23_00-19 — résultats\n- 24 repos traités (tous) | 630 fichiers | 410 skills | 193 hashes persistés | 0 erreur | ~6min\n- `PyCQA/flake8` inguré (fix skip appliqué) ✔\n- `python/typeshed` + `astral-sh/ruff` traités — patch .pyi exercé pour la première fois ✔\n- Rejetés : astroid (LGPL), hypothesis (MPL-2.0), numpy (faux positif BSD-3)\n- FIX appliqué post-run : astroid+hypothesis retirés | numpy skip_license_check=true",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "002-context",
+  "skill_file": "002-context.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

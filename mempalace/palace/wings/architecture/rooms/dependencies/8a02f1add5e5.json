@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "8a02f1add5e5",
+  "content": "## STACK DÉPENDANCES\n- `libcst>=1.1.0` — AST modif (OBLIGATOIRE)\n- `chromadb>=0.4.0` — Vector DB (optionnel, skip Python 3.14+)\n- `pytest>=7.0` | `pyyaml>=6.0` | `black>=23.0`",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "dependencies",
+  "skill_file": "002-context.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "2fba5f2a4d5b",
+  "content": "### ❌ T-06 — Race condition timeout_sec=0\n**Symptôme** : `assert False is True` où `timed_out=False` alors qu'on attendait True.\n**Cause** : `deadline = time.monotonic() + 0 ≈ now` → check peut être False (µs d'écart).\n**Correction** : guard avant toute boucle :\n```python\nif self._timeout_sec <= 0:\n    return OrchestratorResult(success=False, timed_out=True, ...)\n```",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "003-antipatterns",
+  "skill_file": "003-antipatterns.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}

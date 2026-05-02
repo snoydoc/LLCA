@@ -1,0 +1,67 @@
+﻿================================================================================
+MODEL: gemma3:4b | PROMPT: coding_lcca | RUN: 1 | 2026-04-27 20:13:06
+================================================================================
+
+```python
+from pathlib import Path
+import os
+
+class FileManager:
+    """
+    A class to manage files within a specified directory.
+    """
+    def __init__(self, base: Path):
+        """
+        Initializes the FileManager with a base directory.
+
+        Args:
+            base: The base directory to manage files.
+        """
+        if not base.is_dir():
+            raise ValueError(f"Base path '{base}' is not a valid directory.")
+        self.base = base
+
+    def read_file(self, name: str) -> str:
+        """
+        Reads the content of a file from the base directory.
+
+        Args:
+            name: The name of the file to read.
+
+        Returns:
+            The content of the file as a string.
+
+        Raises:
+            FileNotFoundError: If the file does not exist.
+        """
+        file_path = self.base / Path(name)
+        try:
+            return file_path.read_text()
+        except FileNotFoundError:
+            raise FileNotFoundError(f"File '{name}' not found in '{self.base}'")
+
+    def write_file(self, name: str, data: str) -> None:
+        """
+        Writes data to a file in the base directory.
+
+        Args:
+            name: The name of the file to write to.
+            data: The data to write to the file.
+
+        Raises:
+            FileExistsError: If the file already exists.
+        """
+        file_path = self.base / Path(name)
+        if file_path.exists():
+            raise FileExistsError(f"File '{name}' already exists in '{self.base}'")
+        file_path.write_text(data)
+
+    def list_files(self) -> list[str]:
+        """
+        Lists all files and directories within the base directory.
+
+        Returns:
+            A list of strings representing the names of the files and directories.
+        """
+        return [f for f in os.listdir(self.base) if os.path.isfile(self.base / f)]
+```

@@ -1,0 +1,53 @@
+﻿================================================================================
+MODEL: deepseek-r1:14b | PROMPT: code_simple | RUN: 1 | 2026-04-28 04:35:12
+================================================================================
+
+To solve this problem, we need to write a function that calculates the number of days between two given date strings in the format YYYY-MM-DD. This function will utilize Python's `datetime` module to parse and manipulate the dates, ensuring accurate calculation of the difference.
+
+### Approach
+1. **Parse Date Strings**: Convert the input date strings into `datetime.date` objects using `datetime.strptime()`, which allows specifying the date format.
+2. **Calculate Difference**: Subtract the two date objects to get a `timedelta` object, which represents the duration between the two dates.
+3. **Compute Days**: Extract the number of days from the `timedelta` object and take the absolute value to ensure a non-negative result, regardless of the order of the input dates.
+
+### Solution Code
+```python
+import datetime
+
+def days_between(date1, date2):
+    """
+    Calculate the number of days between two dates.
+    
+    Args:
+        date1 (str): First date string in YYYY-MM-DD format.
+        date2 (str): Second date string in YYYY-MM-DD format.
+        
+    Returns:
+        int: The absolute number of days between the two dates.
+        
+    Example:
+        >>> days_between("2023-10-01", "2023-10-10")
+        9
+    """
+    # Parse the date strings into date objects
+    date_obj1 = datetime.datetime.strptime(date1, "%Y-%m-%d").date()
+    date_obj2 = datetime.datetime.strptime(date2, "%Y-%m-%d").date()
+    
+    # Calculate the difference
+    delta = date_obj2 - date_obj1
+    
+    # Return the absolute number of days
+    return abs(delta.days)
+
+# Example usage:
+if __name__ == "__main__":
+    date1 = "2023-10-01"
+    date2 = "2023-10-10"
+    print(days_between(date1, date2))  # Output: 9
+```
+
+### Explanation
+- **Parsing Dates**: The `strptime()` method is used to convert the string dates into `datetime.date` objects, which are easier to manipulate.
+- **Calculating Difference**: Subtracting one date object from another yields a `timedelta` object, which contains the difference in days, seconds, and microseconds.
+- **Absolute Days**: The `.days` attribute of the `timedelta` object gives the number of days, and taking the absolute value ensures the result is always non-negative, regardless of which date is earlier.
+
+This approach efficiently handles all edge cases, including leap years and varying month lengths, thanks to the robust date handling provided by Python's `datetime` module.

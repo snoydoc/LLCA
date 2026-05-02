@@ -1,0 +1,11 @@
+﻿{
+  "entry_id": "b99ce19a02c2",
+  "content": "## DIAGNOSTIC PRÉLIMINAIRE\nLire TOUS les fichiers cibles AVANT d'écrire une seule ligne.\nUn sprint « à faire » peut être « déjà fait » — vérifier avant de coder.\nNe JAMAIS re-écrire du code conforme sous prétexte de « compléter ».",
+  "source": "mig05_skills",
+  "layer": 3,
+  "wing": "architecture",
+  "room": "diagnostic",
+  "skill_file": "001-master.md",
+  "migration": "MIG-05",
+  "date": "2026-04-23"
+}
