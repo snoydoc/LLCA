@@ -1,3 +1,5 @@
+![LCCA — Local Cognitive Coding Agency](assets/brand/lcca-logo.svg)
+
 # LCCA V5 Fusion — Local Cognitive Coding Agency
 
 Agent de codage local **transactionnel** pour Python.
