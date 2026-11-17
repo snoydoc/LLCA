@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="240" viewBox="0 0 900 240" role="img" aria-labelledby="title desc">
+<title id="title">LCCA — Local Cognitive Coding Agency</title>
+<desc id="desc">A simple colorful folded ribbon symbol beside the LCCA wordmark.</desc>
+<defs>
+ <linearGradient id="ribbonA" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#00C8FF"/><stop offset=".48" stop-color="#4776FF"/><stop offset="1" stop-color="#9B5CFF"/></linearGradient>
+ <linearGradient id="ribbonB" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#9B5CFF"/><stop offset=".52" stop-color="#F04DB8"/><stop offset="1" stop-color="#FF8A3D"/></linearGradient>
+ <linearGradient id="ribbonC" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#00C8C8"/><stop offset="1" stop-color="#42D66B"/></linearGradient>
+</defs>
+<g transform="translate(24 20)">
+ <path d="M93 12c-36 0-65 29-65 65v40c0 36 29 65 65 65h37c20 0 36-16 36-36s-16-36-36-36H99V77h31c20 0 36-16 36-36S150 5 130 5H93Z" fill="url(#ribbonA)"/>
+ <path d="M130 110h39c36 0 65 29 65 65s-29 65-65 65h-39c-20 0-36-16-36-36s16-36 36-36h39v-22h-39c-20 0-36-16-36-36s16-36 36-36Z" transform="translate(0 -20)" fill="url(#ribbonB)"/>
+ <path d="M91 110h39c20 0 36 16 36 36s-16 36-36 36H91c-36 0-65-29-65-65v-1c0-20 16-36 36-36s36 16 36 36v1Z" fill="url(#ribbonC)" opacity=".98"/>
+</g>
+<text x="310" y="135" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="112" font-weight="750" letter-spacing="-5" fill="#17243A">LCCA</text>
+<text x="316" y="178" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="22" font-weight="550" letter-spacing="2.4" fill="#64748B">LOCAL COGNITIVE CODING AGENCY</text>
+</svg>
